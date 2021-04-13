@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HubblePOS.Security</name>
+    </assembly>
+    <members>
+        <member name="T:Everilion.Security.Crypto">
+            <summary>
+            Clase que contine diferentes formas de Cifrado. MD5, SHA, AES, 3DES
+            </summary>
+        </member>
+        <member name="M:Everilion.Security.Crypto.HashMD5(System.String)">
+            <summary>
+            Genera un Cifrado no reversible en MD5
+            </summary>
+            <param name="phrase">String a cifrar, no puede ser nulo.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Everilion.Security.Crypto.HashSHA1(System.String)">
+            <summary>
+            Genera un hash en SHA1 no reversible
+            </summary>
+            <param name="phrase">String a cifrar no puede ser null.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Everilion.Security.Crypto.HashSHA256(System.String)">
+            <summary>
+            Genera un hash en SHA256 no reversible
+            </summary>
+            <param name="phrase">String a cifrar no puede ser null.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Everilion.Security.Crypto.HashSHA384(System.String)">
+            <summary>
+            Genera un hash en SHA384 no reversible
+            </summary>
+            <param name="phrase">String a cifrar no puede ser null.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Everilion.Security.Crypto.HashSHA512(System.String)">
+            <summary>
+            Genera un hash en SHA512 no reversible
+            </summary>
+            <param name="phrase">String a cifrar no puede ser null.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Everilion.Security.Crypto.EncryptAES(System.String,System.String,System.Boolean)">
+            <summary>
+            Encripta un texto en AES con modo CBC generando para la misma entrada siempre salidas diferentes.
+            </summary>
+            <param name="phrase">Texto a Cifrar</param>
+            <param name="key">Clave para cifrar.</param>
+            <param name="hashKey">Opcional por defecto true, indica si se crea un hash con la clave, en caso de false sera utilizada tal cual sin hash.</param>
+            <returns>Cadena Hexadecimal String con el Cifrado</returns>
+        </member>
+        <member name="M:Everilion.Security.Crypto.DecryptAES(System.String,System.String,System.Boolean)">
+            <summary>
+            DesEncripta un texto en AES con modo CBC generando para la misma entrada siempre salidas diferentes.
+            </summary>
+            <param name="hash">String cifrado</param>
+            <param name="key">Clave para cifrar.</param>
+            <param name="hashKey">Opcional por defecto true, indica si se crea un hash con la clave, en caso de false sera utilizada tal cual sin hash.</param>
+            <returns>Cadena Hexadecimal String con el Cifrado</returns>
+        </member>
+        <member name="M:Everilion.Security.Crypto.ByteArrayToHexString(System.Byte[])">
+            <summary>
+            Bytes the array to hexadecimal string.
+            </summary>
+            <param name="inputArray">The input array.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Everilion.Security.Crypto.HexStringToByteArray(System.String)">
+            <summary>
+            Hexadecimals the string to byte array.
+            </summary>
+            <param name="inputString">The input string.</param>
+            <returns></returns>
+            <exception cref="T:System.Exception">
+            Hex strings have an even number of characters and you have got an odd number of characters!
+            or
+            Part of your \"hex\" string contains a non-hex value.
+            </exception>
+        </member>
+        <member name="M:Everilion.Security.Crypto.Serialize(System.Object)">
+            <summary>
+            Serializa un objeto y lo retorna en String.
+            </summary>
+            <param name="input">Objeto a Serializar.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Everilion.Security.Crypto.GetCertificateFromStore(System.String,System.Boolean)">
+            <summary> Gets the first certificate from store by thumbPrint.
+            </summary>
+            <param name="thumbPrint">The thumb print without space's.</param>
+            <param name="ValidOnly">Recover only Valid Certificated.(default: true)</param>
+            <returns>X509Certificate2.</returns>
+            <exception cref="T:System.Exception"> certificate not found</exception>
+        </member>
+        <member name="M:Everilion.Security.Crypto.SignWithCert(System.String,System.String,System.Boolean)">
+            <summary>
+            Signs the specified string with local Cetificate.
+            </summary>
+            <param name="stringToSign">The string to sign.</param>
+            <param name="certThumbprint">The cert thumbprint.</param>
+            <param name="ValidOnly">Recover only Valid Certificated.(default: true)</param>
+            <returns></returns>
+            <exception cref="T:System.Exception">No valid cert was found</exception>
+        </member>
+        <member name="M:Everilion.Security.Signature.Sign(System.Object,System.String,System.Boolean)">
+            <summary>
+            Firma un Objeto, en modo HubblePos
+            </summary>
+            <param name="input">Objeto a firmar</param>
+            <param name="inputKey">The input key.</param>
+            <param name="hashKey">true si la llave se utiliza hasheada(mas seguridad), false se usa tal cual.</param>
+            <returns>
+            string de firma para el objeto de entrada
+            </returns>
+            <exception cref="T:Everilion.Security.GenericErrorException">Security exception, Can't generate Signature</exception>
+        </member>
+        <member name="M:Everilion.Security.Signature.SignSort(System.Object,System.String,System.String)">
+            <summary>
+            Firma un Objeto Ordenando sus elementos Modo Mule
+            </summary>
+            <param name="input">Objeto a Firmar</param>
+            <param name="inputKey">Primer secreto será incluido al final del orden</param>
+            <param name="aditionalKey">Segundo secreto será incluido a continuación del primero</param>
+            <returns>string de firma para el objeto de entrada</returns>
+            <exception cref="T:Everilion.Security.SecurityException">Security exception, Can't generate Signature</exception>
+        </member>
+        <member name="M:Everilion.Security.Signature.ValidateSignature(System.Object,System.String,System.String,System.Boolean)">
+            <summary>
+            Valida la firma para un objeto.
+            </summary>
+            <param name="source">Objeto al cual se genero una firma.</param>
+            <param name="sign">Firma del objeto.</param>
+            <param name="key">Llave a utilizar junto al objeto para realizar la firma</param>
+            <param name="hashKey">true si la llave se utiliza hasheada(mas seguridad), false se usa tal cual.</param>
+            <returns>true el objeto no ha sido alterado false la firma no es correcta.</returns>
+        </member>
+        <member name="M:Everilion.Security.Signature.GenerateToken(System.Collections.Generic.List{System.String},System.Char,System.String)">
+            <summary>
+            Genera un token con los parametros entregado.
+            </summary>
+            <param name="parameters">Parametros a incluir en el Token.</param>
+            <param name="spliter">Separador utlizado internamente para concatenar los parametros.</param>
+            <param name="key">Llave a utilizar junto al objeto para realizar la firma</param>
+            <returns>Token con los parametros incluidos</returns>
+            <exception cref="T:Everilion.Security.GenericErrorException">Unknown Error</exception>
+        </member>
+        <member name="M:Everilion.Security.Signature.DisassembleToken(System.String)">
+            <summary>
+            Recupera de un Token valido, los parametros incluidos.
+            </summary>
+            <param name="token">Token generado que incluye parametros..</param>
+            <returns>Retorna una lista con los parametros incluidos en el token.</returns>
+            <exception cref="T:Everilion.Security.SecurityException">Security exception, Signature not match</exception>
+            <exception cref="T:Everilion.Security.GenericErrorException">Unknown Error</exception>
+        </member>
+        <member name="M:Everilion.Security.Signature.Serialize(System.Object)">
+            <summary>
+            Serializa un objeto y lo retorna en String.
+            </summary>
+            <param name="input">Objeto a Serializar.</param>
+            <returns>String con el objeto serializado en Json</returns>
+            <exception cref="T:Everilion.Security.GenericErrorException">Unknown Error</exception>
+        </member>
+        <member name="M:Everilion.Security.Signature.SerializeAndSortObject(System.Object)">
+            <summary>
+            Serializes to string and sort object.
+            Exclude fields name Signature.
+            </summary>
+            <param name="obj">The object.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

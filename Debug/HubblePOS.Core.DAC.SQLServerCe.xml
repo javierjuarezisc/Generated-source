@@ -1,0 +1,1478 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HubblePOS.Core.DAC.SQLServerCe</name>
+    </assembly>
+    <members>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ConfigurationHelper.GetConnectionStringForIlionDBRepliedSQLServerCEByEF">
+            <summary>
+            ¿ESTO NO DEBERÍA ESTAR AQUÍ!:
+            
+            las conexiones permanentes se implementaron de manera deficiente en su día, 
+            saltándose la regla de que la configuración (cadenas de conexión, entre otras cosas) la indica la factoría.
+            Si embargo, el DAC que aquiere la conexión permanente se busca solito la cadena de conexión.
+            
+            Está planificado que se cambie usando un pool de conexiones aportado por la factoría. Pero mientras tanto se expone
+            este método para dar soporte a los trabajos que se están realizando para hacer compliant con .net standard el core.
+            </summary>
+            <returns>Cadena de conexión (deprecated)</returns>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.ConfigurationHelper.DefaultDataReplicaPercentageProportionFromReplica">
+            <summary>
+            Porcentaje de la replica de datos sobre 100 proporcional a la replica conjunta (setting - datos).
+            Sirve para el coordinador de sincronizacion de replica
+            Valor entre 0 - 100
+            El porcentage de settings es (100 - %datos)
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatConfiguredSqlCeReplicationObject(HubblePOS.Core.Interface.DBReplicaConfigurationSQLServerCE,System.String,System.Net.WebProxy)">
+            <summary>
+            Crea un nuevo objeto de replicación para SQLServerCE debidamente configurado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatSqlServerCeSecurityType(HubblePOS.Core.Interface.DBReplicaSQLServerCESecurityType)">
+            <summary>
+            Crea un nuevo objeto de replicación para SQLServerCE debidamente configurado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatReplicaSyncProgressProportionFromSettingsReplica(System.Decimal)">
+            <summary>
+            Calcula el porcentaje real del progreso de la replica(settings + datos) multiplicando el progreso de settings por su parte proporcional
+            </summary>
+            <param name="progress"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatReplicaSyncProgressProportionFromDataReplica(System.Decimal)">
+            <summary>
+            Calcula el porcentaje real del progreso de la replica(settings + datos) multiplicando el progreso de datos por su parte proporcional
+            Se asume que la replica es settins y luego datos y que cuando se hace la de datos la de settings ya está completada
+            </summary>
+            <param name="progress"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatCustomerList(System.Collections.Generic.IList{HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatCustomer(HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.GetPriceWithTax(HubblePOS.Core.DAC.SQLServerCe.Serialization.Product,HubblePOS.Core.Interface.DecimalPrecisionConfiguration)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatProductType(System.Boolean,System.Byte)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatProductTypeFromSerializatedProduct(HubblePOS.Core.DAC.SQLServerCe.Serialization.Product)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatProductTypeFromSerializatedProduct(HubblePOS.Core.DAC.SQLServerCe.Serialization.ReducedProductWithDecimalConfiguration)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatProductList(System.Collections.Generic.IEnumerable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Product},HubblePOS.Core.Interface.DecimalPrecisionConfiguration)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatReducedProductWithDecimalConfiguration(HubblePOS.Core.DAC.SQLServerCe.Serialization.ReducedProductWithDecimalConfiguration)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatReducedProductWithDecimalConfigurationList(System.Collections.Generic.IList{HubblePOS.Core.DAC.SQLServerCe.Serialization.ReducedProductWithDecimalConfiguration})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatRateList(System.Collections.Generic.IList{HubblePOS.Core.DAC.SQLServerCe.Serialization.Rate})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatRate(HubblePOS.Core.DAC.SQLServerCe.Serialization.Rate)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FormatHelper.FormatRateLevelType(HubblePOS.Core.DAC.SQLServerCe.Serialization.RateLevelType)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.AlertDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.AlertDAC.GetAlertList(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.AlertDAC.SetAlertList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.Alert})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.AlertDAC.DeleteAlertList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{System.Int32})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.AlertDAC.GetActiveAlerts(HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.AlertPurposeType,System.String,System.DateTime)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.AlertDAC.GetAlertById(HubblePOS.Core.Interface.POS,System.Int32)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.AlertNotFoundException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.AlertDAC.IncreaseShownCounterByAlertId(HubblePOS.Core.Interface.POS,System.Int32)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.AlertNotFoundException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DeniedOperationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.AlertDAC.ResetRecurrentAlertsIfNeeded(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.BaseDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.BaseDAC.AssimilateParamList(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Aplica la lista de parámetros para configurar correctamente la instancia y que entre en un estado funcional
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.BaseDAC.EnsureProperlyInitialized">
+            <summary>
+            Valida que la instancia ha sido correctamente inicializada. Es decir, se le han pasado y aplicado todos los parámetros necesarios
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.LackOfConfigurationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.BaseDAC.AnalyzeDBSchemeDependencies">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CashboxDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CashboxDAC.CreateCashboxRecord(HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.CreateCashboxRecordDAO)">
+            <summary>
+            [NOT IMPLEMENTED]
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CashboxDAC.GetCashboxRecordReasons(HubblePOS.Core.Interface.POS)">
+            <summary>
+            [NOT IMPLEMENTED]
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CashboxDAC.CreateCashboxSaveDropRecord(HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.CreateCashboxRecordDAO)">
+            <summary>
+            [NOT IMPLEMENTED]
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CashboxDAC.GetCashbox(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CashboxDAC.IsCashboxOpened(HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.IsCashboxOpenedDAO)">
+            <summary>
+            [NOT IMPLEMENTED]
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CashboxDAC.OpenCashbox(HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.OpenCashboxDAO,System.String,System.String)">
+            <summary>
+            [NOT IMPLEMENTED]
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DeniedOperationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CompanyDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CompanyDAC.GetCompany(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CurrencyDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CurrencyDAC.GetCurrencyList(HubblePOS.Core.Interface.POS,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CustomerDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CustomerDAC.SearchCustomerByCriterias(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.SearchCustomerCriteria},HubblePOS.Core.Interface.SearchCriteriaRelationshipType,System.Boolean,System.Nullable{HubblePOS.Core.Interface.SearchCustomerCriteriaFieldType},System.Nullable{System.Int32})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CustomerDAC.GetCustomerById(HubblePOS.Core.Interface.POS,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.CustomerNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CustomerDAC.CreateCustomer(HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.CreateCustomerDAO)">
+            <summary>
+            [FUNCIONALIDAD NO SOPORTADA]
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.CustomerAlreadyExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.NotSupportedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CustomerDAC.GetIQueryableWithAppliedCriteriasInANDRelationship(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer},System.Collections.Generic.IList{HubblePOS.Core.Interface.SearchCustomerCriteria})">
+            <summary>
+            Devuelve la consulta/IQueryable pasado pero refinada con los criterios pasados en una relación tipo AND
+            </summary>
+            <param name="qry">Consulta/IQueryable a refinar</param>
+            <param name="criteriaList">Criterios a aplicar</param>
+            <returns>Consulta/IQueryable de entrada ya refinada</returns>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.CustomerDAC.GetIQueryableWithAppliedCriteriasInORRelationship(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer},System.Collections.Generic.IList{HubblePOS.Core.Interface.SearchCustomerCriteria})">
+            <summary>
+            Devuelve la consulta/IQueryable pasado pero refinada con los criterios pasados en una relación tipo OR
+            </summary>
+            <param name="qry">Consulta/Ienumerable a refinar</param>
+            <param name="criteriaList">Criterios a aplicar</param>
+            <returns>Consulta/IQueryable de entrada, refinada</returns>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="T:HubblePOS.Core.DAC.SQLServerCe.DBConnectionPool">
+            <summary>
+            Pool de conexiones para BBDD sobre tecnología SQLServerCE
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.DBFileFullName">
+            <summary>
+            Ruta completa al fichero de base de datos.
+            Incluye path y extensión.
+            (ej: C:\Cetel\ilion.sdf)
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.SettingsReplicaLock">
+            <summary>
+            Objeto para sincronizar entre hilos el acceso a variables que pertenecen al contexto de la réplica de configuración
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.DataReplicaLock">
+            <summary>
+            Objeto para sincronizar entre hilos el acceso a variables que pertenecen al contexto de la réplica de datos
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.SettingsReplicaSyncEvent">
+            <summary>
+            Objeto para gestionar las esperas mientras la réplica de configuratión está corriendo
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.DataReplicaSyncEvent">
+            <summary>
+            Objeto para gestionar las esperas mientras la réplica de datos está corriendo
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.LastSettingsReplicaSyncResult">
+            <summary>
+            Último resultado del proceso de réplica de configuración
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.LastDataReplicaSyncResult">
+            <summary>
+            Último resultado del proceso de réplica de datis
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.SettigsReplicaStatus">
+            <summary>
+            Indica el estado actual de la réplica de configuración
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.DataReplicaStatus">
+            <summary>
+            Indica el estado actual de la réplica de datos
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.SettingsReplicaProcessName">
+            <summary>
+            Nombre de los proceso de réplica de configuración
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.DataReplicaProcessName">
+            <summary>
+            Nombre de los proceso de réplica de datos
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.ReplicaSyncProcessId">
+            <summary>
+            Identificador del proceso de sincronización de datos por réplica de base de datos
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.SchemeDependenceSolutionList">
+            <summary>
+            Lista de soluciones para resolver carencias de esquema de base de datos.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.LastSettingsReplicaTableName">
+            <summary>
+            Nombre de la ultima tabla replicada de settings
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.LastDataReplicaTableName">
+            <summary>
+            Nombre de la ultima tabla replicada de datos
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.AssimilateParamList(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Aplica la lista de parámetros para configurar correctamente la instancia y que entre en un estado funcional
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.EnsureProperlyInitialized">
+            <summary>
+            Valida que la instancia ha sido correctamente inicializada. Es decir, se le han pasado y aplicado todos los parámetros necesarios
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.LackOfConfigurationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.AssertDatabaseExists">
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseNotExistsException"></exception >
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.AssertDatabaseIntegrity">
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseIntegrityException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.AssertDatabaseReplicationNotExpired(System.String,System.String,System.Int32)">
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseNotExistsException">Base de datos no existe</exception>
+            <exception cref="T:HubblePOS.Core.Interface.ReplicationExpiredException">Base de datos con fallo de integridad (corrupta)</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.RepairDatabase(HubblePOS.Core.Interface.DBRepairingType)">
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseNotRepairedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.GetLastDatabaseCompactOperationLocalDatetime">
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CompactDatabase(System.Boolean)">
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDatabase(System.String,HubblePOS.Core.Interface.ICoordinationContext)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseAlreadyExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.DestroyDatabase(System.String,HubblePOS.Core.Interface.ICoordinationContext)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.SynchronizeDatabase(System.String,System.String,HubblePOS.Core.Interface.IDBSynchronizationProgressCoordinator)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseSynchronizationProcessFailedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.SynchronizeDataByProcessId(System.String,System.String,System.String,HubblePOS.Core.Interface.IDBSynchronizationProgressCoordinator,HubblePOS.Core.Interface.DBReplicaConfigurationBase)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseSynchronizationProcessFailedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDatabaseBackup(HubblePOS.Core.Interface.DBBackupPurposeType,HubblePOS.Core.Interface.ICoordinationContext)">
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.RestoreDatabaseBackup(System.String,System.String,HubblePOS.Core.Interface.ICoordinationContext)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseAlreadyExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.ClosePermanentConnections(HubblePOS.Core.Interface.ICoordinationContext)">
+            <summary>
+            Cierra las conexiones permanentes
+            </summary>
+            <param name="coordinationContext">[OPCIONAL] contexto de coordinación para llamadas transaccionales</param>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.GetTransactionalDBContext(HubblePOS.Core.Interface.ResourceCoordinatorSlotPurposeType)">
+            <summary>
+            Proporciona un contexto para el nivel llamante
+            </summary>
+            <param name="contextPurpose">uso esperado para el contexto solicitado</param>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.FilterResolvableDBSchemeByAnalyzedDependencyList(System.Collections.Generic.IList{HubblePOS.Core.Interface.DBSchemeAnalyzedDependency})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.SolveFailedDBSchemeAnalyzedDependencyList(System.String,System.Collections.Generic.IList{HubblePOS.Core.Interface.DBSchemeAnalyzedDependency})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseSchemeDependenceNotResolvableException">La entrada contiene alguna dependencia de esquema de BD no resoluble</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.DoAllReplicasSynchronizationProcess(System.String)">
+            <summary>
+            Ejecuta los procesos de réplica (réplica de configuración y réplica de datos)
+            con un máximo número de reintentos para cada uno en caso de fallo de réplica.
+            Si ya están en ejecución, espera a que finalicen.
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseSynchronizationProcessFailedException">Alguno de los procesos de réplica se ejecutaron pero terminó con error</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.DoSettingsReplicaSynchronizationProcess(System.String)">
+            <summary>
+            Si la réplica de configuración no está corriendo, la lanza y espera; espera a que acabe si ya está corriendo
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseSynchronizationProcessFailedException">El proceso de réplica se ejecutó pero terminó con error</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.DoDataReplicaSynchronizationProcess(System.String)">
+            <summary>
+            Si la réplica de datos no está corriendo, la lanza y espera; espera a que acabe si ya está corriendo
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseSynchronizationProcessFailedException">El proceso de réplica se ejecutó pero terminó con error</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreatePathAndSubscriptionForLocalDatabaseIfNecessary(System.Data.SqlServerCe.SqlCeReplication)">
+            <summary>
+            Si el fichero local de base de datos no existe, se asegura que la ruta de directorios existe y
+            añade al objeto de réplica la suscripción, indicando  que se cree el fichero de base de datos cuando se efectúe la réplica
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableSeries(System.String)">
+            <summary>
+            Crea la tabla SERIES en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableLegalForms(System.String)">
+            <summary>
+            Crea la tabla FORMAS_JURIDICAS en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableDocuments(System.String)">
+            <summary>
+            Crea la tabla DOCUMENTS en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableDocumentsRelationship(System.String)">
+            <summary>
+            Crea la tabla DOCUMENTS_RELATIONSHIP en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableDocumentsTaxes(System.String)">
+            <summary>
+            Crea la tabla DOCUMENTS_TAXES en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableDocumentsLines(System.String)">
+            <summary>
+            Crea la tabla DOCUMENTS_LINES en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableDocumentsLinesPromotions(System.String)">
+            <summary>
+            Crea la tabla DOCUMENTS_LINES_PROMOTIONS en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableDocumentsPaymentDetails(System.String)">
+            <summary>
+            Crea la tabla DOCUMENTS_PAYMENT_DETAILS en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableDocumentsPaymentDetailsExtraData(System.String)">
+            <summary>
+            Crea la tabla DOCUMENTS_PAYMENT_DETAILS_EXTRA_DATA en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableDocumentsExtraData(System.String)">
+            <summary>
+            Crea la tabla DOCUMENTS_EXTRA_DATA en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableDynamiActionLaunchItems(System.String)">
+            <summary>
+            Crea la tabla DYNAMIC_ACTION_DISPLAY_ITEM en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableDynamicActions(System.String)">
+            <summary>
+            Crea la tabla DYNAMIC_ACTIONS en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableDynamicActionLaunchEvents(System.String)">
+            <summary>
+            Crea la tabla DYNAMIC_ACTION_LAUNCH_EVENTS en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableAlerts(System.String)">
+            <summary>
+            Crea la tabla ALERTS en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableSettingsReplicaConfiguration(System.String)">
+            <summary>
+            Creates the database scheme element table settings replica configuration.
+            </summary>
+            <param name="posId">The position identifier.</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableFuelSupplies(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableFuelSuppliesExtraData(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableFuelSuppliesProvisionalDocumentIds(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableFuelSuppliesPrepaidTransactionsProvisionalData(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableFuelTests(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableFuelTestsExtraData(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableForecourtChangedPrices(System.String)">
+            <summary>
+            Crea la tabla DOCUMENTS en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableLiterals_Value(System.String)">
+            <summary>
+            Crea la tabla Literals_Value en la base de datos local
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableForecourtManualChangedPrices(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.AlterDBSchemaForecourtManualChangePrice_Add_GradeReference(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.AlterDBSchemaForecourtManualChangePrice_Add_PreviousPriceWithoutTax(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.AlterDBSchemaForecourtManualChangePrice_Add_NewPriceWithoutTax(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.AlterDBSchemaForecourtManualChangePrice_Add_TaxPercentage(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.CreateDBSchemeElementTableDocumentsGlobalPromotions(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.AlterDBSchemaDocumentLinePromotions_Add_NumberOfPRoductsAffected(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Error genérico</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.AlterTable_Add(System.String,System.String,System.String,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBManagementDAC.AlterTable_AlterColumn_DropDefault(System.String,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBReplicaConfigurationDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBReplicaConfigurationDAC.GetReplicaConfiguration(System.String,HubblePOS.Core.Interface.DBReplicaType)">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBReplicaConfigurationDAC.SetReplicaConfiguration(System.String,HubblePOS.Core.Interface.DBReplicaConfigurationBase)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBReplicaConfigurationDAC.GetSettingsReplicaConfiguration(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DBReplicaConfigurationDAC.GetDataReplicaConfiguration(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetDocumentById(HubblePOS.Core.Interface.POS,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetDocumentRemainForAnnulmentById(HubblePOS.Core.Interface.POS,System.String)">
+            <summary>
+            [FUNCIONALIDAD NO SOPORTADA]
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.SearchDocumentByCriterias(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.SearchDocumentCriteriaBase},HubblePOS.Core.Interface.SearchCriteriaRelationshipType,HubblePOS.Core.Interface.SearchDocumentPaymentPendingFilterType,HubblePOS.Core.Interface.SearchDocumentScopeType,System.Nullable{HubblePOS.Core.Interface.SearchDocumentOrderingFieldType},System.Nullable{HubblePOS.Core.Interface.SearchOrderingDirectionType},System.Nullable{System.Int32})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.CreateDocumentList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.CreateDocumentDAO},System.Collections.Generic.IDictionary{System.Int32,System.String})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentAlreadyExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.SimulateCreateDocumentList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.CreateDocumentDAO},System.Collections.Generic.IDictionary{System.Int32,System.String})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.CreateDocumentPaymentDetail(HubblePOS.Core.Interface.POS,System.String,System.String,HubblePOS.Core.Interface.CreateDocumentPaymentDetailDAO)">
+            <summary>
+            [FUNCIONALIDAD NO SOPORTADA]
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentAlreadyPaidException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentInvalidTypeException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentDuplicatedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentAnnulledException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.NotSupportedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetInsertionPendingInsertDocumentDAOList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{System.String})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentAlreadyInsertedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.SetDocumentInsertionAttemptByIdList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{System.String},System.Boolean,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentAlreadyInsertedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.TryToPurgeOlderDocuments(HubblePOS.Core.Interface.POS,System.Int32)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetInsertDocumentDAOByIdList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Obtiene los documentos correspondientes a la lista de identificadores de documentos especificada
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetDocumentByIdList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{System.String})">
+            <summary>
+            Obtiene los documentos correspondientes a la lista de identificadores de documentos especificada
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.DocumentNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.ApplyPaymentPendingFilterToIQueryable(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Document},HubblePOS.Core.Interface.SearchDocumentPaymentPendingFilterType)">
+            <summary>
+            Devuelve un refinamiento de la consulta de entrada con el critero por condición de pendiente de pago aplicado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.ApplySearchCriteriaToIQueryable(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Document},HubblePOS.Core.Interface.SearchDocumentCriteriaBase)">
+            <summary>
+            Devuelve un refinamiento de la consulta de entrada con el criterio especificado.
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetIQueryableWithAppliedSearchDocumentCriteriaCustomerId(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Document},HubblePOS.Core.Interface.SearchDocumentCriteriaCustomerId)">
+            <summary>
+            Devuelve un refinamiento de la consulta de entrada con el criterio de tipo SearchDocumentCriteriaCustomerId aplicado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetIQueryableWithAppliedSearchDocumentCriteriaCustomerBusinessName(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Document},HubblePOS.Core.Interface.SearchDocumentCriteriaCustomerBusinessName)">
+            <summary>
+            Devuelve un refinamiento de la consulta de entrada con el criterio de tipo SearchDocumentCriteriaCustomerBusinessName aplicado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetIQueryableWithAppliedSearchDocumentCriteriaDocumentNumber(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Document},HubblePOS.Core.Interface.SearchDocumentCriteriaDocumentNumber)">
+            <summary>
+            Devuelve un refinamiento de la consulta de entrada con el criterio de tipo SearchDocumentCriteriaDocumentNumber aplicado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetIQueryableWithAppliedSearchDocumentCriteriaEmissionDateTime(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Document},HubblePOS.Core.Interface.SearchDocumentCriteriaEmissionDateTime)">
+            <summary>
+            Devuelve un refinamiento de la consulta de entrada con el criterio de tipo SearchDocumentCriteriaEmissionDateTime aplicado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetIQueryableWithAppliedSearchDocumentCriteriaOperatorId(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Document},HubblePOS.Core.Interface.SearchDocumentCriteriaOperatorId)">
+            <summary>
+            Devuelve un refinamiento de la consulta de entrada con el criterio de tipo SearchDocumentCriteriaOperatorId aplicado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetIQueryableWithAppliedSearchDocumentCriteriaPaymentMethodId(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Document},HubblePOS.Core.Interface.SearchDocumentCriteriaPaymentMethodId)">
+            <summary>
+            Devuelve un refinamiento de la consulta de entrada con el criterio de tipo SearchDocumentCriteriaPaymentMethodId aplicado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetIQueryableWithAppliedSearchDocumentCriteriaPaymentDetailPlate(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Document},HubblePOS.Core.Interface.SearchDocumentCriteriaPaymentDetailPlate)">
+            <summary>
+            Devuelve un refinamiento de la consulta de entrada con el criterio de tipo SearchDocumentCriteriaPaymentDetailPlate aplicado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetIQueryableWithAppliedSearchDocumentCriteriaProductId(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Document},HubblePOS.Core.Interface.SearchDocumentCriteriaProductId)">
+            <summary>
+            Devuelve un refinamiento de la consulta de entrada con el criterio de tipo SearchDocumentCriteriaProductId aplicado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetIQueryableWithAppliedSearchDocumentCriteriaTotalAmountWithTax(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Document},HubblePOS.Core.Interface.SearchDocumentCriteriaTotalAmountWithTax)">
+            <summary>
+            Devuelve un refinamiento de la consulta de entrada con el criterio de tipo SearchDocumentCriteriaTotalAmountWithTax aplicado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.ApplyOrderAndLimitOfResultsToSearchDocumentIQueryable(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Document},System.Nullable{HubblePOS.Core.Interface.SearchDocumentOrderingFieldType},System.Nullable{HubblePOS.Core.Interface.SearchOrderingDirectionType},System.Nullable{System.Int32})">
+            <summary>
+            Aplica criterios de ordenación y número de resultados a la consulta de documentos pasada
+            Criterio de ordencación por defecto:
+                + Ascendente
+                + Por el identificador de documento
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetDocumentListWithAppliedOrdering(System.Collections.Generic.IList{HubblePOS.Core.Interface.Document},System.Nullable{HubblePOS.Core.Interface.SearchDocumentOrderingFieldType},System.Nullable{HubblePOS.Core.Interface.SearchOrderingDirectionType})">
+            <summary>
+            Dada una lista de documentos, devuelve una nueva lista ordenada con el criterio de ordenación especificado
+            Por defecto:
+                + Ascendente
+                + Por el identificador de documento
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DocumentDAC.GetInsertionPendingInsertDocumentDAOList(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DynamicActionsDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DynamicActionsDAC.GetDynamicActionsConfigurationDAO(HubblePOS.Core.Interface.POS,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.DynamicActionsDAC.SetDynamicActionsConfigurationDAO(HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.SetDynamicActionsConfigurationDAO,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.NotSupportedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ForecourtManualPricesChangingDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ForecourtManualPricesChangingDAC.CreateForecourtManualPricesChangingList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.CreateForecourtManualPricesChangingDAO})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ForecourtManualPricesChangingDAC.GetInsertionPendingForecourtManualPricesChangingList(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ForecourtManualPricesChangingDAC.SetForecourtManualPricesChangingInsertionAttemptedByIdList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{System.Int32},System.Boolean,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ForecourtPricesChangingDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ForecourtPricesChangingDAC.GetChangePendingGradeUnitaryPrices(HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.DecimalPrecisionConfiguration)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ForecourtPricesChangingDAC.SetGradePriceChanged(HubblePOS.Core.Interface.POS,System.Int32,System.Decimal,System.Boolean)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ForecourtPricesChangingDAC.IsValidGradeIdString(System.String)">
+            <summary>
+            Valida que la cadena de entrada represente correctamente un identificador de grado
+            
+            REGLAS:
+            + debe contener un valor entre 1 y 99
+            + no se admite anteponer ceros al valor (ej: 01 no vale; 1 sí vale)
+            </summary>
+            <param name="gradeIdString">Cadena con el valor de un identificador de grado</param>
+            <returns>True si es una cadena válida para representar un Id de grado. False en caso contrario</returns>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuellingTankDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuellingTankDAC.GetFuellingTanks(HubblePOS.Core.Interface.POS,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuellingTankDAC.GetFuellingTankByFuellingPointIdAndGradeReference(HubblePOS.Core.Interface.POS,System.String,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelSupplyDAC.CreateFuelSupplyList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IDictionary{System.String,HubblePOS.Core.Interface.CreateFuelSupplyDAO})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelSupplyDAC.CreateFuelSupplyOfRelatedTransactionToken(HubblePOS.Core.Interface.POS,System.Tuple{System.String,HubblePOS.Core.Interface.CreateFuelSupplyDAO},System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelSupplyPrepaidTransactionProvisionalDataNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+            
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelSupplyDAC.GetDocumentIdOfRelatedTransactionToken(HubblePOS.Core.Interface.POS,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelSupplyPrepaidTransactionProvisionalDataNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelSupplyDAC.CreatePrepaidTransactionProvisionalData(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{System.String},System.String,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelSupplyDAC.SetDefinitiveDocumentIdForSupplyTransactions(HubblePOS.Core.Interface.POS,System.String,System.String,System.Collections.Generic.IList{System.String})">
+            <exception cref="T:HubblePOS.Core.Interface.FuelSupplyNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelSupplyDAC.SetDefinitiveDocumentIdForPrepaidOperations(HubblePOS.Core.Interface.POS,System.String,System.String,System.Collections.Generic.IList{System.String})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelSupplyPrepaidTransactionProvisionalDataNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelSupplyDAC.GetLastTransactionSequenceNumber(HubblePOS.Core.Interface.POS)">
+            <summary>
+            Devuelve el numero de transaccion de la ultima salvada en local.
+            </summary>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelSupplyDAC.GetInsertionPendingFuelSupplyList(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelSupplyDAC.GetInsertionPendingOrphanSupplyList(HubblePOS.Core.Interface.POS,System.Int32)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelSupplyDAC.CheckIfFuelSupplyHasBeenAutomaticallyManaged(HubblePOS.Core.Interface.POS,System.Int32,System.DateTime)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelSupplyDAC.SetFuelSupplyInsertionAttemptedByIdList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{System.String},System.Boolean,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelSupplyNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelSupplyAlreadyInsertedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelSupplyDAC.TryToPurgeOlderFuelSupplies(HubblePOS.Core.Interface.POS,System.Int32)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelSupplyDAC.GetFuelSuppliesByIdList(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Obtiene los suministros correspondientes a la lista de identificadores de suminstros especificada.
+            + Si uno de los identificadores contenidos en la lista pasada como parámetro no existe se lanzará excepción del tipo <see cref="T:HubblePOS.Core.Interface.FuelSupplyNotExistsException"/>
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelSupplyNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelTestDAC.CreateFuelTestList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.CreateFuelTestDAO})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelTestDAC.GetInsertionPendingFuelTestList(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelTestDAC.SetFuelTestInsertionAttemptedByIdList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{System.String},System.Boolean,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelTestNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelTestAlreadyInsertedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelTestDAC.TryToPurgeOlderFuelTest(HubblePOS.Core.Interface.POS,System.Int32)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelTestDAC.GetFuelTestListByIdList(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Obtiene las pruebas de surtidor correspondientes a la lista de identificadores de prueba de surtidor especificada.
+            + Si uno de los identificadores contenidos en la lista pasada como parámetro no existe se lanzará excepción del tipo <see cref="T:HubblePOS.Core.Interface.FuelTestNotExistsException"/>
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelTestNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.FuelTestDAC.GenerateRandomAlphanumericString(System.Int32)">
+            <summary>
+            Genera una cadena alfanumérica aleatoria de la longitud solicitada
+            </summary>
+            <param name="length"></param>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.LegalFormDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.LegalFormDAC.GetLegalFormList(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.LegalFormDAC.InsertOrUpdateLegalFormList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.InsertLegalFormDAO})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.LiteralsDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.LiteralsDAC.GetLiteralsList(HubblePOS.Core.Interface.POS,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.LiteralsDAC.UpdateLiteralsList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.InsertLiteralsDAO})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.OperatorDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.OperatorDAC.SearchOperatorByCriterias(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.SearchOperatorCriteria},HubblePOS.Core.Interface.SearchCriteriaRelationshipType,System.Boolean,System.Nullable{HubblePOS.Core.Interface.SearchOperatorCriteriaFieldType},System.Nullable{System.Int32})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.OperatorDAC.GetOperatorById(HubblePOS.Core.Interface.POS,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.OperatorNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.OperatorDAC.GetOperatorPemissionsList(System.String)">
+            <summary>
+            Formatea un string con los parámetros de usuario en una lista de permisos de operador
+            </summary>
+            <param name="rawParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.OperatorDAC.GetIQueryableWithAppliedCriteriasInANDRelationship(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Operator},System.Collections.Generic.IList{HubblePOS.Core.Interface.SearchOperatorCriteria})">
+            <summary>
+            Devuelve la consulta/IQueryable pasado pero refinada con los criterios pasados en una relación tipo AND
+            </summary>
+            <param name="qry">Consulta/IQueryable a refinar</param>
+            <param name="criteriaList">Criterios a aplicar</param>
+            <returns>Consulta/IQueryable de entrada ya refinada</returns>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.OperatorDAC.GetIQueryableWithAppliedCriteriasInORRelationship(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.Operator},System.Collections.Generic.IList{HubblePOS.Core.Interface.SearchOperatorCriteria})">
+            <summary>
+            Devuelve la consulta/IQueryable pasado pero refinada con los criterios pasados en una relación tipo OR
+            </summary>
+            <param name="qry">Consulta/Ienumerable a refinar</param>
+            <param name="criteriaList">Criterios a aplicar</param>
+            <returns>Consulta/IQueryable de entrada, refinada</returns>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PaymentMethodDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PaymentMethodDAC.GetPaymentMethodList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IDictionary{System.String,HubblePOS.Core.Interface.PaymentMethodType})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PosDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PosDAC.GetPOSById(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.POSNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PosDAC.GetPOSByGUID(System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.POSNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PosDAC.GetConfigurationParameterList(HubblePOS.Core.Interface.POS,System.Boolean)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PosDAC.GetConfigurationParameterByType(HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.ConfigurationParameterType)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.ConfigurationParameterNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.ConfigurationParameterDuplicatedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PosDAC.GetConfigurationParameterByNameAndGroup(HubblePOS.Core.Interface.POS,System.String,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.ConfigurationParameterNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.ConfigurationParameterDuplicatedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PosDAC.SetConfigurationParameterByType(HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.ConfigurationParameterType,System.String)">
+            <summary>
+            [NOT IMPLEMENTED]
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.ConfigurationParameterNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PosDAC.GetDecimalPrecisionConfiguration(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PosDAC.GetDefaultOperatorAndCustomerId(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PosDAC.GetCustomerDisplayConfigurationList(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PosDAC.GetCancelationLineState(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PrintDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PrintDAC.GetPrintingTemplatesPaths(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.UsecasePrintingConfiguration})">
+            <summary>
+            [NOT IMPLEMENTED]
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PrintDAC.GetPrintingGlobalSettings(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PrintDAC.GetLogo(HubblePOS.Core.Interface.POS,System.String)">
+            <summary>
+            [NOT IMPLEMENTED]
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PrintDAC.GetPosCommands(HubblePOS.Core.Interface.POS)">
+            <summary>
+            
+            </summary>
+            <param name="pos"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.GetPLUConfiguration(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.SearchProductByCriterias(HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.DecimalPrecisionConfiguration,System.Collections.Generic.IList{HubblePOS.Core.Interface.SearchProductCriteria},HubblePOS.Core.Interface.SearchCriteriaRelationshipType,System.Boolean,System.Nullable{HubblePOS.Core.Interface.SearchProductCriteriaFieldType},System.Nullable{System.Int32})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.GetProductById(HubblePOS.Core.Interface.POS,System.String,System.Boolean,HubblePOS.Core.Interface.DecimalPrecisionConfiguration)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.ProductNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.GetProductImagesByProductIdListAsync(HubblePOS.Core.Interface.POS,System.Collections.Generic.IEnumerable{System.String})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.GetOfferGroupList(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.GetReducedProductByIdOrBarcode(HubblePOS.Core.Interface.POS,System.String,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.ProductNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.ProductNotInStorageException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.GetReducedProductWithDecimalConfigurationMultiple(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.SearchProductCriteria},System.Nullable{System.Int32})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.ApplySearchCriteriaAndResultsLimitToBarcodeIQueryable(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.ProductBarcode},HubblePOS.Core.Interface.SearchProductCriteria,System.Nullable{System.Int32})">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.ApplySearchCriteriaAndResultsLimitToReducedProductIQueryable(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.ReducedProductWithDecimalConfiguration},HubblePOS.Core.Interface.SearchProductCriteria,System.Nullable{System.Int32})">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.ApplySearchCriteriaToArticleIQueryable(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.ProductArticle},HubblePOS.Core.Interface.SearchProductCriteria)">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.ApplySearchCriteriaToBarcodeIQueryable(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.ProductBarcode},HubblePOS.Core.Interface.SearchProductCriteria)">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.ApplyOrderAndLimitOfResultsToSearchProductIQueryable(System.Linq.IQueryable{HubblePOS.Core.DAC.SQLServerCe.Serialization.ProductArticle},System.Nullable{HubblePOS.Core.Interface.SearchProductCriteriaFieldType},System.Nullable{System.Int32})">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:HubblePOS.Core.DAC.SQLServerCe.ProductDAC.ParsePLUColorToRGB(System.String)" -->
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PromotionTheNamelessDAC.GetPromotionsByDateTimeRange(HubblePOS.Core.Interface.POS,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PromotionLegacyDAC.GetPromotionsByDateTimeRange(HubblePOS.Core.Interface.POS,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PSSDAC.GetFuellingPointsAsync(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PSSDAC.GetPOSIdsAndForecourtControllerSpecificPOSIdsByShopAsync(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.PSSDAC.GetIPToConnectToForecourtController(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.RatesDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.RatesDAC.GetRates(HubblePOS.Core.Interface.POS,System.String,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.RatesDAC.GetRates(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{System.String},System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="T:HubblePOS.Core.DAC.SQLServerCe.RecipesActionsDAC">
+            <summary>
+            DAC con implementacion de acceso a datos en SQL Server Compac
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.RecipesActionsDAC.AnalyzeDBSchemeDependencies">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.RecipesActionsDAC.GetRecipe(HubblePOS.Core.Interface.GetRecipeDAO)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.ProductNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.RecipesActionsDAC.GetIngredientRecursive(HubblePOS.Core.Interface.POS,System.String,System.String,System.Int32)">
+            <summary>
+            Obtiene el ingrediente y la subreceta recursivamente.
+            Como maximo se obtendra una profundidad hasta 3 niveles (0: menu - 1: elemento - 2: ingrediente base)
+            </summary>
+            <param name="productId">Identificador de producto</param>
+            <param name="customerRateId">Identificador de la tarifa de cliente</param>
+            <param name="deep">Indica la profundidad de la obtencion.</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.ProductNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.SeriesDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.SeriesDAC.GetSeriesList(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.SeriesDAC.InsertOrUpdateSeriesList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.InsertSeriesDAO})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ShopDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.ShopDAC.GetShop(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.TipoPagoPCDAC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="T:HubblePOS.Core.DAC.SQLServerCe.Serialization.AgrupacionWithIdProducts">
+            <summary>
+            Serializa la agrupacion con la lista de productos hijo que la componen
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.AgrupacionWithIdProducts.Name">
+            <summary>
+            Nombre de la agrupacion
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.AgrupacionWithIdProducts.ProductIdList">
+            <summary>
+            Lista de ids de producto asociados a la agrupacion
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer.RateId">
+            <summary>
+            El identificador de tarifa de este cliente. Nulo si no tiene.
+            Se han eliminado las tarifas alternativas de cliente, lo que llamábamos tarifa de gasóleo.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer.AddressId">
+            <summary>
+            Nulo si no hay dirección principal
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer.AddressStreet">
+            <summary>
+            Nulo si no hay dirección principal
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer.AddressCityName">
+            <summary>
+            Nulo si no hay dirección principal
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer.AddressPostalCode">
+            <summary>
+            Nulo si no hay dirección principal
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer.AddressProvinceName">
+            <summary>
+            Nulo si no hay dirección principal
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer.AddressCountryName">
+            <summary>
+            Nulo si no hay dirección principal
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer.AddressPhoneNumber">
+            <summary>
+            Nulo si no hay dirección principal
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer.Message">
+            <summary>
+            Mensaje asociado al cliente
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Customer.CustomerType">
+            <summary>
+            Nulo si no hay TIPO_CLIENTE
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Operator.Id">
+            <summary>
+            Identificador
+            (NComapny + TIN)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Operator.Name">
+            <summary>
+            Nombre
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Operator.TIN">
+            <summary>
+            Número de identificación fiscal (NIF, CIF, RUC...)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Operator.Login">
+            <summary>
+            Login
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Operator.Code">
+            <summary>
+            Código
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Operator.IsDischarged">
+            <summary>
+            ¿Está dado de baja actualmente?
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Operator.RawUserParameters" -->
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Product.BarCodeInArticleTable">
+            <summary>
+            Representa el código de barras de la tabla ARTICULOS
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Product.BarCodeList">
+            <summary>
+            Representa la coleción de códigos de barras de la tabla de CODIGOS_BARRAS
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Product.QsrCaracteristicas">
+            <summary>
+            Caracteristicas de elaboracion de producto
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Product.EscVariable">
+            <summary>
+            Indica si el producto es de escandallo variable 
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Product.QsrTpvName">
+            <summary>
+            Nombre a mostrar por pantalla
+            proviene de la tabla QSR_ARTICLE_CONFIG
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Product.QsrTpvImage">
+            <summary>
+            Imagen para mostrar
+            PRoviene de la tabla QSR_ARTICLE_CONFIG
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Product.QsrElaboration">
+            <summary>
+            Indica si requiere elaboracion. Nullable
+            Contiene NCOMPANY + el codigo referencia a CODIGO de la tabla TIPOS_ENTIDADES
+            Proviene de la tabla QSR_ARTICLE_CONFIG
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.Product.IsConsign">
+            <summary>
+            Indica si el producto es de consigna
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.ReducedProductWithDecimalConfiguration.Id">
+            <summary>
+            Id del Articulo con Ncompany
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.DAC.SQLServerCe.Serialization.ReducedProductWithDecimalConfiguration.EscVariable">
+            <summary>
+            Indica si el producto es de escandallo variable 
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Core.DAC.SQLServerCe.Serialization.ReducedProductWithDecimalConfigurationComparer">
+            <summary>
+            Comprueba si dos instancias son iguales, comparando sus ids
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.Serialization.ReducedProductWithDecimalConfigurationComparer.Equals(HubblePOS.Core.DAC.SQLServerCe.Serialization.ReducedProductWithDecimalConfiguration,HubblePOS.Core.DAC.SQLServerCe.Serialization.ReducedProductWithDecimalConfiguration)">
+            <inheritdoc cref="T:System.Collections.Generic.IEqualityComparer`1"/>
+        </member>
+        <member name="M:HubblePOS.Core.DAC.SQLServerCe.Serialization.ReducedProductWithDecimalConfigurationComparer.GetHashCode(HubblePOS.Core.DAC.SQLServerCe.Serialization.ReducedProductWithDecimalConfiguration)">
+            <inheritdoc cref="T:System.Collections.Generic.IEqualityComparer`1"/>
+        </member>
+    </members>
+</doc>
