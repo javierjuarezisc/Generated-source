@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HubblePOS.EnvironmentConfigurationProvider.Interface</name>
+    </assembly>
+    <members>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException" /> class.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException"/> class.
+            </summary>
+            <param name="exception">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException" /> class.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException"/> class.
+            </summary>
+            <param name="exception">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.ValidationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException" /> class.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.ValidationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.ValidationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.ValidationException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException"/> class.
+            </summary>
+            <param name="exception">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="T:HubblePOS.EnvironmentConfigurationProvider.Interface.IEnvironmentConfigurationProvider">
+            <summary>
+            Contrato que deben cumplir los proveedores de configuración para HubblePOS
+            </summary>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.IEnvironmentConfigurationProvider.GetFactoryInterfaceToInstanceDataMapping(HubblePOS.Core.Interface.HubbleEnvironmentType,HubblePOS.Factory.IFactory)">
+            <summary>
+            Obtiene la configuración para la factoría consistente en el mapeo nterfaz vs datos instanciación.
+            
+            REGLAS:
+            + Si se solicita el mapping para un entorno no soportado por el proveedor, se lanzará excepción de validación de entrada.
+            </summary>
+            <param name="hubbleEnvironmentType">Entorno HubblePOS (plataforma, local parcialmente offline, etc.) para el que se solicita la configuración</param>
+            <param name="factory">Factoría a utilizar por las instancias que se creen en caso de necesitar nuevas instancias de componentes</param>
+            <returns>Configuración para la factoría para resolver instancias a partir de contratos</returns>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException">No se ha podido recuperar información de configuración necesaria</exception>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.IEnvironmentConfigurationProvider.GetIlionAdminDBConnectionString">
+            <summary>
+            Recupera la cadena de conexión para la base de datos de ilion admin
+            </summary>
+            <returns>La cadena de conexión para la base de datos de ilion admin. Donde se ha quitado el Provider=xxxx y el DataTypeCompatibility=xxxx </returns>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException">
+            No ha sido posible recuperar la cadena de conexión de ilion admin mediante ninguno de los métodos soportados.
+            </exception>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.IEnvironmentConfigurationProvider.GetProxyUrl">
+            <summary>
+            Recupera la url del posible proxy a utilizar para todas la conexiones salientes
+            </summary>
+            <returns>La url del proxy a utilizar para todas las conexiones salientes</returns>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException"></exception>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.IEnvironmentConfigurationProvider.GetWSTPVTransactionsUrl">
+            <summary>
+            Recupera la url del servicio WSTPVTransactions
+            </summary>
+            <returns>La url del servicio WSTPVTransactions, terminando con el carácter '/'</returns>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException">
+            No ha sido posible recuperar una url válida para el servicio TPVTransactions. La url recuperada no es una url válida
+            or
+            No ha sido posible recuperar la url del servicio TPVTransactions. El resultado obtenido es nulo.
+            </exception>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.IEnvironmentConfigurationProvider.GetWSSalePointsUrl">
+            <summary>
+            Recupera la url del servicio WSSalePoint
+            </summary>
+            <returns>La url del servicio WSSalePoint</returns>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException">
+            No ha sido posible recuperar la url del servicio WSSalePoint. El resultado obtenido es nulo.
+            </exception>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.IEnvironmentConfigurationProvider.GetHubblePOSWSUrl">
+            <summary>
+            Recupera la url del servicio HubblePOSWS
+            </summary>
+            <returns>La url del servicio HubblePOSWS, terminando con el carácter '/'</returns>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException">
+            No ha sido posible recuperar una url válida para el servicio HubblePOS. La url recuperada no es una url válida
+            or
+            No ha sido posible recuperar la url del servicio HubblePOS. El resultado obtenido es nulo.
+            </exception>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.IEnvironmentConfigurationProvider.GetConfigurationDataWSUrl">
+            <summary>
+            Recupera la url del servicio de datos de configuración
+            </summary>
+            <returns>La url del servicio de datos de configuración</returns>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException">
+            La url obtenida no es válida
+            or
+            la url obtenida es cadena vacía o nula
+            or
+            no se han podido recuperar los datos necesarios para obtener la url del servicio de datos de configuración
+            </exception>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.IEnvironmentConfigurationProvider.GetNetResourcesBaseUrl">
+            <summary>
+            Recupera la url del recurso de red
+            </summary>
+            <returns>La url de los recursos de red</returns>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException"></exception>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.EnvironmentConfigurationProvider.Interface.IEnvironmentConfigurationProvider.GetFileResourcesBasePath">
+            <summary>
+            Recupera el path para el acceso a ficheros 
+            </summary>
+            <returns></returns>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.ConfigurationException"></exception>
+            <exception cref="T:HubblePOS.EnvironmentConfigurationProvider.Interface.GenericErrorException"></exception>
+        </member>
+    </members>
+</doc>

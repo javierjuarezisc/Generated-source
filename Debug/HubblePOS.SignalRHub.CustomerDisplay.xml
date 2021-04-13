@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HubblePOS.SignalRHub.CustomerDisplay</name>
+    </assembly>
+    <members>
+        <member name="M:HubblePOS.SignalRHub.CustomerDisplay.ICustomerDisplayApi.ClearDisplay">
+            <summary>
+            Limpia las lineas del display, dejando la posicion de escritura en la linea 1 caracter 1
+            </summary>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.CustomerDisplay.ICustomerDisplayApi.Write(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Escribe las lineas enviadas en la lista,
+            Dependiendo del visor será la cantidad de lines que pueda imprimir
+            - El primer elemento se escribe en la linea 1 y el segundo en la linea 2 y asi las que permita el visor.
+                las si se envian mas linea de las que soporta el visor solo se mostraran las permitidas.
+            </summary>
+            <param name="inputData">Lista con las lineas a mostrar en el visor.</param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.CustomerDisplay.ICustomerDisplayApi.StartInitializationProcess">
+            <summary>
+            Inicializa el Display segun la configuración.
+            </summary>
+            <exception cref="!:GenericErrorException"></exception>
+            <exception cref="!:GenericErrorException"></exception>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HubblePOS.Core.ProyectMXFuel.BC</name>
+    </assembly>
+    <members>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.BaseBC.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.BaseBC.AssimilateParamList(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Aplica la lista de parámetros para configurar correctamente la instancia y que entre en un estado funcional
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.BaseBC.EnsureProperlyInitialized">
+            <summary>
+            Valida que la instancia ha sido correctamente inicializada. Es decir, se le han pasado y aplicado todos los parámetros necesarios
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.LackOfConfigurationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.ForecourtManualPricesChangingBC_ExecutionLocal.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.ForecourtManualPricesChangingBC_ExecutionLocal.CreateForecourtManualPricesChangingList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.CreateForecourtManualPricesChangingDAO})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.ForecourtManualPricesChangingBC_ExecutionLocal.TryToInsertPendingToInsertForecourtManualPricesChanges(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.CommunicationErrorException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.ForecourtManualPricesChangingBC_ExecutionLocal.GetInsertionPendingForecourtManualPricesChangesCount(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.ForecourtPricesChangingBC_ExecutionAnywhere.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.ForecourtPricesChangingBC_ExecutionAnywhere.GetChangePendingGradeUnitaryPrices(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.ForecourtPricesChangingBC_ExecutionAnywhere.SetGradePriceChanged(HubblePOS.Core.Interface.POS,System.Int32,System.Decimal,System.Boolean)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_Base.AssimilateParamList(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Aplica la lista de parámetros para configurar correctamente la instancia y que entre en un estado funcional
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_Base.EnsureProperlyInitialized">
+            <summary>
+            Valida que la instancia ha sido correctamente inicializada. Es decir, se le han pasado y aplicado todos los parámetros necesarios
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.LackOfConfigurationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_Base.GenerateFuelSupplyIdsToCreateFuelSupplyDAOMapping(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.CreateFuelSupplyDAO})">
+            <summary>
+            Genera una relación entre los DAOs de creación de suministros y los identificadores finales que tendrán en base de datos.
+            Se devuelve un diccionario con dicha relación.
+            Dichos identificadores deben ser usados para crear los suministros indicados en esta llamada.
+            Los identificadores se generan de la siguiente manera:
+                NCompany(5) + Tienda sin NCompany (5) + TPV sin NCompany (3)  + Fecha "yyyyMMddHHmmss" (14) + Número de secuencia de la transacción en contolador (4) + rand (5)
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_Base.GetRandomAlphanumericString(System.Random,System.Int32)">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.CreateFuelSupplyList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.CreateFuelSupplyDAO})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.CreateFuelSupplyOfRelatedTransactionToken(HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.CreateFuelSupplyDAO,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelSupplyPrepaidTransactionProvisionalDataNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.GetDocumentIdOfRelatedTransactionToken(HubblePOS.Core.Interface.POS,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelSupplyPrepaidTransactionProvisionalDataNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.CreatePrepaidTransactionProvisionalData(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{System.String},System.String,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.SetDefinitiveDocumentIdForSupplyTransactions(HubblePOS.Core.Interface.POS,System.String,System.String,System.Collections.Generic.IList{System.String})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelSupplyNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.SetDefinitiveDocumentIdForPrepaidOperations(HubblePOS.Core.Interface.POS,System.String,System.String,System.Collections.Generic.IList{System.String})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelSupplyPrepaidTransactionProvisionalDataNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.CheckIfFuelSupplyHasBeenAutomaticallyManaged(HubblePOS.Core.Interface.POS,System.Int32,System.DateTime)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.GetLastTransactionSequenceNumber(HubblePOS.Core.Interface.POS)">
+            <summary>
+            Devuelve el numero de transaccion de la ultima salvada en local. Devuelve -1 si no hay ninguna
+            </summary>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.SetDocumentInsertionAttemptByIdList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{System.String},System.Boolean,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelSupplyNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.FuelSupplyAlreadyInsertedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.TryToInsertPendingToInsertFuelSupplies(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.CommunicationErrorException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.GetInsertionPendingSuppliesCount(HubblePOS.Core.Interface.POS)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.TryToPurgeOlderFuelSupplies(HubblePOS.Core.Interface.POS,System.Int32)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.InsertFuelSupplyList(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.InsertFuelSupplyDAO})">
+             <summary>
+             Inserción de suministros ya emitidos (creados), al repositorio global de suministros (típicamente: plataforma).
+            
+             REGLAS:
+             + Si la lista de entrada es nula se lanzará una excepción del tipo <see cref="T:HubblePOS.Core.Interface.ValidationException"/>
+             + Si la lista de DAOs de entrada está vacía no se insertará nada, y no provoca error.
+             + Se insertan todos los suministros o no se insertá ninguno
+             </summary>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.CommunicationErrorException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.FuelSupplyBC_ExecutionLocal.GetInsertionPendingSuppliesList(HubblePOS.Core.Interface.POS)">
+            <summary>
+            Obtiene la lista de suministros pendientes de inserción
+            </summary>
+            <param name="pos"></param>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.PRYBITACORABC_ProcessData.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado.
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.ProyectMXFuel.BC.PRYBITACORABC_ProcessData.SetDataBitacoraBC(HubblePOS.Core.Interface.POS,System.String,System.String)">
+            <summary>
+            Recupera los regitros de ventos para insertarlos a la bitacora 
+            </summary>
+            <param name="pos">TPV actual</param>
+            <param name="C_EVENTO">Identificador del evento (ej:p)</param>
+            <param name="V_DESCRIPCION">Indica la descripcion del evento</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+    </members>
+</doc>

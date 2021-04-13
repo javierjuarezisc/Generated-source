@@ -1,0 +1,2087 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>everilion-promotion-net-processing-operation</name>
+    </assembly>
+    <members>
+        <member name="T:everilion_promotion_net_processing_operation.BC.AuditBC">
+            <summary>
+            The AuditBC class, implements <see cref="T:everilion_promotion_net_processing_operation.BC.IAuditBC"/>.
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.AuditBC.SetGlobalPropertyList(System.String,System.String,System.String)">
+            <summary>
+            Sets a list of properties at global context.
+            </summary>
+            <param name="argHostName">The host name </param>
+            <param name="argAppName">The application name </param>
+            <param name="argIdInstance">The instance identifier </param>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.AuditBC.CreateAuditContext(System.String,everilion_promotion_net_processing_operation.BE.BaseRequest)">
+            <summary>
+            Creates a audit context.
+            </summary>
+            <param name="argMethodName">The method name.</param>
+            <param name="argBaseRequest">The base request</param>
+            <returns>The audit context.</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.AuditBC.Audit(everilion_promotion_net_processing_operation.BE.AuditContext,everilion_promotion_net_processing_operation.BE.AuditTypeEnum,System.String,System.Collections.Generic.IList{everilion_promotion_net_processing_operation.BE.AuditElement})">
+            <summary>
+            Creates a audit trace.
+            </summary>
+            <param name="argContext"> The audit context, created using <see cref="M:everilion_promotion_net_processing_operation.BC.IAuditBC.CreateAuditContext(System.String,everilion_promotion_net_processing_operation.BE.BaseRequest)"/>.</param>
+            <param name="argType"> The audit trace type.</param>
+            <param name="argMessage">The message.</param>
+            <param name="argElementList">The audit element list. Optional parameter</param>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.AuditBC.#ctor(everilion_promotion_net_core_audit.BC.IAuditBC,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:everilion_promotion_net_processing_operation.BC.AuditBC"/> class, with class name value.
+            </summary>
+            <param name="argAuditBC">The IAuditBC service</param>
+            <param name="argClassName">The fully qualified name of the type, including its namespace but not its assembly.</param>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.ConfigurationBC">
+            <summary>
+            The ConfigurationBC class, implements <see cref="T:everilion_promotion_net_processing_operation.BC.IConfigurationBC"/>.
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.ConfigurationBC.GetActivationBCInstantiationData(everilion_promotion_net_processing_operation.BE.ContextInfo)">
+            <summary>
+            Gets the activation BC instantiation data.
+            </summary>
+            <param name="argContextInfo">The context info</param>
+            <returns>The expert instantiation data</returns>
+            <exception cref="T:System.Exception">UnknownError</exception>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.ConfigurationBC.GetPromotionProcessingExpertBCInstantiationData(everilion_promotion_net_processing_operation.BE.ContextInfo)">
+            <summary>
+            Gets the promotion processing expert instantiation data.
+            </summary>
+            <param name="argContextInfo">The context info</param>
+            <returns>The expert instantiation data</returns>
+            <exception cref="T:System.Exception">UnknownError</exception>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.ConfigurationBC.GetPromotionProcessingDateTimeMode(everilion_promotion_net_processing_operation.BE.ContextInfo)">
+            <summary>
+            Gets the promotion processing DateTime mode.
+            </summary>
+            <param name="argContextInfo">The context info</param>
+            <returns>The promotion processing DateTimeMode. 0: Local(Default), 1: UTC</returns>
+            <exception cref="T:System.Exception">UnknownError</exception>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.ConfigurationBC.GetValueFromConfiguration(everilion_promotion_net_processing_operation.BE.ContextInfo,System.String)">
+            <summary>
+            Gets the promotion processing expert instantiation data.
+            </summary>
+            <param name="argContextInfo">The context info</param>
+            <param name="argKey">The key of the value</param>
+            <returns>The expert instantiation data, null if the key not exists</returns>
+            <exception cref="T:System.Exception">UnknownError</exception>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.IAuditBC">
+            <summary>
+            IAuditBC interface.
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IAuditBC.SetGlobalPropertyList(System.String,System.String,System.String)">
+            <summary>
+            Sets a list of properties at global context.
+            </summary>
+            <param name="argHostName">The host name </param>
+            <param name="argAppName">The application name </param>
+            <param name="argIdInstance">The instance identifier </param>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IAuditBC.CreateAuditContext(System.String,everilion_promotion_net_processing_operation.BE.BaseRequest)">
+            <summary>
+            Creates a audit context.
+            </summary>
+            <param name="argMethodName">The method name.</param>
+            <param name="argBaseRequest">The base request</param>
+            <returns>The audit context.</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IAuditBC.Audit(everilion_promotion_net_processing_operation.BE.AuditContext,everilion_promotion_net_processing_operation.BE.AuditTypeEnum,System.String,System.Collections.Generic.IList{everilion_promotion_net_processing_operation.BE.AuditElement})">
+            <summary>
+            Creates a audit trace.
+            </summary>
+            <param name="argContext"> The audit context, created using <see cref="M:everilion_promotion_net_processing_operation.BC.IAuditBC.CreateAuditContext(System.String,everilion_promotion_net_processing_operation.BE.BaseRequest)"/>.</param>
+            <param name="argType"> The audit trace type.</param>
+            <param name="argMessage">The message.</param>
+            <param name="argElementList">The audit element list. Optional parameter</param>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.IConfigurationBC">
+            <summary>
+            IConfigurationBC interface.
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IConfigurationBC.GetActivationBCInstantiationData(everilion_promotion_net_processing_operation.BE.ContextInfo)">
+            <summary>
+            Gets the activation BC instantiation data.
+            </summary>
+            <param name="argContextInfo">The context info</param>
+            <returns>The expert instantiation data</returns>
+            <exception cref="T:System.Exception">UnknownError</exception>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IConfigurationBC.GetPromotionProcessingExpertBCInstantiationData(everilion_promotion_net_processing_operation.BE.ContextInfo)">
+            <summary>
+            Gets the promotion processing expert instantiation data.
+            </summary>
+            <param name="argContextInfo">The context info</param>
+            <returns>The expert instantiation data</returns>
+            <exception cref="T:System.Exception">UnknownError</exception>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IConfigurationBC.GetPromotionProcessingDateTimeMode(everilion_promotion_net_processing_operation.BE.ContextInfo)">
+            <summary>
+            Gets the promotion processing DateTime mode.
+            </summary>
+            <param name="argContextInfo">The context info</param>
+            <returns>The promotion processing DateTimeMode. 0: Local(Default), 1: UTC</returns>
+            <exception cref="T:System.Exception">UnknownError</exception>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.IObjectFactory">
+            <summary>
+            Internal interface used for generate objects
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IObjectFactory.CreateInstance``1">
+            <summary>
+            Creates an instance of <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T">The type of the instance that must be created</typeparam>
+            <returns>A instance of the required type</returns>
+            <exception cref="T:System.Exception">Could not create an instance of <typeparamref name="T"/>, not supported.</exception>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IObjectFactory.CreateInstance``1(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Create a instance of <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T">The type of the instance to create</typeparam>
+            <param name="argParameterList">Dictionary with aditional parameters that specifies how to generate an specific object</param>
+            <returns>A instance of the requested type</returns>
+            <exception cref="T:System.Exception">Could not create an instance of <typeparamref name="T"/>, not supported.</exception>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.IPromotionDataBC">
+            <summary>
+            The promotion data BC interface
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.AddPromotionList(everilion_promotion_net_processing_operation.BE.AddPromotionListRequest)">
+            <summary>
+            Add the promotion list to the promotion engine data.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>PromotionList</c> is <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result.</returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.AddSerializedPromotionList(everilion_promotion_net_processing_operation.BE.AddSerializedPromotionListRequest)">
+            <summary>
+            Add the serialized promotion list to the promotion engine data.
+            This method only adds the enabled promotions.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>PromotionDataList</c> is <see langword="null"/> or empty</para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result.</returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.InvalidSerializedPromotionList">Invalid <c>PromotionDataList</c> value. More info at error message.</exception>>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.DeletePromotionList(everilion_promotion_net_processing_operation.BE.DeletePromotionListRequest)">
+            <summary>
+            Deletes the promotion list of the promotion engine data.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>PromotionIdList</c> is <see langword="null"/> or empty</para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result. </returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.AddArticlesGroupList(everilion_promotion_net_processing_operation.BE.AddArticlesGroupListRequest)">
+            <summary>
+            Add the articles group data list to the promotion engine data.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>ArticlesGroupList</c> is <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result. </returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.DeleteArticlesGroupList(everilion_promotion_net_processing_operation.BE.DeleteArticlesGroupListRequest)">
+            <summary>
+            Deletes the articles group list of the promotion engine data.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>ArticlesGroupCodeList</c> is <see langword="null"/> or empty</para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result.</returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.ClearPromotionData(everilion_promotion_net_processing_operation.BE.ClearPromotionDataRequest)">
+            <summary>
+            Clears the promotion engine data of the company, the promotions and the articles groups.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result. </returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.GetPromotionDataList(everilion_promotion_net_processing_operation.BE.GetPromotionDataListRequest)">
+            <summary>
+            Gets the promotion data.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The promotion data list.</returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsPromotionData"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.IPromotionDataBCValidator">
+            <summary>
+            Interface with methods to validate <see cref="T:everilion_promotion_net_processing_operation.BC.IPromotionDataBC"/> services
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.AddPromotionListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.AddPromotionListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: Request is null.</para>
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>PromotionList</c> is <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.AddSerializedPromotionListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.AddSerializedPromotionListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: Request is null.</para>
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>PromotionList</c> is <see langword="null"/> or empty</para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.DeletePromotionListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.DeletePromotionListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: Request is null.</para>
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>PromotionIdList</c> is <see langword="null"/> or empty</para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.AddArticlesGroupListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.AddArticlesGroupListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: Request is null.</para>
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>ArticlesGroupList</c> is <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.DeleteArticlesGroupListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.DeleteArticlesGroupListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: Request is null.</para>
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>ArticlesGroupCodeList</c> is <see langword="null"/> or empty</para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.ClearPromotionDataRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.ClearPromotionDataRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: Request is null.</para>
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.GetPromotionDataListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.GetPromotionDataListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: Request is null.</para>
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.IPromotionDataProcessingBC">
+            <summary>
+            The promotion data processing BC interface
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataProcessingBC.GetPromotionData(everilion_promotion_net_processing_operation.BE.GetPromotionDataRequest)">
+            <summary>
+            Gets the promotion data.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result. This includes the promotions applied </returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsPromotionData"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.IPromotionDataProcessingBCValidator">
+            <summary>
+            Interface with methods to validate <see cref="T:everilion_promotion_net_processing_operation.BC.IPromotionDataProcessingBC"/> services
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionDataProcessingBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.GetPromotionDataRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.GetPromotionDataRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>PromotionList</c> is <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.IPromotionEngineBC">
+            <summary>
+            The promotion engine BC interface
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionEngineBC.ProcessPurchaseEvent(everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest)">
+            <summary>
+            Processes a purchase event.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: Request or ContextInfo values are null</para>
+            <para>-2: Required <c>ArticleReference</c> value in all <c>LineList</c> elements</para>
+            <para>-3: Duplicate <c>IdLine</c> value in <c>LineList</c> elements</para>
+            <para>-4: Required <c>IdStore</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStore</para>
+            <para>-5: Required <c>IdStoreFUC</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStoreFUC</para>
+            <para>-6: <c>Location</c> only supports <c>StoreLocationInfo</c></para>
+            <para>-7: Required <c>EventLocalDateTime</c> or <c>EventUTCDateTime</c></para>
+            <para>-8: Required <c>EventLocalTimeZoneInfoId</c></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result. This includes the promotions applied </returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsPromotionData"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsTimeZoneInfo"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.InvalidDateConversion"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionEngineBC.GetApplicablePromotionList(everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest)">
+            <summary>
+            Gets the applicable promotion list.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: Request or ContextInfo values are null</para>
+            <para>-2: Required <c>ArticleReference</c> value in all <c>LineList</c> elements</para>
+            <para>-3: Duplicate <c>IdLine</c> value in <c>LineList</c> elements</para>
+            <para>-4: Required <c>IdStore</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStore</para>
+            <para>-5: Required <c>IdStoreFUC</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStoreFUC</para>
+            <para>-6: <c>Location</c> only supports <c>StoreLocationInfo</c></para>
+            <para>-7: Required <c>EventLocalDateTime</c> or <c>EventUTCDateTime</c></para>
+            <para>-8: Required <c>EventLocalTimeZoneInfoId</c></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The applicable promotion list by line identifier </returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsPromotionData"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsTimeZoneInfo"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.InvalidDateConversion"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.IPromotionEngineBCValidator">
+            <summary>
+            Interface with methods to validate <see cref="T:everilion_promotion_net_processing_operation.BC.IPromotionEngineBC"/> services
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionEngineBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Validation error codes:
+            <para>-1: Request or ContextInfo values are null</para>
+            <para>-2: Required <c>ArticleReference</c> value in all <c>LineList</c> elements</para>
+            <para>-3: Duplicate <c>IdLine</c> value in <c>LineList</c> elements</para>
+            <para>-4: Required <c>IdStore</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStore</para>
+            <para>-5: Required <c>IdStoreFUC</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStoreFUC</para>
+            <para>-6: <c>Location</c> only supports <c>StoreLocationInfo</c></para>
+            <para>-7: Required <c>EventLocalDateTime</c> or <c>EventUTCDateTime</c></para>
+            <para>-8: Required <c>EventLocalTimeZoneInfoId</c></para>
+            </remarks>
+            <param name="argRequest">The request to validate</param>
+            <returns>The validation result error code</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.IPromotionEngineBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Validation error codes:
+            <para>-1: Request or ContextInfo values are null</para>
+            <para>-2: Required <c>ArticleReference</c> value in all <c>LineList</c> elements</para>
+            <para>-3: Duplicate <c>IdLine</c> value in <c>LineList</c> elements</para>
+            <para>-4: Required <c>IdStore</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStore</para>
+            <para>-5: Required <c>IdStoreFUC</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStoreFUC</para>
+            <para>-6: <c>Location</c> only supports <c>StoreLocationInfo</c></para>
+            <para>-7: Required <c>EventLocalDateTime</c> or <c>EventUTCDateTime</c></para>
+            <para>-8: Required <c>EventLocalTimeZoneInfoId</c></para>
+            </remarks>
+            <param name="argRequest">The request to validate</param>
+            <returns>The validation result error code</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.ObjectFactory">
+            <summary>
+            Factory used internally to generate objects
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.ObjectFactory.GetInstance">
+            <summary>
+            Generates a new instance of the object <see cref="T:everilion_promotion_net_processing_operation.BC.IObjectFactory"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.ObjectFactory.CreateInstance``1">
+            <summary>
+            Create an instance of <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T">The type of the instance to create</typeparam>
+            <returns>A new instance of the requested type</returns>
+            <exception cref="T:System.Exception">Unable to create an instance. Type: [<typeparamref name="T"/>], not supported.</exception>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.ObjectFactory.CreateInstance``1(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Create a instance of <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T">The type of the instance to create</typeparam>
+            <param name="argParameterList">Dictionary with aditional parameters that specifies how to generate an specific object</param>
+            <returns>A instance of the requested type</returns>
+            <exception cref="T:System.Exception">Could not create an instance of <typeparamref name="T"/>, not supported.</exception>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.ObjectFactory.GetInstance``1(System.String)">
+            <summary>
+            Get an instance of <typeparamref name="T"/>, using the <paramref name="argInstantiationData"/>.
+            </summary>
+            <typeparam name="T">The type of the instance to create</typeparam>
+            <param name="argInstantiationData">The instantiation data. The assembly-qualified name of the type to get. See <see cref="P:System.Type.AssemblyQualifiedName" />.</param>
+            <returns>The instance of <typeparamref name="T"/></returns>
+            <exception cref="T:System.Exception">Could not get type for <paramref name="argInstantiationData"/> value</exception>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.PromotionDataBC">
+            <summary>
+            The promotion data BC class.
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBC.#ctor(everilion_promotion_net_processing_operation.BC.IAuditBC,everilion_promotion_net_processing_operation.BC.IPromotionDataBCValidator,everilion_promotion_net_processing_operation.BC.IPromotionDataProcessingBCValidator)">
+            <summary>
+            Initializes a new instance of <see cref="T:everilion_promotion_net_processing_operation.BC.PromotionDataBC"/>.
+            </summary>
+            <param name="argIAuditBC"></param>
+            <param name="argIPromotionDataBCValidator"></param>
+            <param name="argIPromotionDataProcessingBCValidator"></param>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBC.AddSerializedPromotionList(everilion_promotion_net_processing_operation.BE.AddSerializedPromotionListRequest)">
+            <summary>
+            Add the serialized promotion list to the promotion engine data.
+            This method only adds the enabled promotions.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>PromotionDataList</c> is <see langword="null"/> or empty</para>
+            <para>-3: <c>Promotion.IdTimeZoneInfo</c> is required</para>
+            <para>-4: <c>Promotion.FromUTCDateTime</c> or <c>Promotion.FromLocalDateTime</c> is required</para>
+            <para>-5: <c>Promotion.ToUTCDateTime</c> or <c>Promotion.ToLocalDateTime</c> is required</para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result.</returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.InvalidSerializedPromotionList">Invalid <c>PromotionDataList</c> value. More info at error message.</exception>>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsTimeZoneInfo"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.InvalidDateConversion"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBC.AddPromotionList(everilion_promotion_net_processing_operation.BE.AddPromotionListRequest)">
+            <summary>
+            Add the promotion list to the promotion engine data.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>PromotionList</c> is <see langword="null"/></para>
+            <para>-3: <c>Promotion.IdTimeZoneInfo</c> is required</para>
+            <para>-4: <c>Promotion.FromUTCDateTime</c> or <c>Promotion.FromLocalDateTime</c> is required</para>
+            <para>-5: <c>Promotion.ToUTCDateTime</c> or <c>Promotion.ToLocalDateTime</c> is required</para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result.</returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsTimeZoneInfo"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.InvalidDateConversion"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBC.DeletePromotionList(everilion_promotion_net_processing_operation.BE.DeletePromotionListRequest)">
+            <summary>
+            Deletes the promotion list of the promotion engine data.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>PromotionIdList</c> is <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result.</returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBC.AddArticlesGroupList(everilion_promotion_net_processing_operation.BE.AddArticlesGroupListRequest)">
+            <summary>
+            Add the articles group data list to the promotion engine data.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>ArticlesGroupList</c> is <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result.</returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBC.DeleteArticlesGroupList(everilion_promotion_net_processing_operation.BE.DeleteArticlesGroupListRequest)">
+            <summary>
+            Deletes the articles group list of the promotion engine data.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>ArticlesGroupCodeList</c> is <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result.</returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBC.ClearPromotionData(everilion_promotion_net_processing_operation.BE.ClearPromotionDataRequest)">
+            <summary>
+            Clears the promotion engine data of the company, the promotions and the articles groups.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result.</returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBC.GetPromotionDataList(everilion_promotion_net_processing_operation.BE.GetPromotionDataListRequest)">
+            <summary>
+            Gets the promotion data.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The promotion data list.</returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsPromotionData"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBC.GetPromotionData(everilion_promotion_net_processing_operation.BE.GetPromotionDataRequest)">
+            <summary>
+            Gets the promotion data.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: <c>argRequest</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result.</returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsPromotionData"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BC.PromotionDataBC._IAuditBC">
+            <summary>
+            The audit service
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BC.PromotionDataBC._IPromotionDataBCValidator">
+            <summary>
+            Validator used in the service
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BC.PromotionDataBC._IPromotionDataProcessingBCValidator">
+            <summary>
+            Validator used in the service
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.PromotionEngineBC">
+            <summary>
+            The promotion engine BC class.
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BC.PromotionEngineBC._IConfigurationBC">
+            <summary>
+            The configuration service
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BC.PromotionEngineBC._IAuditBC">
+            <summary>
+            The audit service
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BC.PromotionEngineBC._IPromotionEngineBCValidator">
+            <summary>
+            Validator used in the service
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BC.PromotionEngineBC._IPromotionDataProcessingBC">
+            <summary>
+            Validator used in the service
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BC.PromotionEngineBC._IObjectFactory">
+            <summary>
+            The object factory
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionEngineBC.#ctor(everilion_promotion_net_processing_operation.BC.IConfigurationBC,everilion_promotion_net_processing_operation.BC.IAuditBC,everilion_promotion_net_processing_operation.BC.IPromotionEngineBCValidator,everilion_promotion_net_processing_operation.BC.IPromotionDataProcessingBC,everilion_promotion_net_processing_operation.BC.IObjectFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:everilion_promotion_net_processing_operation.BC.PromotionEngineBC"/> class.
+            The interface not sent will not be initialized.
+            </summary>
+            <param name="argIConfigurationBC"></param>
+            <param name="argIAuditBC"></param>
+            <param name="argIPromotionEngineBCValidator"></param>
+            <param name="argIPromotionDataProcessingBC"></param>
+            <param name="argIObjectFactory"></param>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionEngineBC.ProcessPurchaseEvent(everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest)">
+            <summary>
+            Processes a purchase event.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: Request or ContextInfo values are null</para>
+            <para>-2: Required <c>ArticleReference</c> value in all <c>LineList</c> elements</para>
+            <para>-3: Duplicate <c>IdLine</c> value in <c>LineList</c> elements</para>
+            <para>-4: Required <c>IdStore</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStore</para>
+            <para>-5: Required <c>IdStoreFUC</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStoreFUC</para>
+            <para>-6: <c>Location</c> only supports <c>StoreLocationInfo</c></para>
+            <para>-7: Required <c>EventLocalDateTime</c> or <c>EventUTCDateTime</c></para>
+            <para>-8: Required <c>EventLocalTimeZoneInfoId</c></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The process result. This includes the promotions applied </returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsPromotionData"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsTimeZoneInfo"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.InvalidDateConversion"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionEngineBC.GetApplicablePromotionList(everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest)">
+            <summary>
+            Gets the applicable promotion list.
+            </summary>
+            <remarks>
+            ErrorMessage validation code:
+            <para>-1: Request or ContextInfo values are null</para>
+            <para>-2: Required <c>ArticleReference</c> value in all <c>LineList</c> elements</para>
+            <para>-3: Duplicate <c>IdLine</c> value in <c>LineList</c> elements</para>
+            <para>-4: Required <c>IdStore</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStore</para>
+            <para>-5: Required <c>IdStoreFUC</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStoreFUC</para>
+            <para>-6: <c>Location</c> only supports <c>StoreLocationInfo</c></para>
+            <para>-7: Required <c>EventLocalDateTime</c> or <c>EventUTCDateTime</c></para>
+            <para>-8: Required <c>EventLocalTimeZoneInfoId</c></para>
+            </remarks>
+            <param name="argRequest">The request.</param>
+            <returns>The applicable promotion list by line identifier </returns>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsPromotionData"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsTimeZoneInfo"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.InvalidDateConversion"/>
+            <exception cref="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError"/>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.ServiceFactory">
+            <summary>
+            The service factory
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.ServiceFactory.CreateInstance``1">
+            <summary>
+            Create a instance of <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T">The type of the instance to create</typeparam>
+            <returns>A instance of the requested type</returns>
+            <exception cref="T:System.Exception">Could not create an instance of <typeparamref name="T"/>, not supported.</exception>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.PromotionDataBCValidator">
+            <summary>
+            Internal implementation of the interface <see cref="T:everilion_promotion_net_processing_operation.BC.IPromotionDataBCValidator"/>
+            </summary>
+            <seealso cref="T:everilion_promotion_net_processing_operation.BC.IPromotionDataBCValidator"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.AddPromotionListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.AddPromotionListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: Request is null.</para>
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>PromotionList</c> is <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.AddSerializedPromotionListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.AddSerializedPromotionListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: Request is null.</para>
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>PromotionDataList</c> is <see langword="null"/> or empty</para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.DeletePromotionListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.DeletePromotionListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: Request is null.</para>
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>PromotionIdList</c> is <see langword="null"/> or empty</para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.AddArticlesGroupListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.AddArticlesGroupListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: Request is null.</para>
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>ArticlesGroupList</c> is <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.DeleteArticlesGroupListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.DeleteArticlesGroupListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            <para>-2: <c>ArticlesGroupCodeList</c> is <see langword="null"/> or empty</para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.ClearPromotionDataRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.ClearPromotionDataRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: Request is null.</para>
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.GetPromotionDataListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.GetPromotionDataListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: Request is null.</para>
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataBCValidator.BaseRequestValidation(everilion_promotion_net_processing_operation.BE.BaseRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.BaseRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.PromotionDataProcessingBCValidator">
+            <summary>
+            Internal implementation of the interface <see cref="T:everilion_promotion_net_processing_operation.BC.IPromotionDataProcessingBCValidator"/>
+            </summary>
+            <seealso cref="T:everilion_promotion_net_processing_operation.BC.IPromotionDataProcessingBCValidator"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionDataProcessingBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.GetPromotionDataRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.GetPromotionDataRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Default validation error codes:
+            <para>-1: <c>Request</c> or <c>ContextInfo</c> values are <see langword="null"/></para>
+            </remarks>
+            <param name="argRequest"></param>
+            <returns>int</returns>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BC.PromotionEngineBCValidator">
+            <summary>
+            Internal implementation of the interface <see cref="T:everilion_promotion_net_processing_operation.BC.IPromotionEngineBCValidator"/>
+            </summary>
+            <seealso cref="T:everilion_promotion_net_processing_operation.BC.IPromotionEngineBCValidator"/>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionEngineBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Validation error codes:
+            <para>-1: Request or ContextInfo values are null</para>
+            <para>-2: Required <c>ArticleReference</c> value in all <c>LineList</c> elements</para>
+            <para>-3: Duplicate <c>IdLine</c> value in <c>LineList</c> elements</para>
+            <para>-4: Required <c>IdStore</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStore</para>
+            <para>-5: Required <c>IdStoreFUC</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStoreFUC</para>
+            <para>-6: <c>Location</c> only supports <c>StoreLocationInfo</c></para>
+            <para>-7: Required <c>EventLocalDateTime</c> or <c>EventUTCDateTime</c></para>
+            <para>-8: Required <c>EventLocalTimeZoneInfoId</c></para>
+            </remarks>
+            <param name="argRequest">The request to validate</param>
+            <returns>The validation result error code</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BC.PromotionEngineBCValidator.RequestValidation(everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest)">
+            <summary>
+            Validates the object <see cref="T:everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest"/>.
+            <para>This service does not manage exceptions by its own, is responsibility of the caller to control them.</para>
+            </summary>
+            <remarks>
+            Validation error codes:
+            <para>-1: Request or ContextInfo values are null</para>
+            <para>-2: Required <c>ArticleReference</c> value in all <c>LineList</c> elements</para>
+            <para>-3: Duplicate <c>IdLine</c> value in <c>LineList</c> elements</para>
+            <para>-4: Required <c>IdStore</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStore</para>
+            <para>-5: Required <c>IdStoreFUC</c> value for <c>Location</c> when <c>StoreLocationInfo.StoreIdType</c> is IdStoreFUC</para>
+            <para>-6: <c>Location</c> only supports <c>StoreLocationInfo</c></para>
+            <para>-7: Required <c>EventLocalDateTime</c> or <c>EventUTCDateTime</c></para>
+            <para>-8: Required <c>EventLocalTimeZoneInfoId</c></para>
+            </remarks>
+            <param name="argRequest">The request to validate</param>
+            <returns>The validation result error code</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.AddArticlesGroupListRequest">
+            <summary>
+            AddArticlesGroupListRequest, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseRequest"/>
+            The request of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.AddArticlesGroupList(everilion_promotion_net_processing_operation.BE.AddArticlesGroupListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AddArticlesGroupListRequest.Clear">
+            <summary>
+            The clear flag, if it is true clears the articles group list of the company, prior to add the new elements
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AddArticlesGroupListRequest.ArticlesGroupList">
+            <summary>
+            The articles group list
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.AddArticlesGroupListResponse">
+            <summary>
+            AddArticlesGroupListResponse, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseResponse"/>
+            The response of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.AddArticlesGroupList(everilion_promotion_net_processing_operation.BE.AddArticlesGroupListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.AddPromotionListRequest">
+            <summary>
+            AddPromotionListRequest, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseRequest"/>
+            The request of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.AddPromotionList(everilion_promotion_net_processing_operation.BE.AddPromotionListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AddPromotionListRequest.Clear">
+            <summary>
+            The clear flag, if it is true clears the promotion list of the company, prior to add the new elements
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AddPromotionListRequest.PromotionList">
+            <summary>
+            The promotion list
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.AddPromotionListResponse">
+            <summary>
+            AddPromotionListResponse, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseResponse"/>
+            The response of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.AddPromotionList(everilion_promotion_net_processing_operation.BE.AddPromotionListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.AddSerializedPromotionListRequest">
+            <summary>
+            AddSerializedPromotionListRequest, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseRequest"/>
+            The request of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.AddSerializedPromotionList(everilion_promotion_net_processing_operation.BE.AddSerializedPromotionListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AddSerializedPromotionListRequest.Clear">
+            <summary>
+            The clear flag, if it is true clears the promotion list of the company, prior to add the new elements
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AddSerializedPromotionListRequest.PromotionDataList">
+            <summary>
+            The serialized promotion list
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.AddSerializedPromotionListResponse">
+            <summary>
+            AddSerializedPromotionListResponse, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseResponse"/>
+            The response of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.AddSerializedPromotionList(everilion_promotion_net_processing_operation.BE.AddSerializedPromotionListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.AmountDiscount">
+            <summary>
+            The AmountDiscount class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.Discount"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AmountDiscount.Amount">
+            <summary>
+            The amount discount
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.ApplicablePromotion">
+            <summary>
+            The applicable promotion class.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ApplicablePromotion.IdPromotion">
+            <summary>
+            The promotion identifier
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ApplicablePromotion.Name">
+            <summary>
+            The applicable promotion name
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ApplicablePromotion.Description">
+            <summary>
+            The applicable promotion description
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.ArticlesGroup">
+            <summary>
+            The Group of articles class.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ArticlesGroup.CodeArticlesGroup">
+            <summary>
+            Gets or sets the articles group code.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ArticlesGroup.ArticleReferenceList">
+            <summary>
+            Gets or sets the article reference list.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.AuditContext">
+            <summary>
+            The Audit Context audit class.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AuditContext.ClassName">
+            <summary>
+            The class name.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AuditContext.MethodName">
+            <summary>
+            The method name.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AuditContext.ContextInfo">
+            <summary>
+            The context info.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AuditContext.IdTraceCorrelation">
+            <summary>
+            The trace correlation identifier.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AuditContext.IdParentExecution">
+            <summary>
+            The parent execution identifier.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AuditContext.IdExecution">
+            <summary>
+            The execution identifier.
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BE.AuditContext.#ctor(System.String,System.String,everilion_promotion_net_processing_operation.BE.ContextInfo,System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of <see cref="T:everilion_promotion_net_processing_operation.BE.AuditContext"/>.
+            </summary>
+            <param name="argClassName">The class name.</param>
+            <param name="argMethodName">The method name.</param>
+            <param name="argContextInfo">The context info.</param>
+            <param name="argIdTraceCorrelation">The trace correlation identifier.</param>
+            <param name="argIdParentExecution">The parent execution identifier.</param>
+            <param name="argIdExecution">The execution identifier.</param>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.AuditElement">
+            <summary>
+            The audit element class.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AuditElement.Name">
+            <summary>
+            The name.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.AuditElement.Value">
+            <summary>
+            The value.
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BE.AuditElement.#ctor(System.String,everilion_promotion_net_processing_operation.BE.AuditElementValue)">
+            <summary>
+            Initializes a new instance of the <see cref="T:everilion_promotion_net_processing_operation.BE.AuditElement"/> class, with name and value properties.
+            </summary>
+            <param name="argName">The <see cref="P:everilion_promotion_net_processing_operation.BE.AuditElement.Name"/> property value</param>
+            <param name="argValue">The <see cref="P:everilion_promotion_net_processing_operation.BE.AuditElement.Value"/> property value</param>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.AuditElementValue">
+            <summary>
+            The audit element value <see langword="abstract"/> class.
+            See also <seealso cref="T:everilion_promotion_net_processing_operation.BE.IntAuditElementValue"/>, <seealso cref="T:everilion_promotion_net_processing_operation.BE.StringAuditElementValue"/> and <seealso cref="T:everilion_promotion_net_processing_operation.BE.ObjectAuditElementValue"/>.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.IntAuditElementValue">
+            <summary>
+            The integer audit element value class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.AuditElementValue"/>.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.IntAuditElementValue.Value">
+            <summary>
+            The integer value
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BE.IntAuditElementValue.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:everilion_promotion_net_processing_operation.BE.IntAuditElementValue"/> class, with the integer value.
+            </summary>
+            <param name="argValue">The integer value</param>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.ObjectAuditElementValue">
+            <summary>
+            The object audit element value class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.AuditElementValue"/>.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ObjectAuditElementValue.Value">
+            <summary>
+            The object value
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BE.ObjectAuditElementValue.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:everilion_promotion_net_processing_operation.BE.ObjectAuditElementValue"/> class, with the object value.
+            </summary>
+            <param name="argValue">The object value</param>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.StringAuditElementValue">
+            <summary>
+            The string audit element value class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.AuditElementValue"/>.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.StringAuditElementValue.Value">
+            <summary>
+            The string value
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BE.StringAuditElementValue.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:everilion_promotion_net_processing_operation.BE.StringAuditElementValue"/> class, with the string value.
+            </summary>
+            <param name="argValue">The string value</param>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.BaseRequest">
+            <summary>
+            BaseRequest. Implements <see cref="T:everilion_promotion_net_core_audit.BE.ITraceableRequest"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.BaseRequest.IdTraceCorrelation">
+            <summary>
+            Gets or sets the correlation identifier
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.BaseRequest.IdParentExecution">
+            <summary>
+            Gets or sets the parent execution identifier
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.BaseRequest.ContextInfo">
+            <summary>
+            Gets or sets the context information.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.BaseResponse">
+            <summary>
+            Base Response. Implements <see cref="T:everilion_promotion_net_core_audit.BE.ITraceableResponse"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.BaseResponse.Status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>
+            The status.
+            </value>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.BaseResponse.ErrorMessage">
+            <summary>
+            Gets or sets the error message.
+            </summary>
+            <value>
+            The error message.
+            </value>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.BaseResponse.IdExecution">
+            <summary>
+            Gets or sets the execution identifier
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.BE.BaseResponse.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:everilion_promotion_net_processing_operation.BE.BaseResponse"/> class, that is empty.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.ClearPromotionDataRequest">
+            <summary>
+            ClearPromotionDataRequest, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseRequest"/>
+            The request of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.ClearPromotionData(everilion_promotion_net_processing_operation.BE.ClearPromotionDataRequest)"/> method.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.ClearPromotionDataResponse">
+            <summary>
+            ClearPromotionDataResponse, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseResponse"/>
+            The response of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.ClearPromotionData(everilion_promotion_net_processing_operation.BE.ClearPromotionDataRequest)"/> method.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.DeleteArticlesGroupListRequest">
+            <summary>
+            DeleteArticlesGroupListRequest, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseRequest"/>
+            The request of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.DeleteArticlesGroupList(everilion_promotion_net_processing_operation.BE.DeleteArticlesGroupListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.DeleteArticlesGroupListRequest.ArticlesGroupCodeList">
+            <summary>
+            The articles group identifier code list to delete
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.DeleteArticlesGroupListResponse">
+            <summary>
+            DeleteArticlesGroupListResponse, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseResponse"/>
+            The response of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.DeleteArticlesGroupList(everilion_promotion_net_processing_operation.BE.DeleteArticlesGroupListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.DeletePromotionListRequest">
+            <summary>
+            DeletePromotionListRequest, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseRequest"/>
+            The request of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.DeletePromotionList(everilion_promotion_net_processing_operation.BE.DeletePromotionListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.DeletePromotionListRequest.PromotionIdList">
+            <summary>
+            The promotion identifier list to delete
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.DeletePromotionListResponse">
+            <summary>
+            DeletePromotionListResponse, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseResponse"/>
+            The response of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.DeletePromotionList(everilion_promotion_net_processing_operation.BE.DeletePromotionListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.Discount">
+            <summary>
+            The Discount <see langword="abstract"/> class.
+            See also <seealso cref="T:everilion_promotion_net_processing_operation.BE.AmountDiscount"/>, <seealso cref="T:everilion_promotion_net_processing_operation.BE.NewAmountDiscount"/> and <seealso cref="T:everilion_promotion_net_processing_operation.BE.PercentageDiscount"/>
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest">
+            <summary>
+            GetApplicablePromotionListRequest, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseRequest"/>
+            The request of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionEngineBC.GetApplicablePromotionList(everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest.EventUTCDateTime">
+            <summary>
+            The event UTC datetime
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest.EventLocalDateTime">
+            <summary>
+            The event local datetime
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest.EventLocalTimeZoneInfoId">
+            <summary>
+            The event local time zone info identifier
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest.Location">
+            <summary>
+            The event location info. Supports <see cref="T:everilion_promotion_net_processing_operation.BE.StoreLocationInfo"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest.LineList">
+            <summary>
+            The purchase line list
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest.TotalAmount">
+            <summary>
+            The purchase total amount
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListResponse">
+            <summary>
+            GetApplicablePromotionListResponse, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseResponse"/>
+            The response of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionEngineBC.GetApplicablePromotionList(everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GetApplicablePromotionListResponse.ApplicablePromotionListByIdLine">
+            <summary>
+            The applicable promotion list
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.GetPromotionDataListRequest">
+            <summary>
+            GetPromotionDataListRequest, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseRequest"/>
+            The request of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.GetPromotionDataList(everilion_promotion_net_processing_operation.BE.GetPromotionDataListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.GetPromotionDataListResponse">
+            <summary>
+            GetPromotionDataListResponse, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseResponse"/>
+            The response of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataBC.GetPromotionDataList(everilion_promotion_net_processing_operation.BE.GetPromotionDataListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GetPromotionDataListResponse.PromotionList">
+            <summary>
+            The promotion list
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GetPromotionDataListResponse.ArticlesGroupList">
+            <summary>
+            The articles group list
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.GetPromotionDataRequest">
+            <summary>
+            GetPromotionDataRequest, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseRequest"/>
+            The request of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataProcessingBC.GetPromotionData(everilion_promotion_net_processing_operation.BE.GetPromotionDataRequest)"/> method.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.GetPromotionDataResponse">
+            <summary>
+            GetPromotionDataResponse, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseResponse"/>
+            The response of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionDataProcessingBC.GetPromotionData(everilion_promotion_net_processing_operation.BE.GetPromotionDataRequest)"/> method.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GetPromotionDataResponse.PromotionList">
+            <summary>
+            The promotion list
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GetPromotionDataResponse.ArticlesGroupList">
+            <summary>
+            The articles group list
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.LocationInfo">
+            <summary>
+            The LocationInfo <see langword="abstract"/> class.
+            See also <seealso cref="T:everilion_promotion_net_processing_operation.BE.StoreLocationInfo"/>
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.NewAmountDiscount">
+            <summary>
+            The NewAmountDiscount class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.Discount"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.NewAmountDiscount.NewAmount">
+            <summary>
+            The new amount
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.PerAmountPercentageDiscount">
+            <summary>
+            The PerAmountPercentageDiscount class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.Discount"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PerAmountPercentageDiscount.Percentage">
+            <summary>
+            The discount percentage. The <see cref="T:everilion_promotion_net_processing_operation.BE.PerAmountPromotionTriggerConfiguration"/> defines the amount at which to apply the discount.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.PercentageDiscount">
+            <summary>
+            The PercentageDiscount class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.Discount"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PercentageDiscount.Percentage">
+            <summary>
+            The discount percentage
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest">
+            <summary>
+            ProcessPurchaseEventRequest, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseRequest"/>
+            The request of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionEngineBC.ProcessPurchaseEvent(everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest)"/> method.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest.EventUTCDateTime">
+            <summary>
+            The event UTC datetime
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest.EventLocalDateTime">
+            <summary>
+            The event local datetime
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest.EventLocalTimeZoneInfoId">
+            <summary>
+            The event local time zone info identifier
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest.Location">
+            <summary>
+            The event location info. Supports <see cref="T:everilion_promotion_net_processing_operation.BE.StoreLocationInfo"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest.LineList">
+            <summary>
+            The purchase line list
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest.TotalAmount">
+            <summary>
+            The purchase total amount
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventResponse">
+            <summary>
+            ProcessPurchaseEventResponse, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.BaseResponse"/>
+            The response of <see cref="M:everilion_promotion_net_processing_operation.BC.IPromotionEngineBC.ProcessPurchaseEvent(everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventRequest)"/> method.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ProcessPurchaseEventResponse.PromotionAppliedList">
+            <summary>
+            The promotion applied list
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.ArticleListDiscountPromotionReward">
+            <summary>
+            The ArticleListDiscountPromotionReward class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.PromotionReward"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ArticleListDiscountPromotionReward.DiscountedLineList">
+            <summary>
+            The discounted line list
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.DiscountedPurchaseLine">
+            <summary>
+            The DiscountedPurchaseLine class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.PurchaseLine"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.DiscountedPurchaseLine.DiscountedQuantity">
+            <summary>
+            The discounted quantity
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.DiscountedPurchaseLine.Discount">
+            <summary>
+            The global discount. Supports <see cref="T:everilion_promotion_net_processing_operation.BE.NewAmountDiscount"/> and <see cref="T:everilion_promotion_net_processing_operation.BE.PercentageDiscount"/>
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.GlobalDiscountPromotionReward">
+            <summary>
+            The GlobalDiscountPromotionReward class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.PromotionReward"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GlobalDiscountPromotionReward.Discount">
+            <summary>
+            The global discount. Supports <see cref="T:everilion_promotion_net_processing_operation.BE.AmountDiscount"/> and <see cref="T:everilion_promotion_net_processing_operation.BE.PercentageDiscount"/>
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.PromotionApplied">
+            <summary>
+            The promotion applied
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PromotionApplied.IdPromotion">
+            <summary>
+            The promotion identifier
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PromotionApplied.Name">
+            <summary>
+            The promotion applied name
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PromotionApplied.Description">
+            <summary>
+            The promotion applied description
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PromotionApplied.TriggerInfoList">
+            <summary>
+            The triggered info list
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PromotionApplied.RewardList">
+            <summary>
+            The promotion rewards applied
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.PromotionReward">
+            <summary>
+            The PromotionReward <see langword="abstract"/> class.
+            See also <seealso cref="T:everilion_promotion_net_processing_operation.BE.GlobalDiscountPromotionReward"/> and <seealso cref="T:everilion_promotion_net_processing_operation.BE.ArticleListDiscountPromotionReward"/>
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.PromotionTriggerInfo">
+            <summary>
+            The promotion trigger info <see langword="abstract"/> class.
+            See also <see cref="T:everilion_promotion_net_processing_operation.BE.TriggeredLinePromotionTriggerInfo"/>.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.TriggeredLinePromotionTriggerInfo">
+            <summary>
+            The TriggeredLinePromotionTriggerInfo class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.PromotionTriggerInfo"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.TriggeredLinePromotionTriggerInfo.TriggeredLineList">
+            <summary>
+            The triggered line list
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.TriggeredPurchaseLine">
+            <summary>
+            The TriggeredPurchaseLine class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.PurchaseLine"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.TriggeredPurchaseLine.TriggeredQuantity">
+            <summary>
+            The triggered quantity
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.ArticleDiscountConfiguration">
+            <summary>
+            The ArticleDiscountConfiguration class.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ArticleDiscountConfiguration.ReferenceArticle">
+            <summary>
+            Gets or sets the article reference identifier.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ArticleDiscountConfiguration.Discount">
+            <summary>
+            The article discount. Supports <see cref="T:everilion_promotion_net_processing_operation.BE.NewAmountDiscount"/> and <see cref="T:everilion_promotion_net_processing_operation.BE.PercentageDiscount"/>
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.ArticlesGroupDiscountConfiguration">
+            <summary>
+            The ArticlesGroupDiscountConfiguration class.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ArticlesGroupDiscountConfiguration.CodeGroup">
+            <summary>
+            Gets or sets the articles group code identifier.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ArticlesGroupDiscountConfiguration.Discount">
+            <summary>
+            The articles group discount. Supports <see cref="T:everilion_promotion_net_processing_operation.BE.NewAmountDiscount"/> and <see cref="T:everilion_promotion_net_processing_operation.BE.PercentageDiscount"/>
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.ArticlesGroupTriggerConfiguration">
+            <summary>
+            The group of articles lines trigger configuration class.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ArticlesGroupTriggerConfiguration.CodeGroup">
+            <summary>
+            Gets or sets the articles group code identifier.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ArticlesGroupTriggerConfiguration.MinAmount">
+            <summary>
+            The minimum amount required
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ArticlesGroupTriggerConfiguration.MinQuantity">
+            <summary>
+            The minimum quantity required
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.ArticleTriggerConfiguration">
+            <summary>
+            The articles lines trigger configuration class.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ArticleTriggerConfiguration.ReferenceArticle">
+            <summary>
+            Gets or sets the article reference identifier.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ArticleTriggerConfiguration.MinAmount">
+            <summary>
+            The minimum amount required
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ArticleTriggerConfiguration.MinQuantity">
+            <summary>
+            The minimum quantity required
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.DailyConfiguration">
+            <summary>
+            The daily configuration class.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.DailyConfiguration.Monday">
+            <summary>
+            The Monday flag
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.DailyConfiguration.Tuesday">
+            <summary>
+            The Tuesday flag
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.DailyConfiguration.Wednesday">
+            <summary>
+            The Wednesday flag
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.DailyConfiguration.Thursday">
+            <summary>
+            The Thursday flag
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.DailyConfiguration.Friday">
+            <summary>
+            The Friday flag
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.DailyConfiguration.Saturday">
+            <summary>
+            The Saturday flag
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.DailyConfiguration.Sunday">
+            <summary>
+            The Sunday flag
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.DailyConfiguration.FromTime">
+            <summary>
+            The from Time.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.DailyConfiguration.ToTime">
+            <summary>
+            The to Time.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.GlobalDiscountPromotionRewardConfiguration">
+            <summary>
+            The GlobalDiscountPromotionRewardConfiguration class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.PromotionRewardConfiguration"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GlobalDiscountPromotionRewardConfiguration.Discount">
+            <summary>
+            The global discount. Supports <see cref="T:everilion_promotion_net_processing_operation.BE.AmountDiscount"/> and <see cref="T:everilion_promotion_net_processing_operation.BE.PercentageDiscount"/>.
+            Also supports <see cref="T:everilion_promotion_net_processing_operation.BE.PerAmountPercentageDiscount"/> if exists <see cref="T:everilion_promotion_net_processing_operation.BE.PerAmountPromotionTriggerConfiguration"/>
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.GlobalPromotionTriggerConfiguration">
+            <summary>
+            The GlobalPromotionTriggerConfiguration class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.PromotionTriggerConfiguration"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GlobalPromotionTriggerConfiguration.MinAmount">
+            <summary>
+            The minimum amount required
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GlobalPromotionTriggerConfiguration.MinQuantity">
+            <summary>
+            The minimum quantity required
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GlobalPromotionTriggerConfiguration.ArticleList">
+            <summary>
+            The article list
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.GlobalPromotionTriggerConfiguration.ArticlesGroupList">
+            <summary>
+            The articles group list
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.LineListDiscountPromotionRewardConfiguration">
+            <summary>
+            The LineListDiscountPromotionRewardConfiguration class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.PromotionRewardConfiguration"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.LineListDiscountPromotionRewardConfiguration.MaxQuantity">
+            <summary>
+            The maximun quantity of articles to apply discount
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.LineListDiscountPromotionRewardConfiguration.ArticleList">
+            <summary>
+            The discount configuration list of articles 
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.LineListDiscountPromotionRewardConfiguration.ArticlesGroupList">
+            <summary>
+            The discount configuration list of articles groups
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.LineListPromotionTriggerConfiguration">
+            <summary>
+            The LineListPromotionTriggerConfiguration class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.PromotionTriggerConfiguration"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.LineListPromotionTriggerConfiguration.ArticleList">
+            <summary>
+            The article list
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.LineListPromotionTriggerConfiguration.ArticlesGroupList">
+            <summary>
+            The articles group list
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.LocationPromotionTriggerConfiguration">
+            <summary>
+            The LocationPromotionTriggerConfiguration class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.PromotionTriggerConfiguration"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.LocationPromotionTriggerConfiguration.LocationList">
+            <summary>
+            The location info. Supports <see cref="T:everilion_promotion_net_processing_operation.BE.StoreLocationInfo"/>
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.PerAmountPromotionTriggerConfiguration">
+            <summary>
+            The PerAmountPromotionTriggerConfiguration class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.PromotionTriggerConfiguration"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PerAmountPromotionTriggerConfiguration.Amount">
+            <summary>
+            The amount required
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PerAmountPromotionTriggerConfiguration.ApplyLimit">
+            <summary>
+            The promotion application limit. Optional
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.Promotion">
+            <summary>
+            The Promotion class.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.Promotion.IdPromotion">
+            <summary>
+            Gets or sets the promotion identifier.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.Promotion.Name">
+            <summary>
+            Gets or sets the promotion name.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.Promotion.Description">
+            <summary>
+            Gets or sets the promotion description.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.Promotion.Priority">
+            <summary>
+            Gets or sets the promotion priority.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.Promotion.IsCumulative">
+            <summary>
+            Gets or sets if the promotion is acumulative.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.Promotion.FromUTCDateTime">
+            <summary>
+            Gets or sets the promotion start UTC date and time.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.Promotion.ToUTCDateTime">
+            <summary>
+            Gets or sets the promotion end UTC date and time.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.Promotion.FromLocalDateTime">
+            <summary>
+            Gets or sets the promotion start local date and time.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.Promotion.ToLocalDateTime">
+            <summary>
+            Gets or sets the promotion end local date and time.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.Promotion.IdTimeZoneInfo">
+            <summary>
+            The promotion local time zone info identifier
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.Promotion.TriggerList">
+            <summary>
+            Gets or sets the trigger config list.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.Promotion.RewardList">
+            <summary>
+            Gets or sets the reward config list.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.PromotionRewardConfiguration">
+            <summary>
+            The PromotionRewardConfiguration <see langword="abstract"/> class.
+            See also <seealso cref="T:everilion_promotion_net_processing_operation.BE.GlobalDiscountPromotionRewardConfiguration"/> and <seealso cref="T:everilion_promotion_net_processing_operation.BE.LineListDiscountPromotionRewardConfiguration"/>
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.PromotionTriggerConfiguration">
+            <summary>
+            The PromotionTriggerConfiguration <see langword="abstract"/> class.
+            See also <seealso cref="T:everilion_promotion_net_processing_operation.BE.TemporalPromotionTriggerConfiguration"/>, <seealso cref="T:everilion_promotion_net_processing_operation.BE.LocationPromotionTriggerConfiguration"/>, 
+            <seealso cref="T:everilion_promotion_net_processing_operation.BE.GlobalPromotionTriggerConfiguration"/>, <seealso cref="T:everilion_promotion_net_processing_operation.BE.LineListPromotionTriggerConfiguration"/> 
+            and <seealso cref="T:everilion_promotion_net_processing_operation.BE.PerAmountPromotionTriggerConfiguration"/>.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.TemporalPromotionTriggerConfiguration">
+            <summary>
+            The TemporalPromotionTriggerConfiguration class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.PromotionTriggerConfiguration"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.TemporalPromotionTriggerConfiguration.DailyConfigurationList">
+            <summary>
+            The daily configuration list
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.PurchaseLine">
+            <summary>
+            The Purchase line class
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PurchaseLine.IdLine">
+            <summary>
+            The line identifier
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PurchaseLine.ArticleReference">
+            <summary>
+            The article reference
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PurchaseLine.ArticleName">
+            <summary>
+            The article name
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PurchaseLine.ArticleAmount">
+            <summary>
+            The article amount
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PurchaseLine.Quantity">
+            <summary>
+            The article quantity
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PurchaseLine.TotalAmount">
+            <summary>
+            The total amount
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.PurchaseLine.DiscountApplied">
+            <summary>
+            The total amount
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.StoreLocationInfo">
+            <summary>
+            The StoreLocationInfo class, inherits from <see cref="T:everilion_promotion_net_processing_operation.BE.LocationInfo"/>
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.StoreLocationInfo.StoreIdType">
+            <summary>
+            The store identifier type
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.StoreLocationInfo.IdStore">
+            <summary>
+            The store identifier
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.StoreLocationInfo.IdStoreFUC">
+            <summary>
+            The store FUC identifier
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.AuditTypeEnum">
+            <summary>
+            The audit type enum
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BE.AuditTypeEnum.Debug">
+            <summary>
+            The debug type
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BE.AuditTypeEnum.Information">
+            <summary>
+            The information type
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BE.AuditTypeEnum.Error">
+            <summary>
+            The error type
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.StatusEnum">
+            <summary>
+            The status enum.
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BE.StatusEnum.CorrectOperation">
+            <summary>
+            The correct operation
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BE.StatusEnum.UnknownError">
+            <summary>
+            The unknown error.
+            This is also the default value, if the enum value is not defined.
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BE.StatusEnum.ValidationError">
+            <summary>
+            The validation error
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsPromotionData">
+            <summary>
+            The promotion data not exists.
+            Use IPromotionDataBC to initialize engine promotion data
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BE.StatusEnum.InvalidSerializedPromotionList">
+            <summary>
+            The serialized promotion list is not valid.
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BE.StatusEnum.NotExistsTimeZoneInfo">
+            <summary>
+            The not exists time zone info error.
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BE.StatusEnum.InvalidDateConversion">
+            <summary>
+            The date conversion sent is not valid
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.StoreIdTypeEnum">
+            <summary>
+            The Store identifier type enum
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BE.StoreIdTypeEnum.IdStore">
+            <summary>
+            The store identifier
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_processing_operation.BE.StoreIdTypeEnum.IdStoreFUC">
+            <summary>
+            The store FUC identifier
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.BE.ContextInfo">
+            <summary>
+            The Context information class.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ContextInfo.NCompany">
+            <summary>
+            Gets or sets the company identifier.
+            </summary>
+            <value>
+            Company identifier to get or set.
+            </value>
+        </member>
+        <member name="P:everilion_promotion_net_processing_operation.BE.ContextInfo.User">
+            <summary>
+            Gets or sets the current user identifier.
+            </summary>
+            <value>
+            Current user identifier to get or set.
+            </value>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.Helper.DateTimeHelper.NormalizeUTCAndLocalDateTime(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.DateTime@,System.DateTime@,System.String@)">
+            <summary>
+            Nomalizes the local and UTC datetimes using the time zone
+            </summary>
+            <param name="argLocalTimeZoneInfoId"></param>
+            <param name="argUTCDateTime"></param>
+            <param name="argLocalDateTime"></param>
+            <param name="outUTCDateTime"></param>
+            <param name="outLocalDateTime"></param>
+            <param name="outErrorMessage">The error message</param>
+            <returns>CorrectOperation, NotExistsTimeZone or InvalidDateConversion</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.Helper.DateTimeHelper.NormalizeUTCAndLocalDateTime(System.String,System.DateTime,System.DateTime,System.DateTime@,System.DateTime@,System.String@)">
+            <summary>
+            Nomalizes the local and UTC datetimes using the time zone
+            </summary>
+            <param name="argLocalTimeZoneInfoId"></param>
+            <param name="argUTCDateTime"></param>
+            <param name="argLocalDateTime"></param>
+            <param name="outUTCDateTime"></param>
+            <param name="outLocalDateTime"></param>
+            <param name="outErrorMessage">The error message</param>
+            <returns>CorrectOperation, NotExistsTimeZone or InvalidDateConversion</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:everilion_promotion_net_processing_operation.Helper.PromotionDataConverter">
+            <summary>
+            The promotion data converter
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.Helper.PromotionDataConverter.PromotionDataListStringToBC(System.String)">
+            <summary>
+            Deserializes de promotion list to BC models
+            </summary>
+            <param name="argPromotionDataList">The serialized promotion data list</param>
+            <returns>The promotion list</returns>
+        </member>
+        <member name="M:everilion_promotion_net_processing_operation.Helper.PromotionDataConverter.TryGetValueTyped``1(Newtonsoft.Json.Linq.JObject,System.String,``0@)">
+            <summary>
+            Returns <see langword="false"/> if the object if null or the property doesn't exist. 
+            Returns <see langword="true"/> if the value exists and can be cast to <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="argJObject"></param>
+            <param name="argKey"></param>
+            <param name="outValue"></param>
+            <returns></returns>
+            <exception cref="T:System.Exception">The value exists but can't be cast to <typeparamref name="T"/></exception>
+        </member>
+    </members>
+</doc>

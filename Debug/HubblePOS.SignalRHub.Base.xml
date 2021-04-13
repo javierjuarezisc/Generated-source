@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HubblePOS.SignalRHub.Base</name>
+    </assembly>
+    <members>
+        <member name="M:HubblePOS.SignalRHub.Base.GenericErrorException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.GenericErrorException"/> class.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.GenericErrorException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.GenericErrorException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.GenericErrorException.#ctor(System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.GenericErrorException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.GenericErrorException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.GenericErrorException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.GenericErrorException.#ctor(System.String,System.Exception,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.GenericErrorException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.GenericErrorException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.GenericErrorException"/> class.
+            </summary>
+            <param name="ex">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.GenericErrorException.#ctor(System.Exception,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.GenericErrorException"/> class.
+            </summary>
+            <param name="ex">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.ValidationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.ValidationException"/> class.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.ValidationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.ValidationException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.ValidationException.#ctor(System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.ValidationException"/> class.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.ValidationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.ValidationException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.ValidationException.#ctor(System.String,System.Exception,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.ValidationException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.ValidationException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.ValidationException"/> class.
+            </summary>
+            <param name="ex">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.ValidationException.#ctor(System.Exception,System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.SignalRHub.Base.ValidationException"/> class.
+            </summary>
+            <param name="ex">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="E:HubblePOS.SignalRHub.Base.IHubClientConnection.Closed">
+            <summary>
+            Ocurre cuando la conexión se cierra. Esta puede ser cerrada debido a un error o debido a que
+            el servidor o el cliente hayan cerrado la conexión intencionadamente sin ningún error.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.IHubClientConnection.Start(System.Threading.CancellationToken)">
+            <summary>
+            Inicia la conexión con el hub.
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.SignalRHub.Base.ValidationException"></exception>
+            <exception cref="T:HubblePOS.SignalRHub.Base.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.IHubClientConnection.Stop(System.Threading.CancellationToken)">
+            <summary>
+            Detiene la conexión con el hub.
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.SignalRHub.Base.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.IHubClientConnection.InvokeAsync(System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Invoca un método del hub con un parámetro.
+            </summary>
+            <param name="methodName"></param>
+            <param name="arg1"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.IHubClientConnection.InvokeAsync(System.String,System.Object[],System.Threading.CancellationToken)">
+            <summary>
+            Invoca un método del hub con uno o varios parámetros.
+            </summary>
+            <param name="methodName"></param>
+            <param name="args"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.IHubClientConnection.InvokeAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Invoca un método del hub en el servidor utilizando el nombre del método especificado.
+            </summary>
+            <param name="methodName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.IHubClientConnection.On``1(System.String,System.Action{``0})">
+            <summary>
+            Registra un manejador que será invocado cuando el método del hub con el nombre especificado
+            sea invocado. Simula la subscripción a eventos de SignalR.
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <param name="methodName"></param>
+            <param name="handler"></param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.IHubClientConnection.Remove(System.String)">
+            <summary>
+            Elimina todos los manejadores registrados del hub especificado.
+            </summary>
+            <param name="methodName"></param>
+        </member>
+        <member name="M:HubblePOS.SignalRHub.Base.IHubClientConnection.GetCurrentState">
+            <summary>
+            Devuelve el estado de la conexión del hub.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:HubblePOS.SignalRHub.Base.MessageOriginType.Invoke">
+            <summary>
+            El mensaje se ha transmitido desde el cliente a través de la invocación del método invoke de un hub
+            </summary>
+        </member>
+        <member name="F:HubblePOS.SignalRHub.Base.MessageOriginType.Event">
+            <summary>
+            El mensaje se ha transmitido a través de un evento de un controlador.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.SignalRHub.Base.SignalRDataEventResponse.MethodName">
+            <summary>
+            Nombre del método.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.SignalRHub.Base.SignalRDataEventResponse.Args">
+            <summary>
+            Argumentos.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.SignalRHub.Base.SignalRDataRequest.RequestId">
+            <summary>
+            Id de la petición.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.SignalRHub.Base.SignalRDataRequest.HubName">
+            <summary>
+            Nombre del hub.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.SignalRHub.Base.SignalRDataRequest.MethodName">
+            <summary>
+            Nombre del método.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.SignalRHub.Base.SignalRDataRequest.Args">
+            <summary>
+            Argumentos.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.SignalRHub.Base.SignalRDataResponse.RequestId">
+            <summary>
+            Id de la petición a la que se responde.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.SignalRHub.Base.SignalRDataResponse.Args">
+            <summary>
+            Argumentos.
+            </summary>
+        </member>
+    </members>
+</doc>

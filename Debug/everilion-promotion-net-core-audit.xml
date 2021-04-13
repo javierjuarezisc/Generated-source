@@ -1,0 +1,307 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>everilion-promotion-net-core-audit</name>
+    </assembly>
+    <members>
+        <member name="M:everilion_promotion_net_core_audit.BC.ConfigurationBC.GetPromotionAuditExpertBCInstantiationData">
+            <summary>
+            Gets the promotion audit expert instantiation data.
+            </summary>
+            <returns>The expert instantiation data</returns>
+            <exception cref="T:System.Exception">UnknownError</exception>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BC.IAuditBC">
+            <summary>
+            The Audit BC interface
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_core_audit.BC.IAuditBC.SetGlobalPropertyList(everilion_promotion_net_core_audit.BE.SetGlobalPropertyListRequest)">
+            <summary>
+            Sets a list of properties at global context.
+            </summary>
+            <param name="argRequest">The request.</param>
+            <returns>The set property result.</returns>
+        </member>
+        <member name="M:everilion_promotion_net_core_audit.BC.IAuditBC.Audit(everilion_promotion_net_core_audit.BE.AuditRequest)">
+            <summary>
+            Creates a audit trace.
+            </summary>
+            <param name="argRequest">The request.</param>
+            <returns>The audit result.</returns>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BC.ServiceFactory">
+            <summary>
+            The service factory
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_core_audit.BC.ServiceFactory.CreateInstance``1">
+            <summary>
+            Create a instance of <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T">The type of the instance to create</typeparam>
+            <returns>A instance of the requested type</returns>
+            <exception cref="T:System.Exception">Could not create an instance of <typeparamref name="T"/>, not supported.</exception>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.AuditElement">
+            <summary>
+            The audit element class.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.AuditElement.Name">
+            <summary>
+            The name.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.AuditElement.Value">
+            <summary>
+            The value.
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_core_audit.BE.AuditElement.#ctor(System.String,everilion_promotion_net_core_audit.BE.AuditElementValue)">
+            <summary>
+            Initializes a new instance of the <see cref="T:everilion_promotion_net_core_audit.BE.AuditElement"/> class, with name and value properties.
+            </summary>
+            <param name="argName">The <see cref="P:everilion_promotion_net_core_audit.BE.AuditElement.Name"/> property value</param>
+            <param name="argValue">The <see cref="P:everilion_promotion_net_core_audit.BE.AuditElement.Value"/> property value</param>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.AuditElementValue">
+            <summary>
+            The audit element value <see langword="abstract"/> class.
+            See also <seealso cref="T:everilion_promotion_net_core_audit.BE.IntAuditElementValue"/>, <seealso cref="T:everilion_promotion_net_core_audit.BE.StringAuditElementValue"/> and <seealso cref="T:everilion_promotion_net_core_audit.BE.ObjectAuditElementValue"/>.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.ContextInfo">
+            <summary>
+            ContextInfo.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.ContextInfo.NCompany">
+            <summary>
+            Gets or sets the company identifier.
+            </summary>
+            <value>
+            Company identifier to get or set.
+            </value>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.ContextInfo.User">
+            <summary>
+            Gets or sets the current user identifier.
+            </summary>
+            <value>
+            Current user identifier to get or set.
+            </value>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.AuditRequest">
+            <summary>
+            The AuditRequest, inherits from <see cref="T:everilion_promotion_net_core_audit.BE.BaseRequest"/>
+            The request of <see cref="M:everilion_promotion_net_core_audit.BC.IAuditBC.Audit(everilion_promotion_net_core_audit.BE.AuditRequest)"/> method.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.AuditRequest.Context">
+            <summary>
+            The audit context.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.AuditRequest.Type">
+            <summary>
+            The audit type.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.AuditRequest.UTCDateTime">
+            <summary>
+            The audit UTC dateTime
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.AuditRequest.Message">
+            <summary>
+            The message.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.AuditRequest.ElementList">
+            <summary>
+            The audit element list. Optional parameter
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.AuditResponse">
+            <summary>
+            The AuditResponse, inherits from <see cref="T:everilion_promotion_net_core_audit.BE.BaseResponse"/>
+            The response of <see cref="M:everilion_promotion_net_core_audit.BC.IAuditBC.Audit(everilion_promotion_net_core_audit.BE.AuditRequest)"/> method.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.BaseRequest">
+            <summary>
+            BaseRequest.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.BaseRequest.ContextInfo">
+            <summary>
+            Gets or sets the context information.
+            </summary>
+            <value>
+            The context information.
+            </value>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.BaseResponse">
+            <summary>
+            Base Response
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.BaseResponse.Status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>
+            The status.
+            </value>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.BaseResponse.ErrorMessage">
+            <summary>
+            Gets or sets the error message.
+            </summary>
+            <value>
+            The error message.
+            </value>
+        </member>
+        <member name="M:everilion_promotion_net_core_audit.BE.BaseResponse.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:everilion_promotion_net_core_audit.BE.BaseResponse"/> class.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.SetGlobalPropertyListRequest">
+            <summary>
+            The SetGlobalPropertyListRequest, inherits from <see cref="T:everilion_promotion_net_core_audit.BE.BaseRequest"/>
+            The request of <see cref="M:everilion_promotion_net_core_audit.BC.IAuditBC.SetGlobalPropertyList(everilion_promotion_net_core_audit.BE.SetGlobalPropertyListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.SetGlobalPropertyListRequest.PropertyList">
+            <summary>
+            The property list.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.SetGlobalPropertyListResponse">
+            <summary>
+            The SetGlobalPropertyListResponse, inherits from <see cref="T:everilion_promotion_net_core_audit.BE.BaseResponse"/>
+            The response of <see cref="M:everilion_promotion_net_core_audit.BC.IAuditBC.SetGlobalPropertyList(everilion_promotion_net_core_audit.BE.SetGlobalPropertyListRequest)"/> method.
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.AuditTypeEnum">
+            <summary>
+            The audit type enum
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_core_audit.BE.AuditTypeEnum.Action">
+            <summary>
+            The action user type
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_core_audit.BE.AuditTypeEnum.Error">
+            <summary>
+            The error type
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_core_audit.BE.AuditTypeEnum.Information">
+            <summary>
+            The information type
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_core_audit.BE.AuditTypeEnum.Debug">
+            <summary>
+            The debug type
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.StatusEnum">
+            <summary>
+            The status enum.
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_core_audit.BE.StatusEnum.CorrectOperation">
+            <summary>
+            The correct operation
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_core_audit.BE.StatusEnum.UnknownError">
+            <summary>
+            The unknown error
+            </summary>
+        </member>
+        <member name="F:everilion_promotion_net_core_audit.BE.StatusEnum.ValidationError">
+            <summary>
+            The unknown error
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.IntAuditElementValue">
+            <summary>
+            The integer audit element value class, inherits from <see cref="T:everilion_promotion_net_core_audit.BE.AuditElementValue"/>.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.IntAuditElementValue.Value">
+            <summary>
+            The integer value
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_core_audit.BE.IntAuditElementValue.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:everilion_promotion_net_core_audit.BE.IntAuditElementValue"/> class, with the integer value.
+            </summary>
+            <param name="argValue">The integer value</param>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.ITraceableRequest">
+            <summary>
+            Traceable request interface.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.ITraceableRequest.IdTraceCorrelation">
+            <summary>
+            Gets or sets the correlation identifier
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.ITraceableRequest.IdParentExecution">
+            <summary>
+            Gets or sets the parent execution identifier
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.ITraceableResponse">
+            <summary>
+            Traceable response interface.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.ITraceableResponse.IdExecution">
+            <summary>
+            Gets or sets the execution identifier
+            </summary>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.ObjectAuditElementValue">
+            <summary>
+            The object audit element value class, inherits from <see cref="T:everilion_promotion_net_core_audit.BE.AuditElementValue"/>.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.ObjectAuditElementValue.Value">
+            <summary>
+            The object value
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_core_audit.BE.ObjectAuditElementValue.#ctor(System.Object)">
+            <summary>
+            Initializes a new instance of the <see cref="T:everilion_promotion_net_core_audit.BE.ObjectAuditElementValue"/> class, with the object value.
+            </summary>
+            <param name="argValue">The object value</param>
+        </member>
+        <member name="T:everilion_promotion_net_core_audit.BE.StringAuditElementValue">
+            <summary>
+            The string audit element value class, inherits from <see cref="T:everilion_promotion_net_core_audit.BE.AuditElementValue"/>.
+            </summary>
+        </member>
+        <member name="P:everilion_promotion_net_core_audit.BE.StringAuditElementValue.Value">
+            <summary>
+            The string value
+            </summary>
+        </member>
+        <member name="M:everilion_promotion_net_core_audit.BE.StringAuditElementValue.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:everilion_promotion_net_core_audit.BE.StringAuditElementValue"/> class, with the string value.
+            </summary>
+            <param name="argValue">The string value</param>
+        </member>
+    </members>
+</doc>
