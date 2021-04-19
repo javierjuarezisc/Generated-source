@@ -1,0 +1,1427 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HubblePOS.Controller.PaymentTerminal</name>
+    </assembly>
+    <members>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ConfigurationHelper.FillParameter(System.Double,System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String},HubblePOS.Core.Interface.ConfigurationParameterType,System.Boolean)">
+            <summary>
+            Fills the referred target with the origin parameter value.
+            </summary>
+            <param name="target">object to be filled with parsed parameter value</param>
+            <param name="parameters">parameter list</param>
+            <param name="origin">origin parameter name</param>
+            <param name="isRequired">Tells if Exceptions will be thrown in case of fail (not found or can't parse value)</param>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ConfigurationHelper.FillParameter(System.Int32,System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String},HubblePOS.Core.Interface.ConfigurationParameterType,System.Boolean)">
+            <summary>
+            Fills the referred target with the origin parameter value.
+            </summary>
+            <param name="target">object to be filled with parsed parameter value</param>
+            <param name="parameters">parameter list</param>
+            <param name="origin">origin parameter name</param>
+            <param name="isRequired">Tells if Exceptions will be thrown in case of fail (not found or can't parse value)</param>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ConfigurationHelper.FillParameter(System.UInt32,System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String},HubblePOS.Core.Interface.ConfigurationParameterType,System.Boolean)">
+            <summary>
+            Fills the referred target with the origin parameter value.
+            </summary>
+            <param name="target">object to be filled with parsed parameter value</param>
+            <param name="parameters">parameter list</param>
+            <param name="origin">origin parameter name</param>
+            <param name="isRequired">Tells if Exceptions will be thrown in case of fail (not found or can't parse value)</param>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ConfigurationHelper.FillParameter(System.Nullable{System.UInt32},System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String},HubblePOS.Core.Interface.ConfigurationParameterType,System.UInt32,System.UInt32,System.Boolean)">
+            <summary>
+            Fills the referred target with the origin parameter value.
+            </summary>
+            <param name="target">object to be filled with parsed parameter value</param>
+            <param name="parameters">parameter list</param>
+            <param name="origin">origin parameter name</param>
+            <param name="isRequired">Tells if Exceptions will be thrown in case of fail (not found or can't parse value)</param>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ConfigurationHelper.FillParameter(System.String,System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String},HubblePOS.Core.Interface.ConfigurationParameterType,System.Boolean)">
+            <summary>
+            Fills the referred target with the origin parameter value.
+            </summary>
+            <param name="target">object to be filled with parsed parameter value</param>
+            <param name="parameters">parameter list</param>
+            <param name="origin">origin parameter name</param>
+            <param name="isRequired">Tells if Exceptions will be thrown in case of fail (not found or can't parse value)</param>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatCommunicationProtocolFromParameterValue(System.String,System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatCodePortionFromEntityMultitenantId(System.String,System.String)">
+             <summary>
+             Dado un identificador de entidad de un entorno multitenant con el siguiente formato: NComapny + Code;
+             retorna la parte del código, descartando la de la compañia.
+            
+             MÁS INFO:
+             Estos serán los valores retornados, según los siguientes casos:
+             + Null -> si el EntityId es nulo.
+             + EntityId -> si el identificador de la compañía es nulo
+             + EntityId -> si el identificador de la compañía no está contenido en el de la entidad
+             + EntityId -> si el identificador de la compañía conincide con el de la entidad
+             </summary>
+             <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatConnectionStatusChangedEventArgs(HubblePOS.Module.PaymentTerminalIntegration.ConnectionStatusChangedEventArgs)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatTerminalConnectionStatus(HubblePOS.Module.PaymentTerminalIntegration.PaymentTerminalConnectionStatuses)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatMonetaryTransactionResponseEventArgs(HubblePOS.Module.PaymentTerminalIntegration.MonetaryTransactionResponseEventArgs,System.String,System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatMonetaryInformationResponseEventArgs(HubblePOS.Module.PaymentTerminalIntegration.MonetaryInformationResponseEventArgs,System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatResponseCode(HubblePOS.Module.PaymentTerminalIntegration.EverisopMessageFieldResponseCodes)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatTerminalOperationStatusChangedEventArgs(System.UInt32,HubblePOS.Module.PaymentTerminalIntegration.PaymentTerminalConnectionStatuses,HubblePOS.Module.PaymentTerminalIntegration.PaymentTerminalOperationStatuses)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatCustomer(HubblePOS.Module.PaymentTerminalIntegration.Customer)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatDocumentLineToPaymentTerminalIntegration(System.Collections.Generic.IList{HubblePOS.Controller.PaymentTerminal.DocumentLine},System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatAddressList(System.Collections.Generic.IList{HubblePOS.Core.Interface.Address})">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatAddressType(HubblePOS.Core.Interface.AddressType)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatCustomerResponseEventArgs(HubblePOS.Module.PaymentTerminalIntegration.CustomerAsyncResponse,HubblePOS.Core.Interface.Customer)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatNegativeCustomerResponseEventArgs(HubblePOS.Module.PaymentTerminalIntegration.GeneralResponseCodes,HubblePOS.Module.PaymentTerminalIntegration.SpecificErrorResponseCodes,System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatCustomerResponseCodes(HubblePOS.Module.PaymentTerminalIntegration.GeneralResponseCodes,HubblePOS.Module.PaymentTerminalIntegration.SpecificErrorResponseCodes)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatMessageToShowReceivedEventArgs(HubblePOS.Module.PaymentTerminalIntegration.MessageToShowReceivedEventArgs)">
+            <summary>
+            Formats from PaymentTerminalIntegration message to show received event arguments to message to show received event arguments.
+            </summary>
+            <param name="eventArgs">The <see cref="T:HubblePOS.Module.PaymentTerminalIntegration.MessageToShowReceivedEventArgs"/> instance containing the event data.</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.FormatHelper.FormatTextToPrintFromNeftisTextToPrint(System.String,System.Nullable{System.UInt32},System.Decimal,System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="T:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper">
+            <summary>
+            This Helper class manages text to print field format conversion.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatXMLFromText(System.String,System.Nullable{System.UInt32})">
+            <summary>
+            Translates a PaymentTerminal textToPrint text into hubblePOS XML template compatible node
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FilterNonPrintableUnicodeCharacters(System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatHTMLText(System.String,System.Nullable{System.UInt32})">
+            <summary>
+            Embraces the given input string into a properly formed HTML.
+            Escape characters will be translated into HTML sequences. Applies the following:
+            <para>  Extended ASCII characters;
+                    ElectronicTransaction substitution;
+                    Replicate characters;
+                    Font size changes to double, quadruple and octuple size;
+                    Generates Signature boxes;
+                    Text align (Center, Right);
+                    Applies font styles (Italic, bold, underline, high density);
+                    horizontal tabs and line feeds</para>
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatTextToPrint(System.String,System.Nullable{System.UInt32})">
+             <summary>
+             <para>Applies available transformations to create an HTML body from a given TextToPrint plain text input.
+                   Applies the following: </para>
+                     Extended ASCII characters;
+                     ElectronicTransaction substitution;
+                     Replicate characters;
+                     Font size changes to double, quadruple and octuple size;
+                     Generates Signature boxes;
+                     Text align (Center, Right);
+                     Applies font styles (Italic, Bold, Underline);
+                     horizontal tabs and line feeds
+             </summary>
+            
+             <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatExtendedASCIICharacters(System.String)">
+            <summary>
+            <para>Searchs and substitutes any extended ASCII character in the form of 'ESC' + P + ij where ij is a extended ASCII character code.</para>
+            <para>Uses Original IBM PC encoding for character code mapping [with an exception: 9B -> '€']</para>
+            <para>Examples: 'ESC' + "P80" -> 'Ç' ; 'ESC' + "P9B" -> '€'</para>
+            </summary>
+            <param name="input">a string with 'ESC' characters</param>
+            <returns>the translated string</returns>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatElectronicTransactionEscapeSequence(System.String)">
+            <summary>
+            <para>Causes the impression of the phrase ‘Transacción Electrónica’.</para>
+            <para>Example: 'ESC' + 'T' -> "Transacción Electrónica"</para>
+            </summary>
+            <param name="input">a string with 'ESC' characters</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatReplicateCharactersEscapeSequence(System.String)">
+            <summary>
+            <para>Repeating printable or control character</para>
+            <para>Example: 'ESC' + D1 D2 X -> 'ESC' + 1 2 LF</para>
+            </summary>
+            <param name="input">a string with 'ESC' characters</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatHorizontalTabEscapeSequence(System.String)">
+            <summary>
+            <para>Produces a horizontal tabulation. It is accompanied by two digits indicating the tabular position</para>
+            <para>Example: 'HT' + 8 -> Initial 'Hello_....................................' -> 'Hello.._.................................'</para>
+            </summary>
+            <param name="input">a string with 'HT' characters</param>
+            <returns>the translated string</returns>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatCustomerSignatureEscapeSequence(System.String)">
+            <summary>
+            <para>It causes the printing of a box for the signature with the legend "FIRMA CLIENTE:".</para>
+            <para>Example: 'ESC' + 'F' -> FIRMA CLIENTE:</para>
+            <para>┌────────────────┐</para>
+            <para>│................................│</para>
+            <para>└────────────────┘</para>
+            </summary>
+            <param name="input">a string with 'ESC' characters</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatEstablishmentSignatureEscapeSequence(System.String)">
+            <summary>
+            <para>It causes the printing of a box for the signature with the legend "FIRMA ESTABLECIMIENTO:".</para>
+            <para>Example: 'ESC' + 'G' -> FIRMA ESTABLECIMIENTO:</para>
+            <para>┌───────────────────┐</para>
+            <para>│......................................│</para>
+            <para>└───────────────────┘</para>
+            </summary>
+            <param name="input">a string with 'ESC' characters</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatFiveWhiteLinesEscapeSequence(System.String)">
+            <summary>
+            <para>Jump of 5 blank lines. Associated with sequences '18H X1' or '18H X2' generates signature box.</para>
+            <para>Example: 'FF' + 'CAN' 'X1'|'X2' ->  .</para>
+            <para>.</para>
+            <para>.</para>
+            <para>.</para>
+            <para>.</para>
+            <para>┌───────────────────┐</para>
+            <para>│......................................│</para>
+            <para>└───────────────────┘</para>
+            </summary>
+            <param name="input">a string with 'FF' characters</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatAlignRightEscapeSequence(System.String)">
+            <summary>
+            <para>Text printing with right justification. Valid to the end of the line. It must always be the first character of a line, otherwise the terminal must ignore it.</para>
+            <para>Example: 'ESC' + 'D' -> 'Hello.....................................' -> '....................................Hello'</para>
+            </summary>
+            <param name="input">A string with text to align</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatAlignCenterEscapeSequence(System.String)">
+            <summary>
+            Text printing with centered justification. Valid to the end of the line. It must always be the first character of a line, otherwise the terminal must ignore it.
+            <para>Example: 'ESC' + 'H' -> 'Hello.....................................' -> '..................Hello..................'</para>
+            </summary>
+            <param name="input">The text to format</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatDoubleSizeEscapeSequence(System.String)">
+            <summary>
+            <para>It selects writing in double height double width (font size X2). Valid only to the end of the line.</para>
+            <para>It can be used in combination with other type or size on the same line.</para>
+            <para>Example: 'RS' -> font-size: 14px to font-size: 28px</para>
+            </summary>
+            <param name="input">A text to format</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatItalicTypeEscapeSequence(System.String)">
+            <summary>
+            <para>Printing in italics of the text that goes next. Valid until the reception of a new character ESC C,
+            or the reception of another character of control to printer that modifies the typeface.</para>
+            <para>Example: 'ESC' + 'C' -> Italic text.</para>
+            </summary>
+            <param name="input">the translated string</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatQuadrupleAndOctupleSizesEscapeSequence(System.String)">
+            <summary>
+            <para>Print 4 or 8 times more width and height (size of font X4 or X8), of the text that goes next.</para>
+            <para>Valid until the reception of a new character ESC J, or the reception of another character of control to printer that modifies the type of letter.</para>
+            <para>Example: 'ESC' + 'I' -> font-size: 14px to font-size: 56px</para>
+            <para>Example: 'ESC' + 'J' -> font-size: 14px to font-size: 112px</para>
+            </summary>
+            <param name="input">the string to format</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatBoldTypeEscapeSequence(System.String)">
+            <summary>
+            <para>Bold print of the text that follows. Valid until the reception of a new ESC N character,</para>
+            <para>the reception of another control character to the printer that modifies the type of letter.</para>
+            </summary>
+            <param name="input">the string to format</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatHighDensityEscapeSequence(System.String)">
+            <summary>
+            <para>High density print for the following text until the reception of a new US character or</para>
+            <para>the reception of another control character to the printer that modifies the type of letter or a line feed.</para>
+            </summary>
+            <param name="input">the string to format</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatUnderlineTypeEscapeSequence(System.String)">
+            <summary>
+            <para>Underlined text printing that goes ahead. Valid until the reception of a new ESC R character, or the reception of another control character to the printer that modifies the font.</para>
+            </summary>
+            <param name="input">the string to format</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatLineFeedEscapeSequence(System.String)">
+            <summary>
+            <para>The line pointer is placed in position 00.</para>
+            <para>Example: 'LF' -> '\r'+'\n'</para>
+            </summary>
+            <param name="input">the string to format</param>
+            <returns>the translated string</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatHTMLTagSequences(System.String)">
+            <summary>
+            <para>Seeks and escapes any possible HTML tag </para>
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatMultipleSpacesToHTML(System.String)">
+            <summary>
+            <para>Seeks for multiple space sequences and transform them into HTML No blank spaces</para>
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.IgnoreEmptyXMLItems(System.String)">
+            <summary>
+            Filters empty item nodes from a given XML text
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatXMLStyles(System.String,System.Decimal)">
+            <summary>
+            Ensures item styles and node deepness for hubblePOS XML template compatibility. Inputs a XML text
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.CalculateFontSize(System.Nullable{System.UInt32})">
+            <summary>
+            Calculates basic item font-size based on received paper width. Expected is showing up to 40 characters per line
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.CalculateBasicStyle(System.Decimal)">
+            <summary>
+            Calculates an item font-size style based on received paper width. Expected is showing up to 40 characters per line
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FillItemStyles(System.Collections.Generic.IDictionary{System.Int32,System.String},System.Int32)">
+            <summary>
+            Starts an item tag with the given styles
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.FormatXMLEscapeCharacters(System.String)" -->
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.IsFontStyleChangingCode(System.String,System.Int32)">
+            <summary>
+            Tells if there is an escape character which maps to a Font Style changing code starting in position i into a given input
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.IsFontSizeChangingCode(System.String,System.Int32)">
+            <summary>
+            Tells if there is an escape character which maps to a Font Size changing code starting in position i into a given input
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.IsHighDensitySelected(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Tells if the input string is into a high density colored HTML section
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.TextToPrintHelper.GetTestSample(System.Int32)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ValidationHelper.ValidateObjectNotNull(System.Object,System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ValidationHelper.ValidateNotNegative(System.Decimal,System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ValidationHelper.ValidateDocumentLinesList(System.Collections.Generic.IList{HubblePOS.Controller.PaymentTerminal.DocumentLine},System.Boolean)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ValidationHelper.ValidateInRange(System.Int32,System.Int32,System.Int32,System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ValidationHelper.ValidateNotEmptyString(System.String,System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ValidationHelper.ValidatePort(System.Nullable{System.UInt32})">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ValidationHelper.ValidateIP(System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.Initialize(System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String})">
+            <summary>
+            Initializes PaymentTerminalIntegration instance and puts all the related parameters into it.
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.Sale(System.Decimal,System.Boolean,System.Collections.Generic.IList{HubblePOS.Controller.PaymentTerminal.DocumentLine})">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.Refund(System.Decimal,System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.PaymentManagement(System.Decimal,System.Int32)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.Closure">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.GetOperativeTotals">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.GetTransactionDetails(System.String,System.Nullable{System.DateTime})">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.GetCopy(System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.SetCustomerIdentification(System.Boolean)">
+            <summary>
+            Translates a boolean status to PaymentTerminalIntegration customer identification requests (read or cancel)
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.GetPendingTerminalOperationToken">
+            <summary>
+            Requests the current PendingOperationToken to the PaymentTerminalIntegration manager
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.ReadCustomerCardAsync(System.String)">
+            <summary>
+            Requests a customer card read to the PaymentTerminalIntegration manager
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.CancelLastOperationAsync">
+            <summary>
+            Requests a Cancel operation to the PaymentTerminalIntegration manager
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.FillPaymentTerminalIntegrationConfigurationBC(System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String})">
+            <summary>
+            Fills PaymentTerminal Integration dll parameters based on a parameter dictionary
+            </summary>
+            <param name="parameters">parameter list</param>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.FillLocalParameters(System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String})">
+            <summary>
+            Fills local parameters based on a parameter dictionary
+            </summary>
+            <param name="parameters">parameter list</param>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.GetPaymentTerminalCommunicationMode(System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String})">
+            <summary>
+            Gets PaymentTerminalIntegration communication channel mode based on [PAYMENT_TERMINAL] MODE, PIN, MAC, PORT and IP parameters
+            </summary>
+            <param name="parameters">parameter list</param>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.GetPaymentTerminalLogTraceLevel">
+            <summary>
+            Gets the log tracel level based on current Logger instance
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.StartListeningPaymentTerminalWithExplicitPinAndMACValues(System.String,System.String)">
+            <summary>
+            Requests start the channel listening to the PaymentTerminalIntegration manager
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.StartListeningPaymentTerminalWithExplicitPortAndIPValues(System.Nullable{System.UInt32},System.String)">
+            <summary>
+            Requests start the channel listening to the PaymentTerminalIntegration manager
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.StartListeningPaymentTerminal">
+            <summary>
+            Requests start the channel listening to the PaymentTerminalIntegration manager
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.OnRetryStartListeningRequestTimer_Elapsed(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            Manages the elapsed timer event _retryStartListeningRequestTimer. Tries start listening and, if it fails, restarts the timer.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.ValidateReadyToRequest">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.AnalyzeImmediateResponse(HubblePOS.Module.PaymentTerminalIntegration.BaseResponse)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.OnPaymentTerminal_CancelLastOperationReceived(System.Object,HubblePOS.Module.PaymentTerminalIntegration.LastOperationCancelledEventArgs)">
+            <summary>
+            Manages the event CancelLastOperationReceived to be receipt from PaymentTerminalIntegration
+            </summary>
+            <returns>Cancelled Operation Token</returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.OnPaymentTerminal_OperationStatusChanged(System.Object,HubblePOS.Module.PaymentTerminalIntegration.OperationStatusChangedEventArgs)">
+            <summary>
+            Manages the event OperationStatusChanged to be receipt from PaymentTerminalIntegration
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.EverisopController.OnPaymentTerminal_CustomerReceived(System.Object,HubblePOS.Module.PaymentTerminalIntegration.CustomerAsyncResponseEventArgs)">
+            <summary>
+            Manages the event ReceivedCustomer to be receipt from PaymentTerminalIntegration
+            </summary>
+            <param name="sender"></param>
+            <param name="eventArgs"></param>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.EverisopController.Factory">
+            <summary>
+            Factoría para crear objetos de núcleo.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.EverisopController.CorePos">
+            <summary>
+            POS de núcleo que se utilizará.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.NeftisController.Initialize(System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String})">
+            <summary>
+            Initializes PaymentTerminalIntegration instance and puts all the related parameters into it.
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.NeftisController.FillPaymentTerminalIntegrationConfigurationBC(System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String})">
+            <summary>
+            Fills PaymentTerminal Integration dll parameters based on a parameter dictionary
+            </summary>
+            <param name="parameters">parameter list</param>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.NeftisController.FillLocalParameters(System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String})">
+            <summary>
+            Fills local parameters based on a parameter dictionary
+            </summary>
+            <param name="parameters">parameter list</param>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.NeftisController.GetPaymentTerminalCommunicationMode(System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String})">
+            <summary>
+            Gets PaymentTerminalIntegration communication channel mode based on [PAYMENT_TERMINAL] MODE, PIN, MAC, PORT and IP parameters
+            </summary>
+            <param name="parameters">parameter list</param>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.NeftisController.GetPaymentTerminalLogTraceLevel">
+            <summary>
+            Gets the log tracel level based on current Logger instance
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.NeftisController.ValidateReadyToRequest">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.NeftisController.AnalyzeImmediateResponse(HubblePOS.Module.PaymentTerminalIntegration.BaseResponse)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.NeftisController.Factory">
+            <summary>
+            Factoría para crear objetos de núcleo.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.NeftisController.CorePos">
+            <summary>
+            POS de núcleo que se utilizará.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.InstanceByEnvironment(HubblePOS.Core.Interface.HubbleEnvironmentType,HubblePOS.EnvironmentConfigurationProvider.Interface.IEnvironmentConfigurationProvider)">
+            <summary>
+            Devuelve la referencia única a la instancia de esta clase.
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.ConnectionStatusChanged">
+            <summary>
+            Occurs when [terminal connection status changed].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.CustomerIdentificationOperationStatusChanged">
+            <summary>
+            Occurs when [customer identification operation satus changed].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.CustomerResponseDataReceived">
+            <summary>
+            Occurs when [customer identification operation returned a customer].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.SaleResponseDataReceived">
+            <summary>
+            Occurs when [sale response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.RefundResponseDataReceived">
+            <summary>
+            Occurs when [refund response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.PaymentManagementResponseDataReceived">
+            <summary>
+            Occurs when [payment management response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.ClosureResponseDataReceived">
+            <summary>
+            Occurs when [closure response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.GetOperativeTotalsResponseDataReceived">
+            <summary>
+            Occurs when [get operative totals response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.GetTransactionDetailsResponseDataReceived">
+            <summary>
+            Occurs when [get transaction details response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.GetCopyResponseDataReceived">
+            <summary>
+            Occurs when [get copy response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.MessageToShowReceived">
+            <summary>
+            Occurs when [message to show received is received].
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.Initialize(System.String)">
+            <summary>
+            Solicita la configuración,
+            Selecciona el controlador de comunicaciones que trabajará con el terminal de pago,
+            y transfiere la configuración a la instancia del controlador de comunicaciones seleccionado.
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.SetCustomerIdentification(System.Boolean)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.Sale(System.Decimal,System.Boolean,System.Collections.Generic.IList{HubblePOS.Controller.PaymentTerminal.DocumentLine})">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.Refund(System.Decimal,System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.PaymentManagement(System.Decimal,System.Int32)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.Closure">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.GetOperativeTotals">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.GetTransactionDetails(System.String,System.Nullable{System.DateTime})">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.GetCopy(System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.CreateFactory(HubblePOS.Core.Interface.HubbleEnvironmentType,HubblePOS.EnvironmentConfigurationProvider.Interface.IEnvironmentConfigurationProvider)" -->
+        <member name="M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.CalculateEnvironmentHashCode(HubblePOS.Core.Interface.HubbleEnvironmentType,HubblePOS.EnvironmentConfigurationProvider.Interface.IEnvironmentConfigurationProvider)">
+            <summary>
+            Obtiene un código hash que identifica a la instancia correspondiente al tipo y configuración de entorno dados.
+            </summary>
+            <param name="hubbleEnvironmentType"></param>
+            <param name="environmentConfigurationProvider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.FilterParametersForEverisopController(System.Collections.Generic.IList{HubblePOS.Core.Interface.ConfigurationParameter})">
+            <summary>
+            Filters the input parameter list into a specific dictionary for the EverisopController
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.PaymentTerminalController.FilterParametersForNeftisController(System.Collections.Generic.IList{HubblePOS.Core.Interface.ConfigurationParameter})">
+            <summary>
+            Filters the input parameter list into a specific dictionary for the NeftisController
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.YomaniController.SetCustomerIdentification(System.Boolean)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.YomaniController.Sale(System.Decimal,System.Boolean,System.Collections.Generic.IList{HubblePOS.Controller.PaymentTerminal.DocumentLine})">
+            <summary>
+             Realiza una venta en el datáfono
+            </summary>
+            <param name="amount"></param>
+            <param name="isSplitPayment"></param>
+            <param name="documentLines"></param>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.YomaniController.Refund(System.Decimal,System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.YomaniController.PaymentManagement(System.Decimal,System.Int32)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.YomaniController.Closure">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.YomaniController.GetOperativeTotals">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.YomaniController.GetTransactionDetails(System.String,System.Nullable{System.DateTime})">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.YomaniController.GetCopy(System.String)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.YomaniController.RequestSale(System.Decimal)">
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.ConnectionStatusChanged">
+            <summary>
+            Occurs when [terminal connection status changed].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.CustomerIdentificationOperationStatusChanged">
+            <summary>
+            Occurs when [customer identification operation status changed].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.CustomerResponseDataReceived">
+            <summary>
+            Occurs when [customer identification data received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.SaleResponseDataReceived">
+            <summary>
+            Occurs when [sale response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.RefundResponseDataReceived">
+            <summary>
+            Occurs when [refund response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.PaymentManagementResponseDataReceived">
+            <summary>
+            Occurs when [payment management response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.ClosureResponseDataReceived">
+            <summary>
+            Occurs when [closure response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.GetOperativeTotalsResponseDataReceived">
+            <summary>
+            Occurs when [get operative totals response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.GetTransactionDetailsResponseDataReceived">
+            <summary>
+            Occurs when [get transaction details response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.GetCopyResponseDataReceived">
+            <summary>
+            Occurs when [get copy response is received].
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.MessageToShowReceived">
+            <summary>
+            Occurs when [message to show received is received].
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.Initialize(System.String)">
+            <summary>
+            Selecciona el subcontrolador a través del que se trabajará
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.SetCustomerIdentification(System.Boolean)">
+            <summary>
+            Habilita/inhabilita temporalmente la lectura de identificación de cliente en el terminal de pago
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.Sale(System.Decimal,System.Boolean,System.Collections.Generic.IList{HubblePOS.Controller.PaymentTerminal.DocumentLine})">
+            <summary>
+            Solicita al terminal de pago una venta
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.Refund(System.Decimal,System.String)">
+            <summary>
+            Solicita al terminal de pago una devolución
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.PaymentManagement(System.Decimal,System.Int32)">
+            <summary>
+            Solicita al terminal de pago un pago aplazado
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.Closure">
+            <summary>
+            Solicita al terminal de pago el cierre operativo
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.GetOperativeTotals">
+            <summary>
+            Solitica al terminal de pago los totales operativos
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.GetTransactionDetails(System.String,System.Nullable{System.DateTime})">
+            <summary>
+            Solicita al terminal de pago los detalles de una autorización
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.IPaymentTerminalController.GetCopy(System.String)">
+            <summary>
+            Solicita al terminal de pago la copia de una transacción bancaria
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ICommunicationProtocol.Initialize(System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.String})">
+            <summary>
+            Inicializa el controlador de comunicaciones según las necesidades del protocolo implementado
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ICommunicationProtocol.SetCustomerIdentification(System.Boolean)">
+            <summary>
+            Habilita/inhabilita temporalmente la lectura de identificación de cliente en el terminal de pago
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ICommunicationProtocol.Sale(System.Decimal,System.Boolean,System.Collections.Generic.IList{HubblePOS.Controller.PaymentTerminal.DocumentLine})">
+            <summary>
+            Solicita una venta al terminal de pago
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ICommunicationProtocol.Refund(System.Decimal,System.String)">
+            <summary>
+            Solicita una devolución al terminal de pago
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ICommunicationProtocol.PaymentManagement(System.Decimal,System.Int32)">
+            <summary>
+            Solicita una operación de pago aplazado al terminal de pago
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ICommunicationProtocol.Closure">
+            <summary>
+            Solicita el cierre operativo al terminal de pago
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ICommunicationProtocol.GetOperativeTotals">
+            <summary>
+            Solicita los totales operativos al terminal de pago
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ICommunicationProtocol.GetTransactionDetails(System.String,System.Nullable{System.DateTime})">
+            <summary>
+            Solicita detalles de transacciones al terminal de pago
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Controller.PaymentTerminal.ICommunicationProtocol.GetCopy(System.String)">
+            <summary>
+            Solicita una copia del resultado de la última operación solicitada al terminal de pago
+            </summary>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.GenericErrorException"></exception>
+            <exception cref="T:HubblePOS.Controller.PaymentTerminal.OperationRejectedException"></exception>
+        </member>
+        <member name="T:HubblePOS.Controller.PaymentTerminal.Address">
+            <summary>
+            Representa una dirección.
+            
+            CAUTION!!
+            El origen de datos (ilion) tiene un diseño sensible a incoherencia de datos en lo que respecta a ciudad, provincia y país para este ente.
+            Este modelo necesita soportar y soporta la información introducida en el origen de datos pero a la vez también está sujeto a incoherencia
+            de datos respecto a las propiedades informadas en este ente y la que tengan los correspondientes entes ciudad, provincia y país
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Address.Id">
+            <summary>
+            Identificador
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Address.Street">
+            <summary>
+            Calle, pudiendo incluir el número, piso, letra...
+            (Ej: C/ Juan de la Cierva, 12 pido 5ª A)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Address.CityId">
+            <summary>
+            [Opcional]
+            Identificador de la ciudad/población.
+            Null si no existe.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Address.CityName">
+            <summary>
+            [Opcional]
+            Nombre de la ciudad/población. Null si no existe.
+            
+            CAUTION!!
+            Por diseño del origen de datos (ilion), puede existir el nombre y no el id de ciudad correspondiente, 
+            así como haber en este modelo una correspondencia Id/Nombre de ciudad distinta a la que haya en el ente ciudad
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Address.PostalCode">
+            <summary>
+            [Opcional]
+            Código postal. Null si no existe.
+            
+            CAUTION!!
+            Por diseño del origen de datos (ilion), puede existir un código postal y no el nombre y/o id de ciudad correspondiente, 
+            así como haber en este modelo una correspondencia Id/Nombre/CP de ciudad distinta a la que haya en el ente ciudad
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Address.ProvinceId">
+            <summary>
+            [Opcional]
+            Identificador de la provincia/región. Null si no existe
+            
+            CAUTION!!
+            Por diseño del origen de datos (ilion), puede ser un Id que no se corresponda con el que tenga el ente ciudad que corresponda a la informada en este modelo
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Address.ProvinceName">
+            <summary>
+            [Opcional]
+            Nombre de la provincia/región. Null si no existe
+            
+            CAUTION!!
+            Por el diseño del origen de datos (ilion), puede existir el nombre y no el id de provincia correspondiente,
+            así como haber en este modelo una correspondencia Id/Nombre de provincia distinta a la que haya en el ente provincia o 
+            a la que se llegue a través del ente ciudad que corresponda al informado en este modelo.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Address.CountryId">
+            <summary>
+            [Opcional]
+            Identificador del país. Null si no existe
+            
+            CAUTION!!
+            Por el diseño del origen de datos (ilion), puede ser un Id que no se corresponda con el que tenga el ente provincia que corresponda a la informada en este modelo.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Address.CountryName">
+            <summary>
+            [Opcional]
+            Nombre del país. Null si no existe
+            
+            CAUTION!!
+            Por el diseño del origen de datos (ilion), puede existir el nombre y no el id de país correspondiente,
+            así com ohaber en este modelo una correspondencia Id/Nombre de país distinta a la que haya en el ente país o
+            a la que se llegue a través del ente provincia que corresponda al informado en este modelo
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Address.PhoneNumber">
+            <summary>
+            [Opcional]
+            Número de teléfono.
+            Null si no existe
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Address.Type">
+            <summary>
+            Tipo de dirección
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Address.OwnerEntityId">
+            <summary>
+            Identificador de la entidad a la que pertenece esta dirección.
+            El tipo de entidad vendrá determinada por la propiedad Type, si es que es conocida.
+            (Ej: OwnerEntityId=0276322 y Type=CustomerMain significa el domicilio principal para el cliente con id 0276322)
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Controller.PaymentTerminal.AddressType.Other">
+            <summary>
+            Otro (sin tipo específico)
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Controller.PaymentTerminal.AddressType.CustomerMain">
+            <summary>
+            Domicilio principal de un cliente
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Controller.PaymentTerminal.Customer">
+            <summary>
+            This class contains the Customer information received from payment terminal
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Customer.Id">
+            <summary>
+            Identificador
+            (NCompany + Code)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Customer.BusinessName">
+            <summary>
+            [Opcional]
+            Razon Social.
+            Null si no existe
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Customer.DriverName">
+            <summary>
+            Nombre del conductor. Formato: an 0...50
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Customer.TIN">
+            <summary>
+            Número de identificación fiscal.
+            Null si no está especificado.
+            (Ej: 22123456Z en el caso de un NIF).
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Customer.Plate">
+            <summary>
+            Matrícula. Formato: an-10
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Customer.DrivenDistance">
+            <summary>
+            KMs del vehículo. Formato: n-8
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Customer.Balance">
+            <summary>
+            Saldo disponible. Formato: n-8
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Customer.BalanceCurrencyId">
+            <summary>
+            Divisa (código según ISO8583). Formato: an-10
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Customer.DocumentTypeId">
+            <summary>
+            Documento/Serie. Formato: an-4
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Customer.RestrictedProductReferences">
+            <summary>
+            Gets or sets the restricted (unavailable) product references.
+            </summary>
+            
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Customer.RestrictedProductCategories">
+            <summary>
+            Gets or sets the restricted (unavailable) product categories.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Customer.ContactId">
+            <summary>
+            Número de contacto de cliente. Formato an-10
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.Customer.PAN">
+            <summary>
+            Card Number (PAN)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerCardInformation.Plate">
+            <summary>
+            Matrícula. Formato: an-10
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerCardInformation.Balance">
+            <summary>
+            Saldo disponible. Formato: n-8
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerCardInformation.BalanceCurrencyId">
+            <summary>
+            Divisa (código según ISO8583). Formato: an-10
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerCardInformation.DrivenDistance">
+            <summary>
+            KMs del vehículo. Formato: n-8
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerCardInformation.DriverName">
+            <summary>
+            Nombre del conductor. Formato: an 0...50
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerCardInformation.ContactId">
+            <summary>
+            Número de contacto de cliente. Formato an-10
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerCardInformation.DocumentTypeId">
+            <summary>
+            Documento/Serie. Formato: an-4
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerCardInformation.IsFleet">
+            <summary>
+            [Opcional]
+            Indica si es un cliente de flota
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Controller.PaymentTerminal.DocumentLine">
+            <summary>
+            Representa una línea de un documento
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.DocumentLine.LineNumber">
+            <summary>
+            Número de línea dentro del documento
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.DocumentLine.ProductId">
+            <summary>
+            Identificador del producto
+            (NComapny + Reference)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.DocumentLine.Quantity">
+            <summary>
+            Cantidad o número de unidades del producto
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.DocumentLine.UnitaryPriceWithTax">
+            <summary>
+            Precio unitario, con impuestos incluidos (y sin descuentos aplicados)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.DocumentLine.DiscountPercentage">
+            <summary>
+            Porcentaje de descuento aplicado
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.DocumentLine.DiscountAmountWithTax">
+            <summary>
+            Valor monetario del descuento aplicado, con impuestos incluidos.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.DocumentLine.TaxPercentage">
+            <summary>
+            Porcentaje de impuestos aplicado
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.DocumentLine.TaxAmount">
+            <summary>
+            Valor monetario de los impuestos aplicados
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.DocumentLine.TotalAmountWithTax">
+            <summary>
+            Monto total de la línea, con impuestos incluidos (y descuentos aplicados)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.DocumentLine.SalesGroup">
+            <summary>
+            Es una agrupacion de productos pero que no corresponde a grupos ni familias del producto
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Controller.PaymentTerminal.ConnectionStatusChangedEventArgs">
+            <summary>
+            This class contains the EventArgs for ConnectionStatusChanged.
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs">
+            <summary>
+            This class contains the EventArgs for exposing a received customer information response message
+            (GetCustomerAsync).
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.ResponseCode">
+            <summary>
+            Response Code related to the referred transaction.
+            Value 99 for SUCCESS
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.Id">
+            <summary>
+            Identificador
+            (NCompany + Code)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.RateId">
+            <summary>
+            Identificador de tarifa de cliente (NCompany + Code)
+            Nulo si no existe
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.TIN">
+            <summary>
+            Número de identificación fiscal.
+            Null si no está especificado.
+            (Ej: 22123456Z en el caso de un NIF).
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.TINTypeId">
+            <summary>
+            [Opcional]
+            Identificador (NComapny + Code) del tipo de número de identificación fiscal.
+            Null si no está especificado.
+            (Ej: 027636 podría ser el identificador de tipo de TIN que indicase que es un RUC)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.BusinessName">
+            <summary>
+            [Opcional]
+            Razon Social.
+            Null si no existe
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.AddressList">
+            <summary>
+            Lista de direcciones.
+            Vacía si no existen
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.PhoneNumber">
+            <summary>
+            [Opcional]
+            Número de teléfono.
+            Null si no existe
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.IsDischarged">
+            <summary>
+            ¿Está dado de baja actualmente?
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.CustomerMessage">
+            <summary>
+            [Opcional]
+            Mensaje asociado al cliente
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.CustomerType">
+            <summary>
+            Nulo si no hay TIPO_CLIENTE
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.CardInformation">
+            <summary>
+            [Opcional]
+            Información de cliente obtenida mediante lectura de tarjeta
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.RestrictedProductReferences">
+            <summary>
+            Gets or sets the restricted (unavailable) product references.
+            </summary>
+            
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.RestrictedProductCategories">
+            <summary>
+            Gets or sets the restricted (unavailable) product categories.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.CustomerInformationResponseEventArgs.PAN">
+            <summary>
+            Card Number (PAN)
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Controller.PaymentTerminal.MessageToShowReceivedEventArgs">
+            <summary>
+            This class contains the EventArgs for exposing a received message
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MessageToShowReceivedEventArgs.Message">
+            <summary>
+            Message
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Controller.PaymentTerminal.MonetaryInformationResponseEventArgs">
+            <summary>
+            This class contains the EventArgs for exposing a received monetary summary information response message
+            (ClosureAsync / GetOperativeTotalsAsync / GetAuthorizationDetailsAsync / GetCopyAsync).
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MonetaryInformationResponseEventArgs.OriginSTANCode">
+            <summary>
+            Referred STAN code. The code which was generated on origin request
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MonetaryInformationResponseEventArgs.ResponseCode">
+            <summary>
+            Response Code related to the referred transaction.
+            Value 0000 for SUCCESS
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MonetaryInformationResponseEventArgs.IntermediaryOperationCode">
+            <summary>
+            Intermediary Operation Code.
+            Identifies the executed transaction into intermediary systems (i.e. redsys).
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MonetaryInformationResponseEventArgs.TextToShow">
+            <summary>
+            Text for the caller app (to be shown on TPV screen)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MonetaryInformationResponseEventArgs.TextToPrint">
+            <summary>
+            Text for the final customer (to be printed)
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Controller.PaymentTerminal.MonetaryTransactionResponseEventArgs">
+            <summary>
+            This class contains the EventArgs for exposing a received monetary transaction response message
+            (SaleAsync / RefundAsync).
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MonetaryTransactionResponseEventArgs.OriginSTANCode">
+            <summary>
+            Referred STAN code. The code which was generated on origin request
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MonetaryTransactionResponseEventArgs.ResponseCode">
+            <summary>
+            Response Code related to the referred transaction.
+            Value 0000 for SUCCESS
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MonetaryTransactionResponseEventArgs.PAN">
+            <summary>
+            Card PAN OR masked Card Number.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MonetaryTransactionResponseEventArgs.ApprovalCode">
+            <summary>
+            Approval Code. Identifies the executed transaction.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MonetaryTransactionResponseEventArgs.IntermediaryOperationCode">
+            <summary>
+            Intermediary Operation Code.
+            Identifies the executed transaction into intermediary entity systems (i.e. redsys).
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MonetaryTransactionResponseEventArgs.TextToShow">
+            <summary>
+            Text for the caller app (to be shown on caller (TPV) screen)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MonetaryTransactionResponseEventArgs.TextToPrint">
+            <summary>
+            Text for the final customer (to be printed by caller (TPV))
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Controller.PaymentTerminal.MonetaryTransactionResponseEventArgs.TerminalSerialNumber">
+            <summary>
+            Reported terminal serial number (value is injected from configuration parameter defined at Initialization)
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Controller.PaymentTerminal.TerminalOperationStatusChangedEventArgs">
+            <summary>
+            This class contains the EventArgs for TerminalOperationStatusChangedEventArgs.
+            </summary>
+        </member>
+    </members>
+</doc>

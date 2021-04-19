@@ -1,0 +1,2314 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HubblePOS.Connector.FDC.Wayne</name>
+    </assembly>
+    <members>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC">
+            <summary>
+            Implementa el conector para Forecourt de Wayne
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.ConnectionState">
+            <summary>
+            Indicates the state of the connection with the petrol station controller (PSS FDC).
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.FDCIp">
+            <summary>
+            IP of petrol station controller (PSS FDC).
+            Null if none is configured.
+            [Required to connect]
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.FDCPassword">
+            <summary>
+            Password to connect to petrol station controller (PSS FDC).
+            Null if none is configured.
+            [Required to connect]
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.POSId">
+            <summary>
+            Identity of POS connecting (using this component) to petrol station controller (PSS FDC).
+            Null if none is configured.
+            [Required to connect]
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.ApplicationUniqueIdentifier">
+            <summary>
+            Identifier that univocally identifies the application that connects to petrol station controller (PSS FDC).
+            Null if none is configured.
+            [Required to connect]
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.HasMoreAttempts">
+            <summary>
+            Checks if exists more attemps to connect
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.MustSecureCommunication">
+            <summary>
+            Checks if the communications must secured
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.MoneyDecimalPointPositions">
+            <summary>
+            The fuelling point money decimal point positions.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.FpMoneyTotalDecimalPointPositions">
+            <summary>
+            The fuelling point money total decimal point positions.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.UnitPricesDecimalPointPositions">
+            <summary>
+            The fuelling point price decimal point positions.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.VolumeDecimalPointPositions">
+            <summary>
+            The fuelling point volume decimal point positions.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.FpVolumeTotalDecimalPointPositions">
+            <summary>
+            The fuelling point volume total decimal point positions.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.LogFileNameWithFullPathAndExtension">
+            <summary>
+            Gets or sets the log file name with full path and extension.
+            If this property is set, special logs will be writen into the specified file.
+            Otherwise it will not write any special logs.
+            </summary>
+            <value>
+            The log file name with full path and extension.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.LogTMPFolderNameFullPath">
+            <summary>
+            Gets or sets the log TMP folder name with full path for storing log files exceeding maximum filesize.
+            If this property is not set, special logs files will be moved to (Assembly.Location)\LogsTMP
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.MustOperateWithSuppervisedTransactions">
+            <summary>
+            Regulates if suppervised transactions should be taken into consideration.
+            TRUE: will be taken into account when consulting, and they will be informed by notifications.
+            FALSE: will be ignored when consulting, and they will not be informed by notifications.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.MustOperateWithUnsuppervisedTransactions">
+            <summary>
+            Regulates if unsuppervised transactions should be taken into consideration.
+            TRUE: will be taken into account when consulting, and they will be informed by notifications.
+            FALSE: will be ignored when consulting, and they will not be informed by notifications.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.MustAutomaticallyCleanPostpaidZeroTransactions">
+            <summary>
+            Regulates if this component should automatically clean post-paid supply transactions of zero value when they are detected.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.MustAutomaticallyAuthorizePostpaidFuellingOperations">
+            <summary>
+            Regulates if this component should automatically authorize post-paid (unlimitted, without top limit) supply operations when they are detected.
+            TRUE: authorizes automattically.
+            FALSE: explicit authorization is required for this type of fuelling operations.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.MustAutomaticallyReconnectWhenLostConnectionDetected">
+             <summary>
+             Regulates if this component should automatically reconnect to petrol station controller (PSS FDC) when the loss of connection is detected.
+            
+             TRUE:
+             Will automatically reconnect, moving from connected to connecting.
+             If it fails it will keep trying it until the configured maximum attemps is reached.
+             Between attemps, the state will remain connecting, until it finally changes to connected or disconnected.
+             All connection state changes will be notified by events.
+             FALSE:
+             Change to state disconnected will be notified.
+             Explicit new connection or reconnection actions will be necessary to move into connected state again.
+             </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.MaximumMillisecondsInReconnectionOperationOfAttemptsList">
+            <summary>
+            The list of milliseconds before consider unsuccessful an attempt in a re-connection operation context.
+            Regulates the time to wait before consider unsuccessful an attempt of a re-connection operation.
+            Regulates the maximum attemps to automatically re-try to re-connect when the connection with petrol station controller is lost, and its waiting times.
+            Each of the items in the list represents the time to wait for each re-try chance to succeed.
+            The total attempts to try a re-connection is represented by this list size.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.MillisecondsInReconnectionOperationBetweenAttemptsList">
+            <summary>
+            Gets or sets the list of milliseconds between automatic attempts in a reconnect operation context
+            Each position of this list is the time to wait since the end of an attempt until the start of the next attempt (if it exists).
+            i.e:
+                first position of this list will be the time to wait since the first attempt ends until the second begins,
+                second position of this list  will be the time to wait since the second attemp ends until the third begins,
+            and so on..
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.MaximumMillisecondsInConnectionOperationOfAttemptsList">
+            <summary>
+            The list of milliseconds before consider unsuccessful an attempt in a connection operation context.
+            Regulates the time to wait before consider unsuccessful an attempt of a connection operation.
+            Regulates the maximum attemps to automatically try to connect to petrol station controller, and its waiting times.
+            Each of the items in the list represents the time to wait for each connection try chance to succeed.
+            The total attempts to try a connection is represented by this list size.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.MillisecondsInConnectionOperationBetweenAttemptsList">
+            <summary>
+            Gets or sets the list of milliseconds between automatic attempts in a connection operation context
+            Each position of this list is the time to wait since the end of an attempt until the start of the next attempt (if it exists).
+            i.e:
+                first position of this list will be the time to wait since the first attempt ends until the second begins,
+                second position of this list  will be the time to wait since the second attemp ends until the third begins,
+                and so on..
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.SupportedPostpaidPetrolStationControllerRawServiceModeIdList">
+             <summary>
+             Regulates the raw identificators of service modes configured in petrol station controller
+             that means post-paid modes and are to be taken into consideration.
+             If at a given time a service mode is encountered an is not covered by this list, will be ignored by post-paid logic.
+            
+             Supports specific identificators or patterns including X (case-insensitive) as wildcard (i.e: 1X)(i.e: abXc)
+             </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.SupportedPrepaidPetrolStationControllerRawServiceModeIdList">
+             <summary>
+             Regulates the raw identificators of service modes configured in petrol station controller
+             that means pre-paid modes and are to be taken into consideration.
+             If at a given time a service mode is encountered an is not covered by this list, will be ignored by pre-paid logic.
+            
+             Supports specific identificators or patterns including X (case-insensitive) as wildcard (i.e: 2X)(i.e: abXc)
+             </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.AreThereFuellingPoints">
+            <summary>
+            Indicates if there are Fuelling Points detected.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.MillisecondsToWaitBeforeTryingToDisconnectWhenAnotherProcessIsStillRunning">
+            <summary>
+            Gets or sets the milliseconds to wait before trying to disconnect,
+            if a disconnection request is received, and another connection / disconnection process is still running .
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.#ctor(System.Int32,System.Nullable{System.Int32},System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="transactionIntervalMilliseconds">Tiempo de espera entre comprobaciones de transacciones</param>
+            <param name="lastLocalTransactionSequenceNumber">Numero de secuencia de la ultima transaccion procesada</param>
+            <param name="fusionSalesMaxHoursGap">Diferencia en horas maxima para recuperar ultimas transacciones en fusion</param>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.Dispose">
+            <summary>
+            Libera recursos
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.ConnectToForecourtController(System.String,System.String,System.Int32,System.String,System.String,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+            Connects to petrol station controller with passed parameters.
+            This trys to connect even if component are yet connected
+            </summary>
+            <param name="forecourtControllerIp">Petrol station controller (PSS DOMS) IP</param>
+            <param name="forecourtControllerPassword">Petrol station controller (PSS DOMS) password</param>
+            <param name="posId">POS id (alias of connecting client app, indicating a POS identity)</param>
+            <param name="appUniqueIdentifier">Application unique identifier (connecting client app unique identifier)</param>
+            <param name="mustSecureCommunication">If communication must be secured</param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.DisconnectFromForecourtController(System.Threading.CancellationToken)">
+            <summary>
+            Realiza la desconexion
+            </summary>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.ReconnectToForecourtController(System.Threading.CancellationToken)">
+            <summary>
+            Realiza la reconexion
+            </summary>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.AuthorizeFuellingPoint(System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Authorizes a pump to serve fuel
+            </summary>
+            <param name="fuellingPointId"></param>
+            <param name="transactionExtraData"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.OperationRejectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.CancelAuthorizationOrLockingOfFuellingPoint(System.Int32,System.Boolean)">
+            <summary>
+            This methods cancels a previous authorization or locking on a fuelling point.
+            Fuelling point must be locked or authorized.
+            </summary>
+            <param name="fuellingPointId"></param>
+            <param name="isCancelAuthorization"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.OperationRejectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.CancelEmergencyStopAllFuellingPoints(System.Threading.CancellationToken)">
+            <summary>
+            Cancels an emergency stop stablished over all fuelling points of the petrol station.
+            </summary>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.CancelEmergencyStopOfFuellingPoint(System.Int32,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Cancels an emergency stop on a fuelling point. Fuelling point must be stopped.
+            </summary>
+            <param name="fuellingPointId"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.OperationRejectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.CloseFuellingPoint(System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Closes an opened fuelling point. A closed fuelling point cannot be closed again.
+            Fuelling point must be opened first in order to close it.
+            </summary>
+            <param name="fuellingPointId"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.OperationRejectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.EmergencyStopAllFuellingPoints(System.Threading.CancellationToken)">
+            <summary>
+            Makes an emergency stop over all fuelling points of the petrol station.
+            </summary>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.EmergencyStopFuellingPoint(System.Int32,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Stops a fuelling point by an emergency. This means that the pump will stop the
+            fuel supply
+            </summary>
+            <param name="fuellingPointId"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.OperationRejectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.GetReducedFuellingPointById(System.Int32,System.Threading.CancellationToken)">
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.GetFuellingPointById(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Returns the requested FuellingPoint by its identifier
+            </summary>
+            <param name="fuellingPointId"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.GetFuellingPointGradeListByFuellingPointId(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Gets the fuelling point grade list by fuelling point identifier.
+            </summary>
+            <param name="fpId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.GetFuellingPointGradeListByFuellingPointIdList(System.Collections.Generic.IList{System.Int32},System.Threading.CancellationToken)">
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.GetFuellingPointsByCriteria(HubblePOS.Connector.FDC.Interface.FuellingPointSearchCriteria,System.Threading.CancellationToken)">
+            <summary>
+            Devuelve la lista de fp de fusion sin filtrar
+            </summary>
+            <param name="searchCriteria"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.OpenFuellingPoint(System.Int32,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.OpenMultipleFuellingPoints(System.Collections.Generic.IDictionary{System.Int32,System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            No hace nada por ahora
+            </summary>
+            <param name="fuellingPointIdAndOperationModeIdDictionary"></param>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.PreparePostpaidForFuellingPoint(System.Int32,System.Nullable{System.Int32},System.String,System.Threading.CancellationToken)">
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.PreparePrepaidForFuellingPoint(System.Int32,HubblePOS.Connector.FDC.Interface.FuellingLimit,System.Int32,System.String,System.Threading.CancellationToken)">
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.PreparePresetForFuellingPoint(System.Int32,HubblePOS.Connector.FDC.Interface.FuellingLimit,System.Nullable{System.Int32},System.String,System.Threading.CancellationToken)">
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.GetPriceSet(System.Threading.CancellationToken)">
+            <summary>
+            Gets set of prices, containig list of groups of prices, containing prices of grades
+            Returns null if price set not exists
+            </summary>
+            <returns>Set of prices if exists, otherwise null</returns>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.ChangePriceSet(System.Int32,System.Nullable{System.Int32},System.Decimal,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Set price of a grade on current priceSet of forecourt, in all price groups or in a concrete price group
+            </summary>
+            <param name="gradeId">Grade Id</param>
+            <param name="priceGroupId">Price group Id. Null to indicate any price group</param>
+            <param name="price">New price</param>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.ClearSupplyTransactionOfFuellingPoint(System.Int32,System.Int32,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Clean Transaction of fuelling point, by supplyTransactionId and fuelling point id.
+            </summary>
+            <param name="supplyTransactionId">The transaction identifier</param>
+            <param name="fuellingPointId">The fuelling point identifier.</param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.GetSupplyTransactionOfFuellingPointById(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Obtiene la transaccion de Fusion.
+            OJO:
+            la transaccion id -1 significa recuperar la ultima transaccion
+            el id de fuellingPoint no se utiliza, da igual su valor
+            </summary>
+            <param name="supplyTransactionId"></param>
+            <param name="fuellingPointId"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.SupplyTransactionNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.GetSupplyTransactionsByCriteria(HubblePOS.Connector.FDC.Interface.SupplyTransactionSearchCriteria,System.Threading.CancellationToken)">
+            <summary>
+            Returns a list of supply transactions specified by criteria.
+            </summary>
+            <param name="searchCriteria">Criteria by which to search</param>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.GetTransactionExtraData(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Requests the current TransReturnData to Forecourt controller and returns a stringed translation.
+            </summary>
+            <param name="fuellingPointId"></param>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.LockSupplyTransactionOfFuellingPoint(System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Lock Transaction by supplyTransactionId
+            </summary>
+            <param name="supplyTransactionId">Supply transaction Id</param>
+            <param name="fuellingPointId">The fuelling point identifier.</param>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.UnlockSupplyTransactionOfFuellingPoint(System.Int32,System.Int32,System.Nullable{System.Int32},System.Threading.CancellationToken)">
+            <summary>
+            Unlock Transaction by supplyTransactionId
+            </summary>
+            <param name="supplyTransactionId">Supply transaction Id</param>
+            <param name="fuellingPointId">The fuelling point identifier.</param>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.BaseRequestParams">
+            <summary>
+            Parametros base para todas las peticiones wayne
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.SniffingTimer">
+            <summary>
+            Temporizador para efectuar escuchas de transacciones
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.LastLocalTransactionSequenceNumber">
+            <summary>
+            Almacena la ultima id salvada en local
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.FusionSalesMaxHoursGap">
+            <summary>
+            Diferencia en horas maxima para recuperar ultimas transacciones en fusion (ejemplo solamente recuperar como maximo las ultimas transacciones en 24 horas)
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.NotifyConnectionState(HubblePOS.Connector.FDC.Interface.ConnectionState)">
+            <summary>
+            Si el nuevo estado es distinto del actual, lanza el evento de cambio de estado de conexion y actualiza al nuevo estado
+            </summary>
+            <param name="newState"></param>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.NotifyTransactions(System.Collections.Generic.IList{HubblePOS.Connector.FDC.Interface.SupplyTransaction})">
+            <summary>
+            Provoca el evento de transactionsStatusChanged
+            </summary>
+            <param name="supplyTransacionList"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.SniffingTimerElapsed">
+            <summary>
+            Funcion que se ejecuta al producirse el evento elapsed del temporizador (efectua la esucha)
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.SniffTransactions">
+            <summary>
+            Ejecuta el proceso de escucha de transacciones
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.WayneConnectorBC.GetPendingFusionSalesToProcess(System.Int32,System.Int32)">
+            <summary>
+            Inicia la obtencion de las transacciones pendientes por insertar en local
+            </summary>
+            <param name="lastFusionSaleId"></param>
+            <param name="lastLocalSaleId"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ActionNotAllowedException">
+            <summary>
+            Action not allowed
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.AuthentificationErrorException">
+            <summary>
+            Authentication error detected.
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.BadTypeException">
+            <summary>
+            Bad type. Type does not exist
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.BadValueException">
+            <summary>
+            Bad property value
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.CannotReadException">
+            <summary>
+            Cannot read
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.CannotWriteException">
+            <summary>
+            Cannot write. Not Writable - read only data
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.CommunicationException">
+            <summary>
+            Communication error
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.DeviceLockedException">
+            <summary>
+            Device locked
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.DeviceOfflineException">
+            <summary>
+            Device offline
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.FailureException">
+            <summary>
+            Complete failure.
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.FDCErrorException">
+            <summary>
+            Error on FDC controller
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.FDCInoperableException">
+            <summary>
+            FDC inoperable
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ForecourtClosedException">
+            <summary>
+            Forecourt closed
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.FormatException">
+            <summary>
+            Thrown when an error occurs trying to format entities
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GlobalMaximumAuthorizationExceeded">
+            <summary>
+            Maximum number of possible authorizations exceeded (global)
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.InvalidTransactionException">
+            <summary>
+            fuel transaction invalid
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.LimitException">
+            <summary>
+            Some limit exceeded
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.MandatoryConfigurationDataMissingException">
+            <summary>
+            Data missing that is needed before sales can be made (e.g., one product must be defined).
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.MaxTransactionsUnpaidReached">
+            <summary>
+            Maximum number of unpaid transactions reached
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.MissingMandatoryDataException">
+            <summary>
+            Complete failure. Mandatory data is missing in the request.
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.NoActionException">
+            <summary>
+            No error, no action
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.NoDataToReturnException">
+            <summary>
+            No data to return
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.NoLogonException">
+            <summary>
+            The client has not performed log-on or log-on fails.
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.NotPossibleException">
+            <summary>
+            Action not possible. Command refused
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.NoTransactionException">
+            <summary>
+            No fuel transaction in DSP transaction buffer
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.NotSupportedException">
+            <summary>
+            Not supported option
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ParsingErrorException">
+            <summary>
+            Complete failure. XML is not well formed.
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.POSMaximunAuthorizationExceeded">
+            <summary>
+            Maximum number of possible authorizations exceeded (per POS)
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.PrepaymentNotAllowedException">
+            <summary>
+            Prepayment not allowed
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.PresetNotAllowedException">
+            <summary>
+            preset not allowed
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ResumeFuelingException">
+            <summary>
+            Error resume fueling
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.TimedOutException">
+            <summary>
+            Complete failure. The request cannot process or is formatted incorrectly.
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.TransactionLockedException">
+            <summary>
+            Fuel transaction is locked by another POS
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.TransactionNotReservedException">
+            <summary>
+            Fuel transaction not reserved for POS
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.WayneFormatErrorException">
+            <summary>
+            Complete failure. The request cannot process or is formatted incorrectly.
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.WayneValidationErrorException">
+            <summary>
+            Complete failure. XML cannot be validated against the defined schema.
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.WrongConfigurationException">
+            <summary>
+            The FDC has detected a wrong forecourt configuration.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ConfigurationHelper.GetDefaultMustAutomaticallyReconnect">
+            <summary>
+            Indica si se debe reconectar automaticamente tras detectar desconexion
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.ConfigurationHelper.ConnectionStatusCheckPeriodMilliseconds">
+            <summary>
+            Indica el periodo, en milisegundos, para comprobar el estado de conexion a fusion
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ConnectionHelper">
+            <summary>
+            Clase auxiliar que se encarga de las conexiones a Fusion y de chequear el estado de conexion.
+            Lanzara los eventos de estado de conexion pertinentes del connector BC
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.ConnectionHelper.WayneConnector">
+            <summary>
+            Referencia al connector de wayne
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.ConnectionHelper.FusionClass">
+            <summary>
+            Referencia a la clase de fusion
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.ConnectionHelper.ConnectionStatusTimer">
+            <summary>
+            Timer para comprobar estado de conexion
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ConnectionHelper.Logger">
+            <summary>
+            Logeador
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ConnectionHelper.#ctor(HubblePOS.Connector.FDC.Wayne.WayneConnectorBC,FusionClass.Fusion)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connector">Connector de wayne</param>
+            <param name="fusionClass"> Controlador de fusion </param>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ConnectionHelper.ConnectToFusionAsync">
+            <summary>
+            Realiza las conexion de manera asincrona con fusion
+            </summary>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Logging.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ConnectionHelper.ReconnectToFusionAsync">
+            <summary>
+            Realiza la reconexion de manera asincrona con fusion
+            </summary>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Logging.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ConnectionHelper.DisconnectFromFusion">
+            <summary>
+            Desconecta de fusion
+            </summary>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ConnectionHelper.PerformConection(System.Collections.Generic.IList{System.Int32},System.Collections.Generic.IList{System.Int32})">
+            <summary>
+            Realiza las tareas de conexion
+            </summary>
+            <param name="TimeoutMillisecondsList"></param>
+            <param name="WaitingTimeMilliseconds"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ConnectionHelper.ConnectionStatusChecker(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            Efectua la comprobacion del estado
+            </summary>
+            <param name="sender"></param>
+            <param name="args"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.FormatHelper">
+            <summary>
+            Expose methods to conversion between entities
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatFuellingPoint(System.UInt16,HubblePOS.Connector.FDC.Wayne.FPStateChangeDeviceClass,System.Collections.Generic.List{HubblePOS.Connector.FDC.Interface.FuellingPointGrade})">
+            <summary>
+            Returns a FDCInterface fuellingPoint from Wayne structure
+            </summary>
+            <param name="fuellingPointId"></param>
+            <param name="fpState">FDC data from response to get FP State</param>
+            <param name="gradesForFPList"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatFPMainStatusFromDeviceState(HubblePOS.Connector.FDC.Wayne.DeviceState)">
+            <summary>
+            Format Wayne DeviceStatus to FDCInterface FuelingPointMainStatus
+            </summary>
+            <param name="deviceState"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.GetGradesForFpIdDictionary(System.Collections.Generic.List{HubblePOS.Connector.FDC.Wayne.DSPConfigurationDeviceClass},System.UInt16)">
+            <summary>
+            Returns Dictionary where key is id of FP and value are list of grades for that FP (fuelingPoint)
+            </summary>
+            <param name="FDCConfigurationDSPList">Response from Get Dispenser Configuration</param>
+            <param name="fuelMode">Actual mode of serving. Response from </param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatSupplyTransactionFromFusionSale(FusionClass.FusionSale)">
+            <summary>
+            Obtiene un objeto <see cref="T:HubblePOS.Connector.FDC.Interface.SupplyTransaction"/> desde un objeto <see cref="T:FusionClass.FusionSale"/>
+            </summary>
+            <param name="fusionSale">Origen</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatFuellingPointFromFusionPump(FusionClass.FusionPump,System.Int32)">
+            <summary>
+            Formatea un pump de fusion a un fp
+            </summary>
+            <param name="fusionPump"></param>
+            <param name="pumpId"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatFuellingPointGradeListFromFusionPump(FusionClass.FusionPump,System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="fusionPump"></param>
+             <param name="fpId"></param>
+             <returns></returns>
+             <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatFuellingPointGradeFromFusionHose(FusionClass.FusionHose,System.Int32,System.Int32)">
+             <summary>
+            
+             </summary>
+             <param name="hose"></param>
+             <param name="fpId"></param>
+             <param name="nozzleNr"></param>
+             <returns></returns>
+             <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.FormatHelper.TimeStamp">
+            <summary>
+            Obtiene una cadena de texto con la fecha y hora del momento formato "yyyy-MM-ddTHH:mm:ss"
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.CreatePOSDataBase(System.Nullable{System.UInt16},HubblePOS.Connector.FDC.Wayne.Type)">
+            <summary>
+            Creates a POSDataBase. set null in deviceId to request for ALL devices
+            </summary>
+            <param name="deviceId"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatGetFPStateRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Nullable{System.UInt16})">
+            <summary>
+            Format to a Get FP State request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId">set null to all devices</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatOpenDeviceRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Nullable{System.UInt16})">
+            <summary>
+            Format to Open Device Request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatCloseDeviceRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Nullable{System.UInt16})">
+            <summary>
+            format to Close device Request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatStopForecourtRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Boolean)">
+            <summary>
+            Format to Stop forecour request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="emergencyStop"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatStartForecourtRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            format to Start forecourt request
+            </summary>
+            <param name="baseParams"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatLogOnRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.String)">
+            <summary>
+            Format to Logon Request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="interfaceVersion"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatLogOffRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Format to logOff request
+            </summary>
+            <param name="baseParams"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatTerminateFuelPointRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Nullable{System.UInt16})">
+            <summary>
+            Format to terminate fuel point request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId">set null to all fp</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatSuspendFuelPointRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Nullable{System.UInt16})">
+            <summary>
+            format to suspend fuel point request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId">set null to all fp</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatResumeFuelPointRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Nullable{System.UInt16})">
+            <summary>
+            Format to resume fuelPoint request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId">set null to request to all fp</param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatReserveFuelPointRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Nullable{System.UInt16})">
+            <summary>
+            Format to reserve fuelPoint Request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatGetTotalsRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.String,System.Nullable{System.UInt16})">
+            <summary>
+            Format to GetTotals request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="nozzleNo"></param>
+            <param name="deviceId"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatGetProductTableRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Format to get product table request
+            </summary>
+            <param name="baseParams"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatGetModeTableRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Format to get mode table request
+            </summary>
+            <param name="baseParams"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatGetFuelSalesTrxDetailRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Nullable{System.UInt16},System.Nullable{System.UInt32})">
+            <summary>
+            Format to get fuel sales Transaction detail request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId">set null to all devices</param>
+            <param name="transactionNo">set null to all transactions</param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatGetFPFuelModeRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Nullable{System.UInt16})">
+            <summary>
+            Format to get fuelingPoint fuel mode request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId">set null to all fp</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatGetDSPLimitsRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Nullable{System.UInt16})">
+            <summary>
+            Format to get dispenser limits request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId">set null to all dispenser (and all fueling points)</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatGetDSPConfigurationRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Format to get dispenser configuration
+            </summary>
+            <param name="baseParams"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatGetCurrentFuelingStatusRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Nullable{System.UInt16})">
+            <summary>
+            Format to get current fueling status request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId">set null to all fp</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatGetAvailableFuelSaleTrxsRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Nullable{System.UInt16})">
+            <summary>
+            Format to get available fuel sale transactions requeste
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId">set null to request all fp</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatClearFuelSaleRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.UInt16,System.UInt32)">
+            <summary>
+            Format to clear fuel sale request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId">Id dispenser</param>
+            <param name="transactionSeqNo"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatFreeFuelPointRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.Nullable{System.UInt16})">
+            <summary>
+            Format to free fuel Point request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="idDevice">fp id</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatChangeFuelPriceRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.UInt32,System.UInt16,System.Decimal,System.Nullable{System.DateTime})">
+            <summary>
+            Format to change fuel price request. A price change may be scheduled for a specific date and time or requested to take place immediately
+            </summary>
+            <param name="baseParams"></param>
+            <param name="productId"></param>
+            <param name="fuelMode"></param>
+            <param name="priceNew"></param>
+            <param name="effectiveDate">if null or past date, the change will executed inmedietaly</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatChangeFPFuelModeRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.UInt16,System.Nullable{System.UInt16})">
+            <summary>
+            format to change fp fuelMode
+            </summary>
+            <param name="baseParams"></param>
+            <param name="fuelMode">new fuel mode</param>
+            <param name="deviceId">set null to all fp</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatChangeDSPLimitsRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.UInt32,System.UInt16,System.Decimal,System.Decimal,System.Nullable{System.UInt16})">
+            <summary>
+            Format to change dsp limits request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="productNo"></param>
+            <param name="fuelMode"></param>
+            <param name="maxTrxAmount">set 0 to no limit</param>
+            <param name="maxTrxVolume">set 0 to no limit</param>
+            <param name="deviceId">set null to all dispenser</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatAuthorizeFuelPointRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.UInt16,System.String,System.Nullable{System.UInt16},System.Nullable{HubblePOS.Connector.FDC.Wayne.TranTypeEnum})">
+            <summary>
+            Format to authorize fuel point requet
+            </summary>
+            <param name="baseParams"></param>
+            <param name="deviceId"></param>
+            <param name="transactionData">"bag" o custom data</param>
+            <param name="fuelMode"></param>
+            <param name="transactionType"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatUnclearFuelSaleRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.UInt32,System.UInt16)">
+            <summary>
+            Format to unclear fuel sale request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="transactionNo"></param>
+            <param name="deviceID"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatUnlockFuelSaleRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.UInt32,System.UInt16)">
+            <summary>
+            Format unlock fuel sale request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="transactionNo"></param>
+            <param name="deviceId"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatLockFuelSaleRequest(HubblePOS.Connector.FDC.Wayne.BaseRequestParams,System.UInt32,System.UInt16)">
+            <summary>
+            Format to lock fuel sale request
+            </summary>
+            <param name="baseParams"></param>
+            <param name="transactionNo"></param>
+            <param name="deviceId"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.FormatFuellingPointTransactionExtraDataFromString(System.Int32,System.String)">
+            <summary>
+            Metodo migrado desde pssController para usar los datos de la mochila en la generacion de request
+            </summary>
+            <param name="fuellingPointId"></param>
+            <param name="transactionExtraData"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.ConvertFusionDateAndHour(System.String,System.String)">
+            <summary>
+            Crea una estructura <see cref="T:System.DateTime"/> a partir de las cadenas de texto para fecha y hora de fusion
+            </summary>
+            <param name="fusionDate">Ejemplo 20190429</param>
+            <param name="fusionHour">Ejemplo 105046</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FormatHelper.ConvertFusionDecimal(System.String)">
+            <summary>
+            Obtiene <see cref="T:System.Decimal"/> a partir de la cadena de texto de fusion
+            </summary>
+            <param name="fusionDecimal"></param>
+            <returns><see cref="T:System.Decimal"/></returns>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ValidationHelper.ValidateAuthorizeFuelPointResponse(HubblePOS.Connector.FDC.Wayne.AuthorizeFuelPointResponse)">
+            <summary>
+            Validates the response result (OverallResult and ErrorCode)
+            </summary>
+            <param name="response"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.OperationRejectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ValidationHelper.ValidateFreeFuelPointResponse(HubblePOS.Connector.FDC.Wayne.FreeFuelPointResponse)">
+            <summary>
+            Validates the response result (OverallResult and ErrorCode)
+            </summary>
+            <param name="response"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.OperationRejectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ValidationHelper.ValidateOpenDeviceResponse(HubblePOS.Connector.FDC.Wayne.OpenDeviceResponse)">
+            <summary>
+            Validates the response result (OverallResult and ErrorCode)
+            </summary>
+            <param name="response"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.OperationRejectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ValidationHelper.ValidateCloseDeviceResponse(HubblePOS.Connector.FDC.Wayne.CloseDeviceResponse)">
+            <summary>
+            Validates the response result (OverallResult and ErrorCode)
+            </summary>
+            <param name="response"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.OperationRejectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ValidationHelper.ValidateTerminateFuelPointResponse(HubblePOS.Connector.FDC.Wayne.TerminateFuelPointResponse)">
+            <summary>
+            Validates the response result (OverallResult and ErrorCode)
+            </summary>
+            <param name="response"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.OperationRejectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ValidationHelper.ValidateFPStatusResponse(HubblePOS.Connector.FDC.Wayne.GetFPStateResponse)">
+            <summary>
+            Validates the response result (OverallResult and ErrorCode)
+            </summary>
+            <param name="response"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.OperationRejectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ValidationHelper.ValidateStopForecourtResponse(HubblePOS.Connector.FDC.Wayne.StopForecourtResponse)">
+            <summary>
+            Validates the response result (OverallResult and ErrorCode)
+            </summary>
+            <param name="response"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.OperationRejectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.NotConnectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ValidationHelper.ValidateFuellingPointId(System.Int32)">
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ValidationHelper.ValidateOverallResult(HubblePOS.Connector.FDC.Wayne.OverallResult)">
+            <summary>
+            Validates the result of request
+            </summary>
+            <param name="result"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.AuthentificationErrorException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FailureException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.WayneFormatErrorException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.MandatoryConfigurationDataMissingException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.MissingMandatoryDataException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.NoLogonException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.ParsingErrorException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.TimedOutException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.WayneValidationErrorException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.WrongConfigurationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ValidationHelper.ValidateErrorCode(HubblePOS.Connector.FDC.Wayne.ErrorCode)">
+            <summary>
+            Validates the error Code, if not OK throwing an Exception
+            </summary>
+            <param name="errorCode"></param>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.NoActionException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FDCErrorException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.CommunicationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.NotSupportedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.CannotReadException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.CannotWriteException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.NotPossibleException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FDCInoperableException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.DeviceLockedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.DeviceOfflineException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.BadValueException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.ActionNotAllowedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.LimitException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.PrepaymentNotAllowedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.WrongConfigurationException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.NoTransactionException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.TransactionNotReservedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.InvalidTransactionException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.TimedOutException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.FDCErrorException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.PresetNotAllowedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.GlobalMaximumAuthorizationExceeded"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.POSMaximunAuthorizationExceeded"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.MaxTransactionsUnpaidReached"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.ResumeFuelingException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.NoDataToReturnException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.FuellingPointNotExistsException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.BadTypeException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.OperationRejectedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Wayne.ForecourtClosedException"></exception>
+            <exception cref="T:HubblePOS.Connector.FDC.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.BaseRequestParams">
+            <summary>
+            Parametros basicos que comparten todas las peticiones
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.BaseRequestParams.POSId">
+            <summary>
+            Identificador del POS a utilizar para la conexión con el controlador de estación
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.BaseRequestParams.AppId">
+            <summary>
+            Identificador de aplicación a utilizar para la conexión con el controlador de estación
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.AuthorizeFuelPointRequest">
+            <summary>
+            Authorizes the selected fuel point
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.AuthorizeFuelPointRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.AuthorizeFuelPointResponse">
+            <summary>
+            Authorizes the selected fuel point
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.AuthorizeRequestDeviceClassProduct.CustomerActionNeedsConsent">
+            <summary>
+            True if the customer must provide consent to fuel the grade
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ChangeDSPLimitsDeviceClass.#ctor(HubblePOS.Connector.FDC.Wayne.POSDataBase)">
+            <summary>
+            Consctructor
+            </summary>
+            <param name="posDataBase"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ChangeDSPLimitsRequest">
+            <summary>
+            Allows the POS to change the current DSP limits
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ChangeDSPLimitsRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ChangeDSPLimitsResponse">
+            <summary>
+            Allows the POS to change the current DSP limits
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ChangeFPFuelModeRequest">
+            <summary>
+            Allows the POS to change the fuel mode for fuel points
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ChangeFPFuelModeRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ChangeFPFuelModeRequestDeviceClass.#ctor(HubblePOS.Connector.FDC.Wayne.POSDataBase)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="posDataBase"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ChangeFPFuelModeResponse">
+            <summary>
+            Allows the POS to change the fuel mode for fuel points
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ChangeFuelPriceRequest">
+            <summary>
+            Allows the POS to change current fuel prices
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ChangeFuelPriceRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ChangeFuelPriceResponse">
+            <summary>
+            Allows the POS to change current fuel prices
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ClearFuelSaleRequest">
+            <summary>
+            Clears a previously locked (for payment) fuel transaction.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ClearFuelSaleRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ClearFuelSaleResponse">
+            <summary>
+            Clears a previously locked (for payment) fuel transaction.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.CloseDeviceRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.DeviceClass.DeviceID">
+            <summary>
+            DeviceId that allows asterisk value as wel
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.DeviceState">
+            <summary>
+            Inform the POS application about the current device condition
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_CLOSED">
+            <summary>
+            Device cannot be used. The pump is in the closed or inoperative state.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_CONFIGURE">
+            <summary>
+            Configuration active (e.g., pump initialization in progress)
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_DISABLED">
+            <summary>
+            Describes a device status for a device that is available for configuration but not active. It is temporary disabled.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_ERRORSTATE">
+            <summary>
+            Error state
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_FUELLING">
+            <summary>
+            Fueling is active.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_INVALIDSTATE">
+            <summary>
+            Invalid state (e.g., the device structure is not completed)
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_OFFLINE">
+            <summary>
+            Offline (e.g., the physical connection is down, the device is switched off)
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_OUTOFORDER">
+            <summary>
+            Out of order (e.g., the device is switched off, the device is inoperative)
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_READY">
+            <summary>
+            The pump is activated.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_REQUESTED">
+            <summary>
+            The fueling point has been requested to be authorized, but the FDC needs additional information to proceed.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_STARTED">
+            <summary>
+            The pump motor is started.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_CALLING">
+            <summary>
+            The pump requires authorization from the POS.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_AUTHORISED">
+            <summary>
+            The fueling point is pre-authorized and waiting for the consumer to select a valid logical nozzle.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_SUSPENDED_STARTED">
+            <summary>
+            The fueling process is suspended (was previously in FDC_STARTED state).
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.DeviceState.FDC_SUSPENDED_FUELLING">
+            <summary>
+            The fueling process is suspended (was previously in FDC_FUELLING state).
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.DSPLimitsChangeMessage">
+            <summary>
+            Reports Dispenser configuration change
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ErrorCode">
+            <summary>
+            Used to report whether the request message is valid and provide the outcome/response of executing a request message by the FDC
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_OK">
+            <summary>
+            No error while performing the action. Positive acknowledge: data acceptable.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_NO">
+            <summary>
+            No error, no action
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_CTRLERR">
+            <summary>
+            FDC error
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_COMMERR">
+            <summary>
+            Communication error
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_NOTSUP">
+            <summary>
+            Not supported option
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_READERR">
+            <summary>
+            Cannot read
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_WRITEERR">
+            <summary>
+            Cannot write. Not Writable - in that state (or any state) - read only data
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_NOTPOSSIBLE">
+            <summary>
+            Action not possible. Command refused in that state.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_NOTALLOWED">
+            <summary>
+            Action not allowed. Command not accepted. Valid State and valid Command, but application rejects Command. There are a number of examples in Dispenser standard.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_INOP">
+            <summary>
+            FDC inoperable
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_DEVLOCK">
+            <summary>
+            Device locked
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_DEVOFFL">
+            <summary>
+            Device offline
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_BADVAL">
+            <summary>
+            Bad property value
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_NOPERM">
+            <summary>
+            Action not allowed
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_LIMITERR">
+            <summary>
+            Some limit exceeded
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_NOZZLELOCK">
+            <summary>
+            Referenced nozzle locked
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_TANKLOCK">
+            <summary>
+            Referenced tank locked
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_PREPAYERR">
+            <summary>
+            Prepayment not allowed
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_BADCONF">
+            <summary>
+            Bad forecourt configuration
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_NOTRANS">
+            <summary>
+            No fuel transaction in DSP transaction buffer
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_NORESTRANS">
+            <summary>
+            Fuel transaction not reserved for POS
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_TRANSLOCKED">
+            <summary>
+            Fuel transaction is locked by another POS
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_INVTRANS">
+            <summary>
+            Fuel transaction invalid
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_DISPHWERR">
+            <summary>
+            No fuel transaction handling ok message at hardware
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_TIMEOUT">
+            <summary>
+            Fuel transaction timed out
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_UPDFAILED">
+            <summary>
+            Data update on forecourt hardware failed
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_NOMONEYPRES">
+            <summary>
+            Amount-Prepay not allowed
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_NOVOLUMEPRES">
+            <summary>
+            Volume preset not allowed
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_GENAUTHLIMIT">
+            <summary>
+            Maximum number of possible authorizations exceeded (global)
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_POSAUTHLIMIT">
+            <summary>
+            Maximum number of possible authorizations exceeded (per POS)
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_OTHER">
+            <summary>
+            Unspecified error
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_MAXSTACKLIMIT">
+            <summary>
+            Maximum number of unpaid transactions reached (result of failed authorization due to reached limit).
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_FPLOCK">
+            <summary>
+            Referenced Fueling point locked
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_RESUMEFUEL">
+            <summary>
+            Error resume Fueling
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_NODATA">
+            <summary>
+            No data to return (e.g., the request is for all transactions, but no transactions are available)
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_BADDEVID">
+            <summary>
+            Bad Device ID. Device ID does not exist.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_BADTYPE">
+            <summary>
+            Bad Type. Type does not exist (e.g., Type=”FFP”).
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_DEVICEUNAVAILABLE">
+            <summary>
+            Request not possible, because device is unavailable, (e.g., wrong device number).
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_DEVICEDISABLED">
+            <summary>
+            Complete failure. Requested device is disabled.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ErrorCode.ERRCD_WRONGDEVICENO">
+            <summary>
+            Complete failure. Requested device number is not available.
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.FDCMessageBase">
+            <summary>
+            This is an abstract root element to represent an unsolcited DSP message from FDC to POS
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.FPModeChangeMessage">
+            <summary>
+            A fueling point fuel mode was changed by FDC
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.FPStateChangeDeviceClass.CustomerActionNeedsConsent">
+            <summary>
+            True if the customer must provide consent to fuel the grade
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.FPStateChangeDeviceClassNozzle.CustomerActionNeedsConsent">
+            <summary>
+            True if the customer must provide consent to fuel the grade
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.FPStateChangeMessage">
+            <summary>
+            FDC sends Fueling Point state change
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.FreeFuelPointRequest">
+            <summary>
+            Frees a reserved fueling point
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.FreeFuelPointRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.FreeFuelPointResponse">
+            <summary>
+            Frees a reserved fueling point
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.FuelPointCurrentFuelingStatusMessage">
+            <summary>
+            POS gets intermediate values of current fueling
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.FuelPriceChangeMessage">
+            <summary>
+            A fuel price was changed by FDC
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.FuelSaleTrxMessage">
+            <summary>
+            FDC sends fuel sales transaction
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetAvailableFuelSaleTrxsRequest">
+            <summary>
+            POS requests all available (unpaid) fuel transactions.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.GetAvailableFuelSaleTrxsRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetAvailableFuelSaleTrxsResponse">
+            <summary>
+            POS requests all available (unpaid) fuel transactions.
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetCurrentFuelingStatusRequest">
+            <summary>
+            POS asks for intermediate values of current fueling
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.GetCurrentFuelingStatusRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetCurrentFuelingStatusResponse">
+            <summary>
+            POS asks for intermediate values of current fueling
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetDSPConfigurationRequest">
+            <summary>
+            Returns current Dispenser configuration, it includes the products and fuel prices by fuel mode available at the dispenser. It also provides detailed fueling point information
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.GetDSPConfigurationRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetDSPConfigurationResponse">
+            <summary>
+            Returns current Dispenser configuration, it includes the products and fuel prices by fuel mode available at the dispenser. It also provides detailed fueling point information
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetDSPLimitsRequest">
+            <summary>
+            Returns the Volume and Money limits configured at the dispenser for each product by fuel mode
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.GetDSPLimitsRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetDSPLimitsResponse">
+            <summary>
+            Returns the Volume and Money limits configured at the dispenser for each product by fuel mode
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetFPFuelModeRequest">
+            <summary>
+            Returns the current fuel mode of a fueling point to the POS
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.GetFPFuelModeRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetFPFuelModeResponse">
+            <summary>
+            Returns the current fuel mode of a fueling point to the POS
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetFPStateRequest">
+            <summary>
+            Returns the current state of a fueling point
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.GetFPStateRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetFPStateResponse">
+            <summary>
+            Returns the current state of a fueling point
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetFuelSalesTrxDetailsRequest">
+            <summary>
+            POS requests details of a fuel transaction
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.GetFuelSalesTrxDetailsRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetFuelSalesTrxDetailsResponse">
+            <summary>
+            POS requests details of a fuel transaction
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetModeTableRequest">
+            <summary>
+            Returns the current service modes
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.GetModeTableRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetModeTableResponse">
+            <summary>
+            Returns the current service modes
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetProductTableRequest">
+            <summary>
+            Returns the current fuel product information stored on FDC
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.GetProductTableRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetProductTableResponse">
+            <summary>
+            Returns the current fuel product information stored on FDC
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetTotalsRequest">
+            <summary>
+            Returns dispenser totals to the POS
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.GetTotalsRequestDeviceClass.#ctor(HubblePOS.Connector.FDC.Wayne.POSDataBase)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="posDataBase"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.GetTotalsResponse">
+            <summary>
+            Returns dispenser totals to the POS
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.LockFuelSaleRequest">
+            <summary>
+            POS reserves a fuel transaction for payment
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.LockFuelSaleRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.LockFuelSaleResponse">
+            <summary>
+            POS reserves a fuel transaction for payment
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.LogOffRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.LogOnRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.OpenDeviceRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.OverallResult">
+            <summary>
+            OverallResult is used to report format errors in the request message or give reasons why the request could not be executed. It is not used to report the outcome of executing the request by the FDC, which is reported in element ErrorCode.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.OverallResult.Success">
+            <summary>
+            Complete Success.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.OverallResult.Failure">
+            <summary>
+            Complete failure.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.OverallResult.TimedOut">
+            <summary>
+            Complete failure. No response from the FDC.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.OverallResult.FormatError">
+            <summary>
+            Complete failure. The request cannot process or is formatted incorrectly.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.OverallResult.ParsingError">
+            <summary>
+            Complete failure. XML is not well formed.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.OverallResult.ValidationError">
+            <summary>
+            Complete failure. XML cannot be validated against the defined schema.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.OverallResult.MissingMandatoryData">
+            <summary>
+            Complete failure. Mandatory data is missing in the request.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.OverallResult.WrongConfiguration">
+            <summary>
+            The FDC has detected a wrong forecourt configuration.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.OverallResult.NoLogon">
+            <summary>
+            The client has not performed log-on or log-on fails.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.OverallResult.AuthentificationError">
+            <summary>
+            Authentication error detected.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.OverallResult.MandatoryConfigurationDataMissing">
+            <summary>
+            Data missing that is needed before sales can be made (e.g., one product must be defined).
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.POSDataBase">
+            <summary>
+            Base Type for all POS Data elements that appear as a part of the rquest from POS. They typically only include a POSTimeStamp and a base DeviceClassType with Just the DeviceID attribute.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.POSDataBase.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.POSDataBase.#ctor(HubblePOS.Connector.FDC.Wayne.POSDataBase)">
+            <summary>
+            Constructor for children classes
+            </summary>
+            <param name="posDataBase"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ReserveFuelPointRequest">
+            <summary>
+            Reserves a fueling point for authorization
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ReserveFuelPointRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ReserveFuelPointResponse">
+            <summary>
+            Reserves a fueling point for authorization
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ResumeFuelPointRequest">
+            <summary>
+            POS resumes an interrupted fueling
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ResumeFuelPointRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ResumeFuelPointResponse">
+            <summary>
+            POS resumes an interrupted fueling
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ServiceRequestBase">
+            <summary>
+            This is an abstract root element to represent DSP request from a POS to FDC
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.ServiceRequestBase.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.ServiceRequestBase.requestIdCounter">
+            <summary>
+            Contador para identificador de peticiones
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.ServiceResponseBase">
+            <summary>
+            This is an abstract root element to represent a DSP response from FDC to POS
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.ServiceResponseBase.OverallResult">
+            <summary>
+            report format errors in the request message or give reasons why the request could not be executed. It is not used to report the outcome of executing the request by the FDC,
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.StartForecourtRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.SuspendFuelPointRequest">
+            <summary>
+            POS suspends the currently active fueling
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.SuspendFuelPointRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.SuspendFuelPointResponse">
+            <summary>
+            POS suspends the currently active fueling
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.TerminateFuelPointRequest">
+            <summary>
+            POS terminates the currently active fueling
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.TerminateFuelPointRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.TerminateFuelPointResponse">
+            <summary>
+            POS terminates the currently active fueling
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.UnclearFuelSaleRequest">
+            <summary>
+            change a fuel sales transaction from cleared to payable
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.UnclearFuelSaleRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.UnclearFuelSaleResponse">
+            <summary>
+            change a fuel sales transaction from cleared to payable.
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.UnlockFuelSaleRequest">
+            <summary>
+            POS unreserves a reserved fuel transaction
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.UnlockFuelSaleRequest.#ctor(HubblePOS.Connector.FDC.Wayne.BaseRequestParams)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="baseParams"></param>
+        </member>
+        <member name="T:HubblePOS.Connector.FDC.Wayne.UnlockFuelSaleResponse">
+            <summary>
+            POS unreserves a reserved fuel transaction
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.SeriesType.Ticket">
+            <summary>
+            Ticket/boleta
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.SeriesType.Invoice">
+            <summary>
+            Factura
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.SeriesType.RectifyingInvoice">
+            <summary>
+            Factura rectificativa
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.SeriesType.Other">
+            <summary>
+            Otro
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.SeriesType.DispatchNote">
+            <summary>
+            Nota de despacho
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.SeriesType.RectifyingTicket">
+            <summary>
+            Ticket rectificativo
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Connector.FDC.Wayne.SeriesType.Consignment">
+            <summary>
+            Consigna
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.FuellingPointId">
+            <summary>
+            Gets or sets the fuelling point identifier.
+            The fuelling point who owns this fuel transaction data
+            </summary>
+            <value>
+            The fuelling point identifier.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.TransactionToken">
+            <summary>
+            Gets or sets the transaction token.
+            A token to identify this fuel transaction data
+            </summary>
+            <value>
+            The transaction token.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.ProductId">
+            <summary>
+            Gets or sets the product identifier.
+            </summary>
+            <value>
+            The product identifier.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.CustomerUnitaryPrice">
+            <summary>
+            Gets or sets the customer unitary price. This is the unitary price for the customer when the preset was done, without discounts applied.
+            </summary>
+            <value>
+            The customer unitary price.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.DomsUnitaryPrice">
+            <summary>
+            Gets or sets the doms unitary price. This is the price that was effective in DOMS when the preset was done.
+            </summary>
+            <value>
+            The doms unitary price.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.LimitType">
+            <summary>
+            Gets or sets the type of the preset (monetary / volume).
+            </summary>
+            <value>
+            The type of the preset.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.PresetQuatity">
+            <summary>
+            Gets or sets the preset quatity. This is the original preset quantity sent to DOMS when the preset was done.
+            </summary>
+            <value>
+            The preset quatity.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.TaxPercentage">
+            <summary>
+            Gets or sets the tax percentage.
+            </summary>
+            <value>
+            The tax percentage.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.MonetaryAmount">
+            <summary>
+            Gets or sets the monetary amount. This is the final monetary amount calculated when the preset was done.
+            </summary>
+            <value>
+            The monetary amount.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.CorrespondingVolume">
+            <summary>
+            Gets or sets the corresponding volume. This is the final corresponding volume set in the original preset.
+            </summary>
+            <value>
+            The corresponding volume.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.DiscountPercentageApplied">
+            <summary>
+            Gets or sets the discount applied. This is the discount applied when the preset was done.
+            </summary>
+            <value>
+            The discount applied.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.LineNumberInTicket">
+            <summary>
+            Gets or sets the line number in ticket.
+            </summary>
+            <value>
+            The line number in ticket.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.DocumentId">
+            <summary>
+            Gets or sets the ticket identifier.
+            Null if no ticket is generated yet.
+            </summary>
+            <value>
+            The ticket code.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.CustomerId">
+            <summary>
+            Related customer identifier with, if any.
+            Null otherwise.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.ContactId">
+            <summary>
+            Card number of related customer (if any), if was identified by card (NContacto_Cli).
+            Null otherwise.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.OdometerMeasurement">
+            <summary>
+            Gets or sets the kilometers.
+            </summary>
+            <value>
+            The kilometers.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.VehicleLicensePlate">
+            <summary>
+            Gets or sets the associated vehicle license plate if any
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.DocumentSeriesType" -->
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.DiscountedAmount">
+            <summary>
+            Gets or sets the discounted amount applied
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.TaxAmount">
+            <summary>
+            Gets or sets the applied tax amount
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.OperatorId">
+            <summary>
+            Identificador del Operador
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Connector.FDC.Wayne.TransactionExtraData.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+    </members>
+</doc>

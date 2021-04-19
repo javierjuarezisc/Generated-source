@@ -1,0 +1,537 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HubblePOSService</name>
+    </assembly>
+    <members>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.ConfigurationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.ConfigurationException" /> class.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.ConfigurationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.ConfigurationException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.ConfigurationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.ConfigurationException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.ConfigurationException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.ConfigurationException"/> class.
+            </summary>
+            <param name="exception">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.FileNotExistsException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.FileNotExistsException" /> class.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.FileNotExistsException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.FileNotExistsException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.FileNotExistsException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.FileNotExistsException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.FileNotExistsException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.FileNotExistsException"/> class.
+            </summary>
+            <param name="exception">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.FormatException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.FormatException" /> class.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.FormatException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.FormatException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.FormatException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.FormatException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.FormatException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.FormatException"/> class.
+            </summary>
+            <param name="exception">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.GenericErrorException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.GenericErrorException" /> class.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.GenericErrorException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.GenericErrorException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.GenericErrorException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.GenericErrorException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.GenericErrorException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.GenericErrorException"/> class.
+            </summary>
+            <param name="exception">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.PropertyNotExistsException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.PropertyNotExistsException" /> class.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.PropertyNotExistsException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.PropertyNotExistsException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.PropertyNotExistsException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.PropertyNotExistsException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.PropertyNotExistsException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.PropertyNotExistsException"/> class.
+            </summary>
+            <param name="exception">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.ValidationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.ValidationException" /> class.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.ValidationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.ValidationException" /> class.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.ValidationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.ValidationException"/> class.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.ValidationException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:HubblePOS.Daemon.DesktopExecution.ValidationException"/> class.
+            </summary>
+            <param name="exception">The exception that is the cause of the current exception, or a null reference (Nothing in Visual Basic) if no inner exception is specified.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.GetDefaultLogManagerConfiguration">
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.ConfigurationException"></exception>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.DefaultHubblePOSConfigurationFullFileName">
+            <summary>
+            Devuleve el nombre completo (ruta absoluta + nombre + extensión) del archivo que contiene la identidad del TPV
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.ServiceName">
+            <summary>
+            Devuelve el nombre del servicio, tal cual saldrá en el gestor de servicios de Windows
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.EnviromentConfigurationProviderAssemblyFile">
+            <summary>
+            Nombre de propiedad de configuracion de tpv.config.json que nos aporta la ruta absoluta o relativa de el ensamblado
+            del enviroment configuration provider
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.EnviromentConfigurationProviderQualifiedClassName">
+            <summary>
+            Nombre de propiedad de configuracion de tpv.config.json que nos aporta namespace + nombreclase para instanciar
+            el entorno deseado
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.GetWebServerHostUrl">
+            <summary>
+            Devuelve la url completa (protocolo:// + servidor + puerto/) en la que escuchará el servidor web
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.WebServerRootFolderFullPath">
+            <summary>
+            Devuleve la ruta completa (p.ej: C:\WebServerFolder) de la carpeta raíz para el servidor web
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.WebServerFullNameIndexFileList">
+            <summary>
+            Devuelve la lista de nombres completos (p.ej:index.html) de archivo a ser usadas como páginas índice para el servidor web.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.WebServerMimeTypeMapping">
+            <summary>
+            Devuelve un diccionario con el mapeo de los tipos mime y extensiones de archivo
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.WebServerAllowedOriginUrlList">
+            <summary>
+            Devuelve una lista con las urls de los orígenes permitidos por el servidor web que le pueden realizar peticiones
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.GetWebAPIHostUrl">
+            <summary>
+            Devuelve la url completa (protocolo:// + servidor + puerto) en la que hospedar el WebAPI
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.WebAPIHostRouteName">
+            <summary>
+            Devuelve el nombre de la ruta a usar por el WebAPI
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.WebAPIHostRouteTemplate">
+            <summary>
+            Devuelve la plantilla de la ruta a usar por el WebAPI
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.WebAPICorsOrigins">
+            <summary>
+            Devuelve la lista de orígenes separados por coma a los que se les permite acceder al WebAPI. Usar "*" para permitir a todos
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.WebAPICorsHeaders">
+            <summary>
+            Devuelve la lista de cabeceras separadas por coma permitidas por el WebAPI.
+            Usar "*" para permitir todas.
+            Usar null o cadena vacía para no permitir ninguna
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.ConfigurationHelper.WebAPICorsMethods">
+            <summary>
+            Devuelve la lista de métodos separados por coma permitidos por el WebAPI.
+            Usar "*" para permitir todos.
+            Usar null o cadena vacía para no permitir ninguno
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.CustomWebHostWindowsServiceExtensions.RunAsCustomService(Microsoft.AspNetCore.Hosting.IWebHost)">
+            <summary>
+            Hospeda el host indicado en un sercvicio de windows
+            </summary>
+            <param name="host"></param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.EnvironmentConfigurationProviderHelper.GetEnvironmentConfigurationProviderConfigurated">
+            <summary>
+            Recupera el environment configuration a traves del tipo de environment configurado
+            </summary>
+            <returns>Devuelve instancia del environment configuration provider</returns>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.EnvironmentConfigurationProviderHelper.GetTypeFromAssemblyEnviromentConfigurationProviderConfigured">
+             <summary>
+             Recupera el tipo de environment configurado en tpv.config.json
+             EnviromentConfigurationProviderAssemblyFile se obtiene de la propiedad AssemblyFile de tpv.config.json y puede ser el nombre del fichero o la ruta absoluta del mismo
+             EnviromentConfigurationProviderQualifiedClassName se obtiene de la propiedad EnvironmentNamespace de tpv.config.json
+            
+             Por defecto si no se puede obtener devolvemos el environment configuration provider por defecto (Desktop)
+             </summary>
+             <returns>Devuelve el tipo de environment</returns>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.EnvironmentConfigurationProviderHelper.GetFullFilePath(System.String,System.String)">
+            <summary>
+            Crea la ruta completa del fichero de environment configuration provider a partir de la ruta dada absoluta o relativa
+            En caso de tratarse de ruta relativa se formara la absoluta basePath + relativeOrAbsoluteFilePath
+            En caso de tratarse de ruta absoluta no se hará uso de la basePath dada
+            </summary>
+            <param name="basePath">Ruta de la carpeta base</param>
+            <param name="relativeOrAbsoluteFilePath">Ruta del fichero, puede ser absoluta o relativa</param>
+            <returns>Ruta absoluta del fichero de environment configuration</returns>
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.FormatHelper.FormatTraceLogLevelToLogLevelTypeList(System.String)">
+            <summary>
+            Formatea un string a la lista de LogLevelType
+            </summary>
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.JsonConfigurationFileHelper.GetProperyValueFromConfigurationfile(System.String,System.String)">
+            <summary>
+            Recupera una propiedad de un fichero de configuración con formato json
+            </summary>
+            <returns>Valor de la propiedad indicada, como cadena</returns>
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.FileNotExistsException">El fichero de configuración no existe</exception>
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.PropertyNotExistsException">La propiedad no existe en el fichero de configuración</exception>
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.JsonConfigurationFileHelper.SetPropertyValueToConfigurationfile(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Establece una propiedad en un fichero de configuración con formato json
+            </summary>
+            <param name="configurationFilePath">Ruta completa del archivo de configuración local json</param>
+            <param name="properyName">Nombre de la propiedad</param>
+            <param name="value">Valor del parámetro a establecer</param>
+            <param name="mustCreateParameterIfNotExists">Indica si en caso de no encontrarse la propiedad, si debe crearse</param>
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.FileNotExistsException">El fichero de configuración no existe</exception>
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.PropertyNotExistsException">La propiedad no existe en el fichero de configuración (opción crear no activada)</exception>
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="F:HubblePOS.Daemon.DesktopExecution.HubClientConnection._disposedValue">
+            <summary>
+            Indica si ya se ha hecho dispose o no.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.HubClientConnection.HubConnection">
+            <summary>
+            Conexión para invocar métodos de un Hub en un servidor SignalR.
+            </summary>
+        </member>
+        <member name="E:HubblePOS.Daemon.DesktopExecution.HubClientConnection.Closed">
+            <summary>
+            Evento que notifica el cierre de la conexión del hub.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubClientConnection.#ctor(System.String,System.String)">
+            <summary>
+            Genera una instancia de <see cref="T:HubblePOS.Daemon.DesktopExecution.HubClientConnection"/>.
+            </summary>
+            <param name="serverUrl"></param>
+            <param name="hubProxyName"></param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubClientConnection.Start(System.Threading.CancellationToken)">
+            <summary>
+            Inicia la conexión con el hub.
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.SignalRHub.Base.ValidationException"></exception>
+            <exception cref="T:HubblePOS.SignalRHub.Base.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubClientConnection.HubConnection_Closed(System.Exception)">
+            <summary>
+            Gestiona los eventos de cambios de estado en la conexión del hub.
+            </summary>
+            <param name="arg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubClientConnection.Stop(System.Threading.CancellationToken)">
+            <summary>
+            Detiene la conexión con el hub.
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.SignalRHub.Base.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubClientConnection.InvokeAsync(System.String,System.Object,System.Threading.CancellationToken)">
+            <summary>
+            Invoca un método del hub con un parámetro.
+            </summary>
+            <param name="methodName"></param>
+            <param name="arg"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubClientConnection.InvokeAsync(System.String,System.Object[],System.Threading.CancellationToken)">
+            <summary>
+            Invoca un método del hub con uno o varios parámetros.
+            </summary>
+            <param name="methodName"></param>
+            <param name="args"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubClientConnection.InvokeAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Invoca un método del hub en el servidor utilizando el nombre del método especificado.
+            </summary>
+            <param name="methodName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubClientConnection.On``1(System.String,System.Action{``0})">
+            <summary>
+            Registra un manejador que será invocado cuando el método del hub con el nombre especificado
+            sea invocado. Simula la subscripción a eventos de SignalR.
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <param name="methodName"></param>
+            <param name="handler"></param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubClientConnection.Remove(System.String)">
+            <summary>
+            Elimina todos los manejadores registrados del hub especificado.
+            </summary>
+            <param name="methodName"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubClientConnection.GetCurrentState">
+            <summary>
+            Devuelve el estado de la conexión del hub.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubClientConnection.ManageConnectionStatusChanged(HubblePOS.SignalRHub.Base.HubClientConnectionStatus,HubblePOS.SignalRHub.Base.HubClientConnectionStatus)">
+            <summary>
+            Gestiona los cambios de estado de la conexión del hub.
+            </summary>
+            <param name="oldStatus"></param>
+            <param name="newStatus"></param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubClientConnection.Dispose(System.Boolean)">
+            <summary>
+            Libera recursos no administrados si no han sido ya liberados.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubClientConnection.Dispose">
+            <summary>
+            Libera recursos no administrados.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.WebServer.Url">
+            <summary>
+            Url en la que está sirviendo el servicio web
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.WebServer.RootDirectoryFullPath">
+            <summary>
+            Path completo del directorio raiz del servidor web
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.WebServer.FullNameIndexFileList">
+            <summary>
+            Lista de nombres completos (p.ej:index.html) de archivo como páginas índice para el servidor web.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.WebServer.MimeTypeMappingDictionary">
+            <summary>
+            Diccionario con el mapeo de los tipos mime y extensiones de archivo
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Daemon.DesktopExecution.WebServer.AllowedOriginUrlList">
+            <summary>
+            Lista con las url de los orígenes permitidos por el servidor web que le pueden realizar peticiones
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.WebServer.#ctor(System.String,System.String,System.Collections.Generic.IList{System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{System.String})">
+            <summary>
+            Construct server with given port.
+            </summary>
+            <param name="path">Directory path to serve.</param>
+            <param name="url">Url donde escuchará el servidor</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.WebServer.Start">
+            <summary>
+            Arranca el servidor web. Debe haberle dado tiempo a inicia
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.WebServer.Stop">
+            <summary>
+            Stop server and dispose all functions.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Daemon.DesktopExecution.ProjectInstaller.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.ProjectInstaller.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.ProjectInstaller.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubblePOSService.OnController_ConnectionStateChanged(System.Object,HubblePOS.Controller.PSS.ConnectionStateChangedEventArgs)">
+            <summary>
+            Called when [controller connection state changed].
+            </summary>
+            <param name="sender">The sender of the message.</param>
+            <param name="e">The <see cref="!:PSSController.ConnectionStateChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubblePOSService.OnController_InitializeStateChanged(System.Object,HubblePOS.Controller.PSS.InitializeStateChangedEventArgs)">
+            <summary>
+            Called when [controller initialization state changed].
+            </summary>
+            <param name="sender">The sender of the message.</param>
+            <param name="e">The <see cref="!:PSSController.InitializeStateChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubblePOSService.OnController_ConnectionStateChangedMX(System.Object,HubblePOS.Controller.ProyectCert.PSS.ConnectionStateChangedEventArgs)">
+            <summary>
+            Called when [controller connection state changed].
+            </summary>
+            <param name="sender">The sender of the message.</param>
+            <param name="e">The <see cref="!:PSSControllerMX.ConnectionStateChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubblePOSService.OnController_InitializeStateChangedMX(System.Object,HubblePOS.Controller.ProyectCert.PSS.InitializeStateChangedEventArgs)">
+            <summary>
+            Called when [controller initialization state changed].
+            </summary>
+            <param name="sender">The sender of the message.</param>
+            <param name="e">The <see cref="!:PSSControllerMX.InitializeStateChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubblePOSService.CreateAndInitializeWebAPIServer">
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubblePOSService.AutomaticallyConnectToFDCControllerIfNecessary">
+            <summary>
+            Automaticallies the connect to FDC controller if necessary.
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Daemon.DesktopExecution.HubblePOSService.components">
+            <summary> 
+            Variable del diseñador necesaria.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubblePOSService.Dispose(System.Boolean)">
+            <summary>
+            Limpiar los recursos que se estén usando.
+            </summary>
+            <param name="disposing">true si los recursos administrados se deben desechar; false en caso contrario.</param>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.HubblePOSService.InitializeComponent">
+            <summary> 
+            Método necesario para admitir el Diseñador. No se puede modificar
+            el contenido de este método con el editor de código.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.Program.CreateWebHostBuilder">
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Daemon.DesktopExecution.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <exception cref="T:HubblePOS.Daemon.DesktopExecution.GenericErrorException"></exception>
+        </member>
+    </members>
+</doc>
