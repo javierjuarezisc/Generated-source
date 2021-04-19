@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HubblePOS.AudioPlayer</name>
+    </assembly>
+    <members>
+        <member name="T:HubblePOS.AudioPlayer.AudioPlayer">
+            <summary>
+            Controla la reproducción de un sonido desde un archivo WAV.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.AudioPlayer.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.AudioPlayer"/>.
+            </summary>
+            <param name="audioPath">Ruta donde se encuentra ubicado el audio a reproducir. Debe
+            indicarse la extensión del archivo.</param>
+            <exception cref="T:HubblePOS.AudioPlayer.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.AudioPlayer.Load">
+            <summary>
+            Carga y prepara el audio para su reproducción de forma sincrónica.
+            </summary>
+            <exception cref="T:HubblePOS.AudioPlayer.FileNotFoundException"></exception>
+            <exception cref="T:HubblePOS.AudioPlayer.SecurityException"></exception>
+            <exception cref="T:HubblePOS.AudioPlayer.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.AudioPlayer.Play">
+            <summary>
+            Inicia la reproducción del audio.
+            </summary>
+            <exception cref="T:HubblePOS.AudioPlayer.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.AudioPlayer.Stop">
+            <summary>
+            Detiene la reproducción del audio.
+            </summary>
+            <exception cref="T:HubblePOS.AudioPlayer.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.AudioPlayer.Dispose(System.Boolean)">
+            <summary>
+            Libera recursos no administrados si no han sido ya liberados.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.AudioPlayer.Dispose">
+            <summary>
+            Libera recursos no administrados
+            </summary>
+        </member>
+        <member name="T:HubblePOS.AudioPlayer.FileNotFoundException">
+            <summary>
+            Excepción que se produce cuando el fichero especificado no puede ser encontrado.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.FileNotFoundException.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.FileNotFoundException" />.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.FileNotFoundException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.FileNotFoundException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.FileNotFoundException.#ctor(System.String,System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.FileNotFoundException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.FileNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.FileNotFoundException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+            <param name="innerException">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.FileNotFoundException.#ctor(System.String,System.Exception,System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.FileNotFoundException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+            <param name="innerException">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.FileNotFoundException.#ctor(System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.FileNotFoundException" />.
+            </summary>
+            <param name="ex">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.FileNotFoundException.#ctor(System.Exception,System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.FileNotFoundException" />.
+            </summary>
+            <param name="ex">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+            <param name="contextObject">Información del contexto en el que se produce la excepción.</param>
+        </member>
+        <member name="T:HubblePOS.AudioPlayer.GenericErrorException">
+            <summary>
+            Excepción genérica que representa errores que ocurren durante la ejecución de la aplicación.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.GenericErrorException.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.GenericErrorException" />.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.GenericErrorException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.GenericErrorException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.GenericErrorException.#ctor(System.String,System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.GenericErrorException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.GenericErrorException.#ctor(System.String,System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.GenericErrorException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+            <param name="innerException">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.GenericErrorException.#ctor(System.String,System.Exception,System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.GenericErrorException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+            <param name="innerException">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.GenericErrorException.#ctor(System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.GenericErrorException" />.
+            </summary>
+            <param name="ex">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.GenericErrorException.#ctor(System.Exception,System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.GenericErrorException" />.
+            </summary>
+            <param name="ex">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+            <param name="contextObject">Información del contexto en el que se produce la excepción.</param>
+        </member>
+        <member name="T:HubblePOS.AudioPlayer.SecurityException">
+            <summary>
+            Excepción que se produce cuando se detecta un error de seguridad.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.SecurityException.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.SecurityException" />.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.SecurityException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.SecurityException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.SecurityException.#ctor(System.String,System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.SecurityException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.SecurityException.#ctor(System.String,System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.SecurityException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+            <param name="innerException">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.SecurityException.#ctor(System.String,System.Exception,System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.SecurityException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+            <param name="innerException">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.SecurityException.#ctor(System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.SecurityException" />.
+            </summary>
+            <param name="ex">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.SecurityException.#ctor(System.Exception,System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.SecurityException" />.
+            </summary>
+            <param name="ex">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+            <param name="contextObject">Información del contexto en el que se produce la excepción.</param>
+        </member>
+        <member name="T:HubblePOS.AudioPlayer.ValidationException">
+            <summary>
+            Excepción que se produce cuando un campo de datos no es válido.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.ValidationException.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.ValidationException" />.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.ValidationException.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.ValidationException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.ValidationException.#ctor(System.String,System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.ValidationException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.ValidationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.ValidationException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+            <param name="innerException">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.ValidationException.#ctor(System.String,System.Exception,System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.ValidationException" />.
+            </summary>
+            <param name="message">Mensaje que describe el error.</param>
+            <param name="innerException">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+            <param name="contextObject"></param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.ValidationException.#ctor(System.Exception)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.ValidationException" />.
+            </summary>
+            <param name="ex">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.ValidationException.#ctor(System.Exception,System.Object)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.AudioPlayer.ValidationException" />.
+            </summary>
+            <param name="ex">Excepción causante de la excepción actual o referencia nula si no existe ninguna excepción interna especificada.</param>
+            <param name="contextObject">Información del contexto en el que se produce la excepción.</param>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.ValidationHelper.ValidateAudioPath(System.String)">
+            <exception cref="T:HubblePOS.AudioPlayer.ValidationException"></exception>
+        </member>
+        <member name="T:HubblePOS.AudioPlayer.IAudioPlayer">
+            <summary>
+            Abstracción que proporciona acceso a un reproductor de audio.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.IAudioPlayer.Load">
+            <summary>
+            Carga y prepara el audio para su reproducción de forma sincrónica.
+            </summary>
+            <exception cref="T:HubblePOS.AudioPlayer.FileNotFoundException"></exception>
+            <exception cref="T:HubblePOS.AudioPlayer.SecurityException"></exception>
+            <exception cref="T:HubblePOS.AudioPlayer.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.IAudioPlayer.Play">
+            <summary>
+            Inicia la reproducción del audio.
+            </summary>
+            <exception cref="T:HubblePOS.AudioPlayer.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.AudioPlayer.IAudioPlayer.Stop">
+            <summary>
+            Detiene la reproducción del audio.
+            </summary>
+            <exception cref="T:HubblePOS.AudioPlayer.GenericErrorException"></exception>
+        </member>
+    </members>
+</doc>

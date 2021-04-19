@@ -1,0 +1,2941 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HubblePOS.Core.Common</name>
+    </assembly>
+    <members>
+        <member name="T:HubblePOS.Core.Common.AntiXSSHelper">
+            <summary>
+            Helper para la validación de las entradas susceptibles de ataques xss
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:HubblePOS.Core.Common.AntiXSSHelper.ValidateXSSAttack(System.Collections.Generic.IList{System.String})" -->
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetDefaultElectronicJournalOutputBaseFile">
+            <summary>
+            Devuelve el path predeterminado para el volcado de informaicón del diario electrónico.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetLocalPOSConfigurationTypeNameMapping">
+            <summary>
+            Devuelve el mapping entre el tipo del núcleo para la configuración local del TPV y el nombre que tienen en el fichero local donde se persisten.
+            El mapping es un diccionario con la siguiente estructura:
+            KEY: tipo;
+            VALUE: nombre de la propiedad en el fichero local;
+            </summary>
+            <returns>Diccionario con mapping tipo_nucleo-nombre_en_fichero para la configuración local del tpv</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.ReadParameterFromLocalConfigurationFile(System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Extrae el valor de un parámetro concreto desde un fichero (json) de configuración local
+            </summary>
+            <param name="configurationFilePath"></param>
+            <param name="parameterName"></param>
+            <param name="isOptional">Si es false, en caso de no encontrar el parámetro, se lanzará excepción</param>
+            <returns>el valor del parámetro solicitado, o null si isOptional es true y no se encontró</returns>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.WriteParameterInLocalConfigurationFile(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Establece el valor de un parámetro concreto en un fichero (json) de configuración local
+            </summary>
+            <param name="configurationFilePath">ruta completa del archivo de configuración local</param>
+            <param name="parameterName">clave del parámetro</param>
+            <param name="value">valor del parámetro a establecer</param>
+            <param name="mustCreateParameterIfNotExists">indica si en caso de no encontrarse la clave, si debe crearse</param>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetDocumentPaymentDetailExtraDataTypeNameMapping">
+            <summary>
+            Devuelve el mapping entre el tipo de los extra-data de los detalles de pago de los
+            documentos y el nombre correspondiente que debe tener en el origen de datos.
+            El mapping es un diccionario con la siguiente estructura:
+            [KEY:tipo; VALUE:nombre del parámetro]
+            </summary>
+            <returns>Diccionario con mapping tip-nombre de los extra-data de los detalles de pago</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetMaximumCashboxClosureIdLength">
+            <summary>
+            Devuelve la longitud máxima que debe tener un identificardor de cierre de caja
+            </summary>
+            <returns>Longitud en caracteres</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetMaximumCashboxRecordReasonIdLength">
+            <summary>
+            Devuelve la longitud máxima que debe tener un identificardor de tipo de anotación de caja (razón)
+            </summary>
+            <returns>Longitud en caracteres</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetMaximumCashboxRecordObservationsLength">
+            <summary>
+            Devuelve la longitud máxima que debe tener el campo de observaciones para la creación de una anotación de caja
+            </summary>
+            <returns>Longitud en caracteres</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetCashboxRecordDescriptionForManualCashboxRecord(System.String,System.String,System.String)">
+            <summary>
+             Devuelve la descripción esperada por el origen de datos para un apunte de caja manual
+            </summary>
+            <param name="id"></param>
+            <param name="operatorName"></param>
+            <param name="observations"></param>
+            <returns>contenido generado para el campo descripcion para apunte manual de caja</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetCashboxRecordTypeMapping">
+            <summary>
+            Devuelve el mapping entre el tipo de apunte de caja y el contenido esperado por el origen de datos.
+            El mapping es un diccionario con la siguiente estructura:
+            [KEY:tipo; VALUE:nombre del parámetro]
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetConfigurationParemeterTypeNameMapping">
+            <summary>
+            Devuelve el mapping entre el tipo de los parámetros de configuración conocidos y el nombre y grupos esperado que deben tener.
+            El mapping es un diccionario con la siguiente estructura:
+            KEY: tipo;
+            VALUE-ITEM1: nombre del parámetro;
+            VALUE-ITEM2: nombre del grupo
+            </summary>
+            <returns>Diccionario con mapping tipo-nombre de los parámtros de configuración conocidos</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetConfigurationParameterValueToDocumentStructureTypeMapping">
+            <summary>
+            Devuelve el mapping entre el valor del parámetro de configuración que regula el formato de los números de documentos con el tipo del núcleo.
+            El mapping es un diccionario no sensible en las claves a mayúsculas/minúsculas, con la siguiente estructura:
+            [KEY:valor del parámetro de configuración; VALUE:tipo]
+            </summary>
+            <returns>Diccionario con el mapping valor-tipo</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetConfigurationParameterTypeNameMappingForOutputPurposes">
+            <summary>
+            Devuelve el mapping entre el tipo de los parámetros de configuración de SALIDA conocidos (sobre los que está permitido ejecutar operaciones de escritura) y el nombre y grupos esperado que deben tener.
+            El mapping es un diccionario con la siguiente estructura:
+            KEY: tipo;
+            VALUE-ITEM1: nombre del parámetro;
+            VALUE-ITEM2: nombre del grupo
+            </summary>
+            <returns>Diccionario con mapping tipo-nombre de los parámetros de configuración conocidos, sobre los que pueden ejecutarse operaciones de ESCRITURA.</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetXSSAttackBlackList">
+            <summary>
+            Devuelve la lista con strings no prermitidos por motivos de seguridad.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetXSSAttackRegexList">
+            <summary>
+            Devuelve la lista con strings no prermitidos por motivos de seguridad.
+            </summary>
+            <returns>IList{string}</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetDecimalPositionsForDiscountPercentage">
+            <summary>
+            Devuelve el número de decimales para los porcentajes de descuento
+            </summary>
+            <returns>Número de posiciones decimales</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetDecimalPositionsForTaxPercentage">
+            <summary>
+            Devuelve el número de decimales para los porcentajes de impuestos
+            </summary>
+            <returns>Número de posiciones decimales</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetCompanyIdLength">
+            <summary>
+            Devuelve la longitud que debe tener un identificador de empresa
+            </summary>
+            <returns>Longitud en caracteres</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetCustomerIdLength">
+            <summary>
+            Devuelve la longitud que debe tener un identificador de cliente
+            </summary>
+            <returns>Longitud en caracteres</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetMaximumCurrencyIdLength">
+            <summary>
+            Devuelve la longitud máxima que debe tener un identificardor de moneda
+            </summary>
+            <returns>Longitud en caracteres</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetDefaultUnknownCustomerCode">
+            <summary>
+            Devuelve el código de cliente no identificado por defecto
+            </summary>
+            <returns>Código de cliente (sin CompanyId)</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetStringToRemoteTaskTypeMapping">
+            <summary>
+            Devuelve el mapeo de nombres de tarea remota disponibles a tipo de tarea remota
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetMaximumErrorMessageSizeForRemoteTasksExecutionStatus">
+            <summary>
+            Devuelve la cantidad máxima de caracteres aceptados para un mensaje de error en el estado de ejecución de tareas remotas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetMaximumCommentSizeForSingleRemoteTaskExecutionStatus">
+            <summary>
+            Devuelve la cantidad máxima de caracteres aceptados para el comentario de un resultado de ejecución de tarea remota
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ConfigurationHelper.GetMaximunDecimalPlacesInDoubleValue">
+            <summary>
+            Devuelve la cantidad de posiciones maximas de decimales que tiene como máximo un valor de tipo double
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper">
+            <summary>
+            Ayudante cuya tarea es encargarse de los trabajos periódicos de purga (documentos, suministros, pruebas de repostaje...) de la base de datos
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper.POS">
+            <summary>
+            DAO con la información de contexto del TPV para el que se llevan a cabo los trabajos de purga
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper.JobsConfigurationDictionary">
+            <summary>
+            Diccionario con la configuración de los trabajos periódicos de purga de base de datos, a tener en cuenta.
+                [KEY] -> tipo de ente a purgar (documentos, suministros, pruebas de repostaje...)
+                [VAUE] -> Tupla con los siguientes elementos:
+                          + [Item1: Minutos para primera iteración]: 0 o negativo indica comenzar inmediatamente tras el arranque
+                          + [Item2: Minutos de periodicidad]: 0 o negativo desactiva el proceso, siendo lo mismo que si no viniese éste especificado
+                          + [Item3: Temporizador]: controla cuándo debe ejecutarse la próxima vez el trabajo de sincronización
+                          + [Item4: Objeto tipo ManualResetEvent]: no nulo. Sirve para sincronización de procesos
+                          + [Item5: Callback]: método a invocar cuando termine la ejecución del proceso de purga.
+                                               El parámetro booleano de entrada indica si la purga terminó correctamente o no.
+                                               Nulo en caso de no haber ninguno
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper.IsStarted">
+            <summary>
+            Indica si está en estado de trabajos iniciados
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper.Factory">
+            <summary>
+            Factoría con la que crear instancias de los componentes de negocio necesarios
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper.IsDisposed">
+            <summary>
+            Indica si el objeto ha sido desechado
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper.#ctor(HubblePOS.Core.Interface.POS,HubblePOS.Factory.IFactory,System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.DatabasePurgeEntityType,System.Tuple{System.Int32,System.Int32,System.Action{System.Boolean}}})">
+             <summary>
+             Construye un objeto de tipo ayudante para gestionar los trabajos periódicos de purga de la base de datos
+            
+             Recibe un diccionario con la configuración de los trabajos a realizar:
+                 [KEY] -> tipo de ente a purgar (documentos, suministros, pruebas de repostaje...)
+                 [VALUE] -> tupla, con el siguiente contenido:
+                            + [Item1: Minutos para primera iteración]: 0 o negativo indica comenzar inmediatamente tras el arranque
+                            + [Item2: Minutos de periodicidad]: 0 o negativo desactiva el proceso, siendo lo mismo que si no viniese éste especificado
+                            + [Item3: Callback]: método a invocar cuando termine la ejecución del proceso de purga.
+                                                 El parámetro booleano de entrada indica si la purga terminó correctamente o no.
+                                                 Nulo en caso de no haber ninguno
+             </summary>
+             <param name="pos">TPV</param>
+             <param name="factory">Factoría</param>
+             <param name="jobsConfiguration">Configuración de los trabajos</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing">
+              <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper.StartJobs">
+             <summary>
+             Arranca la programación de los trabajos de purga de base de datos.
+            
+             Para ello, el ayudante debe contar con una configuración mínima:
+             + TPV
+             + Factoría
+             + Configuración para los trabajos
+            
+             Si alguno de los trabajos da problemas arrancando, se continúa arrancando el resto
+             </summary>
+             <returns>True si se ha arrancado la programación de los trabajos</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper.StopJobs">
+            <summary>
+            Para la programación de los trabajos de purga de la base de datos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper.Reconfigure(System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.DatabasePurgeEntityType,System.Tuple{System.Int32,System.Int32,System.Action{System.Boolean}}})">
+             <summary>
+             Reconfigura el ayndante con una nueva configuración para los trabajos periódicos de purga de la base de datos
+             Los trabajos de sincronización que no sean incluidos en la nueva configuración serán descartados.
+            
+             Recibe un diccionario con la configuración de los trabajos a realizar:
+                 [KEY] -> tipo de ente a purgar (documentos de venta, suministros, pruebas de repostaje...)
+                 [VALUE] -> tupla, con el siguiente contenido:
+                            + [Item1: Minutos para primera iteración]: 0 o negativo indica comenzar inmediatamente tras el arranque
+                            + [Item2: Minutos de periodicidad]: 0 o negativo desactiva el proceso, siendo lo mismo que si no viniese éste especificado
+                            + [Item3: Callback]: método a invocar cuando termine la ejecución del proceso de purga.
+                                                 El parámetro booleano de entrada indica si la purga terminó correctamente o no.
+                                                 Nulo en caso de no haber ninguno
+             </summary>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper.AsimilateConfiguration(System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.DatabasePurgeEntityType,System.Tuple{System.Int32,System.Int32,System.Action{System.Boolean}}})">
+             <summary>
+             Asimila una nueva configuración para los trabajos periódicos de purga de base de datos
+            
+             Recibe un diccionario con la configuración de los trabajos a realizar:
+                 [KEY] -> tipo de entes a purgar (documentos, suministros, pruebas de repostaje...)
+                 [VALUE] -> tupla, con el siguiente contenido:
+                            + [Item1: Minutos para primera iteración]: 0 o negativo indica comenzar inmediatamente tras el arranque
+                            + [Item2: Minutos de periodicidad]: 0 o negativo desactiva el proceso, siendo lo mismo que si no viniese éste especificado
+                            + [Item3: Callback]: método a invocar cuando termine la ejecución del proceso de purga.
+                                                 El parámetro booleano de entrada indica si la purga terminó correctamente o no.
+                                                 Nulo en caso de no haber ninguno
+             </summary>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabasePeriodicPurgeHelper.TimerCallback(System.Object)">
+            <summary>
+            Método callback de los timers, encargado de realizar las acciones de
+            purga que corresponda al trabajo para el cual ha saltado el timer.
+            Si ya se está realizando el trabajo, no lanza uno nuevo y espera
+            </summary>
+            <param name="stateInfo">Tupla [Item1:tipo de ente a purgar] [Item2: manual reset event]</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabaseRebuildHelper.AssimilateHelperConfiguration(HubblePOS.Core.Interface.POS,HubblePOS.Factory.IFactory,HubblePOS.Core.Common.DocumentsSynchronizationHelper,HubblePOS.Logging.ILogger)">
+            <summary>
+            Asimila la configuración necesaria para efectuar los trabajos definidos por este ayudante
+            </summary>
+            <param name="pos"> Core POS </param>
+            <param name="factory"> Factoría </param>
+            <param name="coreDocumentsSynchronizationHelper"> Ayudante de sincronización de documentos </param>
+            <param name="logger">[Opcional] Logger </param>
+            <exception cref="T:HubblePOS.Core.Interface.LackOfConfigurationException">Si algunos de los parámetros no opcionales es nulo</exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabaseRebuildHelper.AssertDataReplicaNotExpired">
+            <summary>
+            Comprueba si la réplica de datos ha caducado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">Entrada no válida</exception>
+            <exception cref="T:HubblePOS.Core.Interface.DatabaseNotExistsException">Base de datos no existe</exception>
+            <exception cref="T:HubblePOS.Core.Interface.ReplicationExpiredException">La réplica de datos ha caducado</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabaseRebuildHelper.RebuildLocalDB(System.Boolean)">
+             <summary>
+             Ejecuta la reconstrucción ordenada de una base de datos local existente
+             </summary>
+             <param name="forced">Indica si la reconstrucción se efectuará aunque queden elementos pendientes de inserción</param>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabaseRebuildHelper.EnsureProperlyInitialized">
+            <summary>
+            Comprueba que se ha configurado el helper antes de efectuar solicitudes al mismo.
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.LackOfConfigurationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabaseRebuildHelper.CheckConnectivity">
+            <summary>
+            Checks connectivity
+            </summary>
+            <returns>true when connectivity to HubblePOSWS is available</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabaseRebuildHelper.Trace(System.String,System.Object,HubblePOS.Logging.LogLevelType)">
+            <summary>
+            Encapsula las solicitudes de escritura de traza incrementando la información proporcionada.
+            </summary>
+            <param name="message"></param>
+            <param name="entry"></param>
+            <param name="traceLevel"></param>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DatabaseSynchronizationHelper.Pos">
+            <summary>
+            DAO con la información de contexto del TPV para el que se llevan a cabo los trabajos de sincronización
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DatabaseSynchronizationHelper.JobsConfigurationDictionary">
+            <summary>
+            Diccionario con la configuración de los trabajos periódicos de sincronización de datos de la base de datos, a tener en cuenta.
+                [KEY] -> identificador del proceso de sincronización
+                [VAUE] -> Tupla con los siguientes elementos:
+                          + [Item1: Minutos de periodicidad]: 0 o negativo desactiva el proceso, siendo lo mismo que si no viniese éste especificado
+                          + [Item2: Temporizador]: controla cuándo debe ejecutarse la próxima vez el trabajo de sincronización
+                          + [Item3: Objeto tipo ManualResetEvent]: no nulo. Sirve para sincronización de procesos
+                          + [Item4: Callback]: método a invocar cuando termine la ejecución del proceso de sincronización.
+                                               El parámetro booleano de entrada indica si la sincronozación previa terminó correctamente o no.
+                                               Nulo en caso de no haber ninguno
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DatabaseSynchronizationHelper.IsStarted">
+            <summary>
+            Indica si está en estado de trabajos iniciados
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DatabaseSynchronizationHelper.DBManagementBC">
+            <summary>
+            Instancia del componente de negocio para gestiones con la base de datos
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DatabaseSynchronizationHelper.IsDisposed">
+            <summary>
+            Indica si el objeto ha sido desechado
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabaseSynchronizationHelper.#ctor(HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.IDBManagementBC,System.Collections.Generic.IDictionary{System.String,System.Tuple{System.Int32,System.Func{System.Boolean,System.Threading.Tasks.Task}}})">
+             <summary>
+             Construye un objeto de tipo ayudante para gestionar los trabajos periódicos de sincronización de datos de la base de datos
+            
+             Recibe un diccionario con la configuración de los trabajos a realizar:
+                 [KEY] -> identificador del proceso de sincronización
+                 [VALUE] -> tupla, con el siguiente contenido:
+                            + [Item1: Minutos de periodicidad]: 0 o negativo desactiva el proceso, siendo lo mismo que si no viniese éste especificado
+                            + [Item2: Callback]: método a invocar cuando termine la ejecución del proceso de sincronización.
+                                                 El parámetro booleano de entrada indica si la sincronozación previa terminó correctamente o no.
+                                                 Nulo en caso de no haber ninguno
+             </summary>
+             <param name="pos">TPV</param>
+             <param name="dbManagementBC">Componente de negocio para gestión de base de datos</param>
+             <param name="jobsConfiguration">Configuración de los trabajos</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabaseSynchronizationHelper.StartJobs">
+             <summary>
+             Arranca la programación de los trabajos de sincronización.
+            
+             Para ello, el ayudante debe contar con una configuración mínima:
+             + TPV
+             + BC para gestión de base de datos
+             + Configuración para los trabajos
+            
+             Si alguno de los trabajos da problemas arrancando, se continúa arrancando el resto
+             </summary>
+             <returns>True si se ha arrancado la programación de los trabajos</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabaseSynchronizationHelper.StopJobs">
+            <summary>
+            Para la programación de los trabajos de sincronización de base de datos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabaseSynchronizationHelper.Reconfigure(System.Collections.Generic.IDictionary{System.String,System.Tuple{System.Int32,System.Func{System.Boolean,System.Threading.Tasks.Task}}})">
+             <summary>
+             Reconfigura el ayndante con una nueva configuración para los trabajos periódicos de sincronización de datos de la base de datos
+             Los trabajos de sincronización que no sean incluidos en la nueva configuración serán descartados.
+            
+             Recibe un diccionario con la configuración de los trabajos a realizar:
+                 [KEY] -> identificador del proceso de sincronización
+                 [VALUE] -> tupla, con el siguiente contenido:
+                            + [Item1: Minutos de periodicidad]: 0 o negativo desactiva el proceso, siendo lo mismo que si no viniese éste especificado
+                            + [Item2: Callback]: método a invocar cuando termine la ejecución del proceso de sincronización.
+                                                 El parámetro booleano de entrada indica si la sincronozación previa terminó correctamente o no.
+                                                 Nulo en caso de no haber ninguno
+             </summary>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabaseSynchronizationHelper.AsimilateConfiguration(System.Collections.Generic.IDictionary{System.String,System.Tuple{System.Int32,System.Func{System.Boolean,System.Threading.Tasks.Task}}})">
+             <summary>
+             Asimila una nueva configuración para los trabajos periódicos de sincronización de datos de la base de datos
+            
+             Recibe un diccionario con la configuración de los trabajos a realizar:
+                 [KEY] -> identificador del proceso de sincronización
+                 [VALUE] -> tupla, con el siguiente contenido:
+                            + [Item1: Minutos de periodicidad]: 0 o negativo desactiva el proceso, siendo lo mismo que si no viniese éste especificado
+                            + [Item2: Callback]: método a invocar cuando termine la ejecución del proceso de sincronización.
+                                                 El parámetro booleano de entrada indica si la sincronozación previa terminó correctamente o no.
+                                                 Nulo en caso de no haber ninguno
+             </summary>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DatabaseSynchronizationHelper.TimerCallback(System.Object)">
+            <summary>
+            Método callback de los timers, encargado de realizar las acción de
+            sincronización que corresponda al trabajo para el cual ha saltado el timer.
+            Si ya se está realizando el trabajo, no lanza uno nuevo y espera
+            </summary>
+            <param name="stateInfo">Tupla [Item1:id proceso sincronizción] [Item2: manual reset event]</param>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DocumentsSynchronizationHelper.POS">
+            <summary>
+            DAO con la información de contexto del TPV para el que se llevan a cabo los trabajos de sincronización
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DocumentsSynchronizationHelper.JobsConfigurationDictionary">
+            <summary>
+            Diccionario con la configuración de los trabajos periódicos de sincronización de subida de documentoss, a tener en cuenta.
+                [KEY] -> tipo de documentos (documentos, suministros...)
+                [VAUE] -> Tupla con los siguientes elementos:
+                          + [Item1: Minutos de periodicidad]: 0 o negativo desactiva el proceso, siendo lo mismo que si no viniese éste especificado
+                          + [Item2: Temporizador]: controla cuándo debe ejecutarse la próxima vez el trabajo de sincronización
+                          + [Item3: Objeto tipo ManualResetEvent]: no nulo. Sirve para sincronización de procesos
+                          + [Item4: Callback]: método a invocar cuando termine la ejecución del proceso de sincronización.
+                                               El parámetro booleano de entrada indica si la sincronozación previa terminó correctamente o no.
+                                               Nulo en caso de no haber ninguno
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DocumentsSynchronizationHelper.IsStarted">
+            <summary>
+            Indica si está en estado de trabajos iniciados
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DocumentsSynchronizationHelper.Factory">
+            <summary>
+            Factoría con la que crear instancias de los componentes de negocio necesarios
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DocumentsSynchronizationHelper.IsDisposed">
+            <summary>
+            Indica si el objeto ha sido desechado
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DocumentsSynchronizationHelper.#ctor(HubblePOS.Core.Interface.POS,HubblePOS.Factory.IFactory,System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.DocumentSynchronizationType,System.Tuple{System.Int32,System.Action{System.Boolean}}})">
+             <summary>
+             Construye un objeto de tipo ayudante para gestionar los trabajos periódicos de sincronización de subida de documentos
+            
+             Recibe un diccionario con la configuración de los trabajos a realizar:
+                 [KEY] -> tipo de documentos (documentos, suministros...)
+                 [VALUE] -> tupla, con el siguiente contenido:
+                            + [Item1: Minutos de periodicidad]: 0 o negativo desactiva el proceso, siendo lo mismo que si no viniese éste especificado
+                            + [Item2: Callback]: método a invocar cuando termine la ejecución del proceso de sincronización.
+                                                 El parámetro booleano de entrada indica si la sincronozación previa terminó correctamente o no.
+                                                 Nulo en caso de no haber ninguno
+             </summary>
+             <param name="pos">TPV</param>
+             <param name="factory">Factoría</param>
+             <param name="jobsConfiguration">Configuración de los trabajos</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DocumentsSynchronizationHelper.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing">
+              <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DocumentsSynchronizationHelper.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DocumentsSynchronizationHelper.StartJobs">
+             <summary>
+             Arranca la programación de los trabajos de sincronización.
+            
+             Para ello, el ayudante debe contar con una configuración mínima:
+             + TPV
+             + Factoría
+             + Configuración para los trabajos
+            
+             Si alguno de los trabajos da problemas arrancando, se continúa arrancando el resto
+             </summary>
+             <returns>True si se ha arrancado la programación de los trabajos</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DocumentsSynchronizationHelper.ExecuteAllDocumentSynchronizationJobs(System.Boolean)">
+             <summary>
+             Ejecuta inmediatamente todos los trabajos de sincronización de documentos definidos, aunque no tengan temporización asociada
+            
+             Notas:
+                 + Si forceSyncAll es falso, se detendrá el ciclo de sincronización en el primer fallo.
+             </summary>
+             <param name="forceSyncAll">Fuerza que se sincronicen todos los trabajos, aunque se produzca un propblema en alguno de ellos.</param>
+             <returns>nº de items pendientes de sincronización</returns>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.DocumentAlreadyInsertedException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.DocumentNotExistsException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.CommunicationErrorException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DocumentsSynchronizationHelper.StopJobs">
+            <summary>
+            Para la programación de los trabajos de sincronización de documentos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DocumentsSynchronizationHelper.Reconfigure(System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.DocumentSynchronizationType,System.Tuple{System.Int32,System.Action{System.Boolean}}})">
+             <summary>
+             Reconfigura el ayndante con una nueva configuración para los trabajos periódicos de sincronización de datos de documentos
+             Los trabajos de sincronización que no sean incluidos en la nueva configuración serán descartados.
+            
+             Recibe un diccionario con la configuración de los trabajos a realizar:
+                 [KEY] -> tipo de documento a sincronizar (documentos de venta, suministros...)
+                 [VALUE] -> tupla, con el siguiente contenido:
+                            + [Item1: Minutos de periodicidad]: 0 o negativo desactiva el proceso, siendo lo mismo que si no viniese éste especificado
+                            + [Item2: Callback]: método a invocar cuando termine la ejecución del proceso de sincronización.
+                                                 El parámetro booleano de entrada indica si la sincronozación previa terminó correctamente o no.
+                                                 Nulo en caso de no haber ninguno
+             </summary>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DocumentsSynchronizationHelper.ExecuteDocumentSynchronizationByType(HubblePOS.Core.Interface.DocumentSynchronizationType,System.Boolean,System.Boolean)">
+             <summary>
+             Efectúa una ejecución inmediata tuneable para del trabajo de sincronización asociado al tipo de documento proporcionado.
+            
+             Notas:
+                 +Permite inhibir la ejecución de otro trabajo posterior asociado a este trabajo de sincronización
+                 +Permite ejecutar un trabajo de sincronización a petición aunque su periodicidad se encuentre deshabilitada (Timeout infinito)
+            
+             </summary>
+             <param name="documentSynchronizationType"></param>
+             <param name="ignoreCallbackAction"></param>
+             <param name="forceExecution"></param>
+             <returns>-1 si está deshabilitado, 0 o positivo si está habilitado (la cantidad de items pendientes de inserción para el tipo especificado)</returns>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.DocumentAlreadyInsertedException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.DocumentNotExistsException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.CommunicationErrorException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DocumentsSynchronizationHelper.AsimilateConfiguration(System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.DocumentSynchronizationType,System.Tuple{System.Int32,System.Action{System.Boolean}}})">
+             <summary>
+             Asimila una nueva configuración para los trabajos periódicos de sincronización de datos de subida de documentos
+            
+             Recibe un diccionario con la configuración de los trabajos a realizar:
+                 [KEY] -> tipo de documentos (documentos, suministros...)
+                 [VALUE] -> tupla, con el siguiente contenido:
+                            + [Item1: Minutos de periodicidad]: 0 o negativo desactiva el proceso, siendo lo mismo que si no viniese éste especificado
+                            + [Item2: Callback]: método a invocar cuando termine la ejecución del proceso de sincronización.
+                                                 El parámetro booleano de entrada indica si la sincronozación previa terminó correctamente o no.
+                                                 Nulo en caso de no haber ninguno
+             </summary>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DocumentsSynchronizationHelper.TimerCallback(System.Object)">
+            <summary>
+            Método callback de los timers, encargado de realizar las acción de
+            sincronización que corresponda al trabajo para el cual ha saltado el timer.
+            Si ya se está realizando el trabajo, no lanza uno nuevo y espera
+            </summary>
+            <param name="stateInfo">Tupla [Item1:tipo de documento a sincronizar] [Item2: manual reset event]</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DocumentsSynchronizationHelper.ExecuteInsertion(HubblePOS.Core.Interface.DocumentSynchronizationType,System.Threading.ManualResetEvent,System.Boolean)">
+            <summary>
+            Ejecuta un trabajo de inserción del tipo de documento proporcionado
+            </summary>
+            <param name="documentType"></param>
+            <param name="manualResetEvent"></param>
+            <param name="ignoreCallbackAction"></param>
+            <returns>La cantidad de elementos pendientes de inserción tras ejecutar la operación</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatLayoutConfigurationFromConfigurationParameter(HubblePOS.Core.Interface.ConfigurationParameter)">
+            <summary>
+            Null es un valor de entrada válido. En ese caso la salida será null
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatLayoutConfiguration(HubblePOS.Core.Common.Serialization.LayoutConfiguration)">
+            <summary>
+            Null es un valor de entrada válido. En ese caso la salida será null
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatLayoutAreaItem(HubblePOS.Core.Common.Serialization.LayoutAreaItemBase)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatLayoutAreaAuxiliaryPanelsGeneralConfiguration(HubblePOS.Core.Common.Serialization.LayoutAreaAuxiliaryPanelsGeneralConfiguration)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatLayoutAreaItemMainPanel(HubblePOS.Core.Common.Serialization.LayoutAreaItemMainPanel)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatLayoutAreaItemStackContainer(HubblePOS.Core.Common.Serialization.LayoutAreaItemStackContainer)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatLayoutAreaItemType(HubblePOS.Core.Common.Serialization.LayoutAreaItemType)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatLayoutAreaMainPanelType(HubblePOS.Core.Common.Serialization.LayoutAreaMainPanelType)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatLayoutAreaPanelOpeningDirection(HubblePOS.Core.Common.Serialization.LayoutAreaPanelOpeningDirection)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDBReplicaConfigurationSQLServerCE(System.String,HubblePOS.Core.Common.Serialization.DBSQLServerCeReplicaConfiguration_SettingsReplica,System.String,System.Int16,System.Int32,System.Int16,System.Int32,System.Int32,System.Int16,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDBReplicaConfigurationSQLServerCE(System.String,HubblePOS.Core.Common.Serialization.DBSQLServerCeReplicaConfiguration_DataReplica,System.String,System.Int16,System.Int32,System.Int16,System.Int32,System.Int32,System.Int16,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDBReplicaConfigurationSQLite(HubblePOS.Core.Common.Serialization.DBReplicaConfigurationSQLite)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDBReplicaConfigurationForLoging(HubblePOS.Core.Interface.DBReplicaConfigurationBase)">
+            <summary>
+            Si el objeto de entrada es null se retornara null si no,
+            enmascara todos los Login y Password colocando ***** si son nulos o vacios se quedan como estan, solo para la clase SQLServerCE.
+            Si no es del tipo SQLServerCE, se retorna null
+            </summary>
+            <param name="input">solo se enmascara para SQLServerCE</param>
+            <returns>la clase enmascarada si es del tipo SQLServerCE, si no retrorna null</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatToAutomaticSupplyManagementExtraData(System.Int32,System.DateTime)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatInsertFuelSupplyDAOList(System.Collections.Generic.IList{HubblePOS.Core.Interface.FuelSupply})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatFuellingPointServiceModeTypeFromDBDataValue(System.Nullable{System.Int32})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatFuellingPointServiceModeTypeFromDBDataValue(System.Nullable{System.Int64})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatFuellingPointStartLimiTypeFromDBDataValue(System.Nullable{System.Int32})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatFuellingPointStartLimiTypeFromDBDataValue(System.Nullable{System.Single})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatFuellingPointServiceModeTypeForDBPersistence(System.Nullable{HubblePOS.Core.Interface.FuellingPointServiceModeType})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatFuellingStartLimitTypeForDBPersistence(System.Nullable{HubblePOS.Core.Interface.FuellingStartLimitType})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatInsertFuelTestDAOList(System.Collections.Generic.IList{HubblePOS.Core.Interface.FuelTest})">
+            <summary>
+            Traduce una lista de pruebas de surtidor a una lista de DAOs de inserción de pruebas de surtidor
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatInsertFuelSupplyDAOListFromInsertFuelTestDAOList(System.Collections.Generic.IList{HubblePOS.Core.Interface.InsertFuelTestDAO},System.String)">
+            <summary>
+            Traduce una lista de DAOs de inserción de pruebas de surtidor a una lista de DAOs de inserción de suministros
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatConfigurationParameterTypeFromName(System.String,System.String,System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.ConfigurationParameterType,System.Tuple{System.String,System.String}})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatBusinessTypeFromConfigurationParameter(HubblePOS.Core.Interface.ConfigurationParameter)">
+            <summary>
+            Null es un valor de entrada válido. En ese caso la salida será null
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDefaultCountryIdFromConfigurationParameter(HubblePOS.Core.Interface.ConfigurationParameter)">
+            <summary>
+            Null es un valor de entrada válido. En ese caso la salida será null
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatUnknownCustomerIdFromConfigurationParameter(HubblePOS.Core.Interface.ConfigurationParameter,System.String,System.String)">
+            <summary>
+            Null es un valor de entrada válido para el parámetro de configuración.
+            En ese caso la salida será el identificador multitenant formado con el companyId y el código por defecto para el cliente desconocido
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatSetDynamicActionsConfigurationDAO(HubblePOS.Core.Interface.DynamicActionsConfigurationDAO)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDynamicActionTypeFromDatabaseIntegerValue(System.Int32)">
+            <sumary>
+            Dado el numero del enumero que corresponda devuelve el enumerado
+            </sumary>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDynamicActionTypeFromDatabaseIntegerValue(System.Int64)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatPaymentMethodType(System.String,System.String,System.String,System.Boolean,System.Collections.Generic.IDictionary{System.String,HubblePOS.Core.Interface.PaymentMethodType})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatProductForSaleForReward(HubblePOS.Core.Interface.ProductForSale)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatCashboxRecordDescriptionForManualCashboxRecord(System.String,HubblePOS.Core.Interface.CashboxRecordType,System.String,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatToExpectedDDBBStringFromCashboxRecordType(HubblePOS.Core.Interface.CashboxRecordType)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatCashRegister(HubblePOS.Core.Interface.DecimalPrecisionConfiguration,HubblePOS.Core.Interface.CashRegister,System.Collections.Generic.IList{HubblePOS.Core.Interface.CashRegisterSummarySectionLine})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatCashboxClosure(HubblePOS.Core.Interface.DecimalPrecisionConfiguration,HubblePOS.Core.Interface.CashboxClosure,System.Collections.Generic.IList{HubblePOS.Core.Interface.CashboxClosureSummarySectionLine})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatSearchCashboxClosure(HubblePOS.Core.Interface.POS,System.Collections.Generic.IList{HubblePOS.Core.Interface.SearchCashboxClosure})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatSearchCashboxClosureCriteriaBaseToXmlElement(HubblePOS.Core.Interface.SearchCashboxClosureCriteriaBase,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDatabaseSynchronizationJobsConfiguration(System.Collections.Generic.IList{System.String},System.Collections.Generic.IDictionary{System.String,System.Int32},System.Int32,System.String,System.Func{System.Boolean,System.Threading.Tasks.Task})">
+            <summary>
+            Formatea la configuración para un ayudante de sincronización de base de datos.
+            Para todos los procesos reconocidos, se aporta una configuración, a priori explícita, y en caso de no haberla, por defecto.
+            Toda configuración aportada explícitamente sobre procesos cuyo identificador no esté en la lista de todos los disponibles será ignorada
+            </summary>
+            <param name="allAvailableSyncProcessIdList">Lista de identificadores de todos los posibles procesos de sincronización de base de datos reconocidos por el sistema</param>
+            <param name="explicitSyncProcessConfiguration">Diccionario [KEY:processId] [VALUE:periodicityInMinutes] con configuración explícita</param>
+            <param name="defaultPeriodicityInMinutes">Periodicidad por defecto (en minutos)</param>
+            <param name="changingSyncConfigurationSyncProcessId">[Opcional] Identificador del proceso de sincronización que pueda cambiar la configuración de sincronización</param>
+            <param name="changingSyncProcessConfigurationPostAction">[Opcional] Método a invocar tras ejecutar proceso de sincronización que pueda cambiar la configuración de sincronización</param>
+            <returns>
+            Diccionario con configuración resultante:
+                [KEY: processId]
+                [VALUE: tupla]:
+                        + ITEM1:periodicidad en minutos),
+                        + ITEM2:Action a invocar tras ejecutar proceso de sincronización
+            </returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDocumentsSynchronizationJobsConfiguration(System.Collections.Generic.IList{HubblePOS.Core.Interface.DocumentSynchronizationType},System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.DocumentSynchronizationType,System.Int32},System.Int32)">
+            <summary>
+            Formatea la configuración para un ayudante de sincronización de documentos.
+            Para todos los procesos reconocidos, se aporta una configuración, a priori explícita, y en caso de no haberla, por defecto.
+            Toda configuración aportada explícitamente sobre procesos cuyo tipo de documento no esté en la lista de todos los disponibles será ignorada
+            </summary>
+            <param name="allAvailableSyncDocumentTypeList">Lista de tipos de documentos de todos los posibles procesos de sincronización de documentos reconocidos por el sistema</param>
+            <param name="explicitSyncProcessConfiguration">Diccionario [KEY:tipo documento] [VALUE:periodicityInMinutes] con configuración explícita</param>
+            <param name="defaultPeriodicityInMinutes">Periodicidad por defecto (en minutos)</param>
+            <returns>
+            Diccionario con configuración resultante:
+                [KEY: tipo documento (documento venta, suministros...)]
+                [VALUE: tupla]:
+                        + ITEM1:periodicidad en minutos),
+                        + ITEM2:Action a invocar tras ejecutar proceso de sincronización
+            </returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatCardCustomer(HubblePOS.Core.Interface.WSSalesPointResponse,HubblePOS.Core.Interface.Customer)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatProvisionalIdToDocumentNumberMappingForDocumentCreation(HubblePOS.Core.Interface.DocumentNumberStructureType,System.Collections.Generic.IList{HubblePOS.Core.Interface.Series},System.Collections.Generic.IList{HubblePOS.Core.Interface.CreateDocumentDAO})">
+             <summary>
+             Se formatean números de documento para los DAOs de creación de entrada.
+            
+             OJO!: se calculan números de documento, no identificadores de documento.
+             Ej: BT0200000009, en lugar de 02763BT0200000009
+            
+             Devuelve un diccionario con la siguiente estructura:
+             [KEY: identificador provisional ; VALUE: número de documento]
+             </summary>
+             <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDocumentListSearchedByCriteriasForExecutionLocal(System.Collections.Generic.IList{HubblePOS.Core.Interface.Document},System.Collections.Generic.IList{HubblePOS.Core.Interface.Document})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatCriteriaToXmlElement(HubblePOS.Core.Interface.SearchDocumentCriteriaBase,System.String)">
+            <summary>
+            Se formatean los criterios a fromato XML.
+              MatchingType validos para el Procedimiento almacenado
+                 Anywhere       = 0,
+                 StartWith      = 1,
+                 EndWith        = 2,
+                 Exact		    = 3,
+            	 Mayor o igual  = 4,
+            	 Menor o Igual  = 5,
+            	 distinto de    = 6
+            </summary>
+            <param name="criteria">Lista de Cliterios para la busqueda</param>
+            <param name="companyId">Identificador de empresa</param>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException">Search document criteria not supported</exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatTemplatesNamesFromUsecasesPrintingConfigurationList(System.Collections.Generic.IList{HubblePOS.Core.Interface.UsecasePrintingConfiguration})">
+            <summary>
+            Devuelve una lista con los nombres de las plantillas a partir de una lista de UsecasPrintingConfiguration
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatPrintingGlobalSettingsWithExtraInformation(System.Collections.Generic.IDictionary{System.String,System.String},HubblePOS.Core.Interface.POS,HubblePOS.Core.Interface.Company,HubblePOS.Core.Interface.Shop,HubblePOS.Core.Interface.Cashbox,HubblePOS.Core.Interface.DecimalPrecisionConfiguration,HubblePOS.Core.Interface.POSConfigurationDAO,System.Collections.Generic.IList{HubblePOS.Core.Interface.Currency})">
+            <summary>
+            Añade informacion adicional al diccionario de configuración de impresión
+            </summary>
+            <param name="globalSettings"></param>
+            <param name="company"></param>
+            <param name="shop"></param>
+            <param name="cashbox"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatPrintingServiceStringifiedJson(System.String)">
+            <summary>
+            Transforma un string de json en un diccionario (string, string)
+            </summary>
+            <param name="stringifiedJson"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatPrintingCompanySettingsToDictionary(System.Collections.Generic.IDictionary{System.String,System.String},HubblePOS.Core.Interface.PrintingCompany)">
+            <summary>
+            Añade la informaciion del Printing Company al diccionario de global settings
+            </summary>
+            <param name="globalSettings"></param>
+            <param name="printingCompany"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDBAddressTypeFromAddresType(HubblePOS.Core.Interface.AddressType,System.Collections.Generic.IDictionary{HubblePOS.Core.Interface.AddressType,System.String})">
+            <summary>
+            Formats the type of the database address type from addres.
+            </summary>
+            <param name="addressType">Type of the address.</param>
+            <param name="mappingAddressTypeName">List of suport mapping address type.</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDateTimeFromISO8601(System.String,System.String)">
+            <summary>
+            Formatea un valor de tipo string con formato ISO-8601 a tipo DateTime.
+            </summary>
+            <param name="value">Valor a formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns>Valor formateado.</returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDateTimeNullableFromISO8601(System.String,System.String)">
+            <summary>
+            Formatea un valor de tipo string con formato ISO-8601 a tipo DateTime nullable.
+            </summary>
+            <param name="value">Valor para formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional]</param>
+            <returns>Valor formateado.</returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatString(System.DateTime,System.String)">
+            <summary>
+            Formatea un valor de tipo DateTime a tipo string con formato ISO-8601.
+            </summary>
+            <param name="value">Valor para formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns>Valor formateado</returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatStringNullable(System.Nullable{System.DateTime},System.String)">
+            <summary>
+            Formatea un valor de tipo DateTime nullable a tipo string con formato ISO-8601.
+            </summary>
+            <param name="value">Valor para formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns>Valor formateado</returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatString(System.Boolean,System.String)">
+            <summary>
+            Formatea un valor de tipo bool a tipo string
+            </summary>
+            <param name="value">Valor para formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns>Valor formateado</returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatLong(System.Boolean,System.String)">
+            <summary>
+            Formatea un valor de tipo bool a tipo long
+            </summary>
+            <param name="value">Valor para formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns>Valor formateado</returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatString(System.Decimal,System.String)">
+            <summary>
+            Formatea un valor de tipo decimal a tipo string
+            </summary>
+            <param name="value">Valor para formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns>Valor formateado</returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatStringNullable(System.Nullable{System.Decimal},System.String)">
+            <summary>
+            Formatea un valor de tipo decimal nullable a tipo string
+            </summary>
+            <param name="value">Valor para formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDecimal(System.String,System.String)">
+            <summary>
+            Formatea un valor de tipo string a decimal
+            </summary>
+            <param name="value">Valor para formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDecimalNullable(System.String,System.String)">
+            <summary>
+            Formatea un valor de tipo string a decimal nullable
+            </summary>
+            <param name="value">Valor para formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDecimal(System.Double,System.String)">
+            <summary>
+            Formatea un valor de tipo double a decimal
+            </summary>
+            <param name="value"></param>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDecimalNullable(System.Nullable{System.Double},System.String)">
+            <summary>
+            Formatea un valor de tipo string a decimal nullable
+            </summary>
+            <param name="value">Valor para formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDouble(System.Decimal,System.String)">
+            <summary>
+            Formatea un valor de tipo decimal a double
+            </summary>
+            <param name="value"></param>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatDoubleNullable(System.Nullable{System.Decimal},System.String)">
+            <summary>
+            Formatea un valor de tipo decimal a double
+            </summary>
+            <param name="value"></param>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.TruncateDecimal(System.Decimal,System.Int32)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatInt(System.Int64,System.String)">
+            <summary>
+            Formatea un valor de tipo long a tipo int.
+            </summary>
+            <param name="value">Valor a formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns>Valor formateado</returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatIntNullable(System.Nullable{System.Int64},System.String)">
+            <summary>
+            Formatea un valor de tipo long nullable a un int.
+            </summary>
+            <param name="value">Valor a formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns>Valor formateado</returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatBool(System.String,System.String)">
+            <summary>
+            Formatea un valor de tipo string a tipo bool.
+            </summary>
+            <param name="value">Valor a formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns>Valor formateado.</returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatBool(System.Int64,System.String)">
+            <summary>
+            Formatea un valor de tipo long a tipo bool.
+            </summary>
+            <param name="value">Valor a formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns>Valor formateado.</returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatFloatNullable(System.Nullable{System.Double},System.String)">
+            <summary>
+            Formatea un valor de tipo double a tipo float
+            </summary>
+            <param name="value">Valor a formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns>Valor formateado</returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatByte(System.Int64,System.String)">
+            <summary>
+            Formatea un valor de tipo long a tipo byte
+            </summary>
+            <param name="value">Valor a formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns>Valor formateado</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatByteNullable(System.Nullable{System.Int64},System.String)">
+            <summary>
+            Formatea un valor de tipo long nullable a byte nullable
+            </summary>
+            <param name="value">Valor a formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns>Valor formateado</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatFromBase64StringToArrayBytes(System.String,System.String)">
+            <summary>
+            Formatea un valor de tipo string a un array de bytes
+            </summary>
+            <param name="value">Valor para formatear.</param>
+            <param name="propertyName">Nombre de la propiedad a formatear [optional].</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatInt(System.String,System.String)">
+            <summary>
+            Formatea un valor de tipo string a int
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatAlertPurposeTypeFromIlionReplicatedDB(System.Int32)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatAlertPurposeTypeFromIlionReplicatedDB(System.Int64)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatRateTypeFromIlionReplicatedDBRateTypeValue(System.Byte)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatSeriesTypeFromIlionReplicatedDBSeriesTypeValue(System.Int64)">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatResultMessageCloseAllConnections(System.Collections.Generic.List{System.Tuple{System.String,System.Collections.Generic.IList{System.String},System.Boolean,System.Exception}})">
+            <summary>
+            Los elementos de la tupla son:
+                -Item1: nombre de la conexion
+                -Item2: lista de callers
+                -Item3: resultado del cierre de conexión (true si ha finalizado correctamente y false que no lo ha hecho)
+                -Item4: excepcion por la que ha fallado el cierre de conexión (nula en caso de que si se haya podido cerrar)
+            </summary>
+            <param name="results"></param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatAffectedCallers(System.Collections.Generic.IList{System.String})">
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatInsertForecourtManualPriceChangeDAO(System.Collections.Generic.IList{HubblePOS.Core.Interface.ForecourtManualChangedPrice})">
+            <summary>
+            Crea la lista objetos a insertar en plataforma
+            </summary>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatCodePortionFromEntityMultitenantId(System.String,System.String)">
+             <summary>
+             Dado un identificador de entidad de un entorno multitenant con el siguiente formato: NComapny + Code;
+             retorna la parte del código, descartando la de la compañia.
+            
+             MÁS INFO:
+             Estos serán los valores retornados, según los siguientes casos:
+             + Null -> si el EntityId es nulo.
+             + EntityId -> si el identificador de la compañía es nulo
+             + EntityId -> si el identificador de la compañía no está contenido en el de la entidad
+             + EntityId -> si el identificador de la compañía conincide con el de la entidad
+             </summary>
+             <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FormatHelper.FormatEntityMultitenantIdFromCode(System.String,System.String)">
+            <summary>
+            Retorna un identificador de entidad de un entorno multitenant (formato: NCompany + Code)
+            a partir del código de la entidad y el identificador de la empresa
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.FormatException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateObjectNotNull(System.Object,System.String)">
+            <summary>
+            Valida que el objeto no sea nulo
+            </summary>
+            <param name="o">Objeto</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateStringNotNullOrWhiteSpace(System.String,System.String)">
+            <summary>
+            Valida que la cadena no es nula, ni vacía ni está formada sólo por blancos
+            </summary>
+            <param name="input">Cadena a validar</param>
+            <param name="paramName">Opcionalmente, el nombre del parámetro original que se quiere validar</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateIfExistsIsGreaterThanZero(System.Nullable{System.Int32})">
+            <summary>
+            Valida que si el enterio existe, debe ser mayor que cero
+            </summary>
+            <param name="nullableInteger">Entero nulable</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateKeyInDictionary(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.String)">
+            <summary>
+            Valida que la clave está contenida en el diccionario proporcionado
+            </summary>
+            <param name="key">clave a validar</param>
+            <param name="dictionary">diccionario que debería contener la clave proporcionada</param>
+            <param name="paramName">Opcionalmente, el nombre del parámetro original que se quiere validar</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateDecimalNotNegative(System.Decimal)">
+            <summary>
+            Valida que el decimal introducido es mayor que 0
+            </summary>
+            <param name="input">cantidad a validar</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateDBReplicaConfigurationSQLite(HubblePOS.Core.Interface.DBReplicaConfigurationBase)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateIntegerGreaterThanZero(System.Int32)">
+            <summary>
+            Valida que el enterio es mayor que cero
+            </summary>
+            <param name="input">Entero nulable</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:HubblePOS.Core.Common.ValidationHelper.ValidateStringIsCasteableToInteger64Unsigned(System.String)" -->
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCompanyId(System.String)">
+            <summary>
+            Valida la existencia y formato de un identificador de empresa
+            </summary>
+            <param name="comapnyId">Identificador de empresa a validar</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidatePOSId(System.String)">
+            <summary>
+            Valida la existencia y formato de un identificador de tpv
+            </summary>
+            <param name="posId">Identificador de tpv a validar</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidatePOSGUID(System.String)">
+            <summary>
+            Valida la existencia y formato de un identificador GUID para un tpv
+            </summary>
+            <param name="guid">Identificador GUID del tpv a validar</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateShopId(System.String)">
+            <summary>
+            Valida la existencia y formato de un identificador de tienda
+            </summary>
+            <param name="shopId">Identificador de tienda a validar</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateDocumentId(System.String)">
+            <summary>
+            Valida la existencia y formato de un identificador de documento
+            </summary>
+            <param name="documentId">Identificador de documento</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateDocumentIdList(System.Collections.Generic.IList{System.String})">
+            <summary>
+            Valida existencia y formato de una lista de identificadores de documento
+            </summary>
+            <param name="documentIdList">Lista de identificador de documento</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateOperatorId(System.String)">
+            <summary>
+            Valida la existencia y formato de un identificador de operador
+            </summary>
+            <param name="operatorId">Identificador de operador</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCustomerId(System.String)">
+            <summary>
+            Valida la existencia y formato de un identificador de cliente
+            </summary>
+            <param name="customerId">Identificador de cliente</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidatePOS(HubblePOS.Core.Interface.POS)">
+            <summary>
+            Valida un objeto que representa información sobre el TPV:
+            existencia,
+            existencia y formato del identificador del TPV,
+            existencia y formato del identificador de la tienda,
+            existencia y formato del identificador de empresa
+            </summary>
+            <param name="pos">TPV</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateProductIdAndBarcodeForGetProductForSale(System.String,System.String)">
+            <summary>
+            Valida la coherencia de los parámetros productId y barCode para el método GetProductForSale:
+                + No pueden nulos, cadena vacía, o estar formados solaemnte por espacios en blanco ambos a la vez.
+                + No pueden tener valor ambos a la vez.
+                + En el caso de que el código de barras tenga valor, se comprueba que sea un código EAN válido.
+            </summary>
+            <param name="pos">TPV</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">
+            Tanto el id del producto como el código de barras son nulos, vacíos, o están formado solamente por espacios en blanco
+            or
+            tanto el id del producto como el código de barras tienen valor
+            or
+            el parámetro proporcionado con valor es el código de barras pero no sigue el estándar EAN
+            </exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateBarCodeIsValidEAN(System.String)">
+            <summary>
+            Valida que un código de barras siga el estandar EAN
+            </summary>
+            <param name="barcode">El código de barras</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">
+            El códido de barras proporcionado es nulo, vacío, o está formado solamente por espacios en blanco
+            or
+            El código de barras proporcionado no es un Int64 sin signo válido
+            or
+            El código de barras proporcionado no sigue el estandar EAN
+            </exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCashboxClosureId(System.String)">
+            <summary>
+            Valida la existencia y formato de un identificador de cierre de caja.
+            </summary>
+            <param name="cashboxClosureId">Identificador de cierre de caja - De 6 a 10 caracteres</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCurrencyId(System.String)">
+            <summary>
+            Valida la existencia y formato de un identificador de divisa.
+            </summary>
+            <param name="currencyId">Identificador de cierre de divisa - De 6 a 10 caracteres</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCashboxRecordReasonId(System.String)">
+            <summary>
+            Valida la existencia y formato de un identificador de tipo de anotación de caja (razón)
+            </summary>
+            <param name="cashboxRecordReasonId">Identificador de divisa - De 6 a 8 caracteres</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateSeriesId(System.String)">
+            <summary>
+            Valida la existencia y formato de un identificador de serie
+            </summary>
+            <param name="shopId">Identificador de serie a validar</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateLegalFormId(System.String)">
+            <summary>
+            Valida la existencia y formato de un identificador de forma jurídica
+            </summary>
+            <param name="legalFormId">Identificador de forma jurídica a validar</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateProduct(HubblePOS.Core.Interface.Product)">
+            <summary>
+            Valida un objeto que representa informacion de un producto
+            </summary>
+            <param name="product">modelo del productor</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateFuelSupplyIdList(System.Collections.Generic.IList{System.String})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateFuelSupplyDAODictionary(System.Collections.Generic.IDictionary{System.String,HubblePOS.Core.Interface.CreateFuelSupplyDAO})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">
+            El identificador de documento es cadena vacía o está formado sólo por blancos
+            or
+            El diccionario ExtraData es nulo
+            or
+            El valor del límite es negativo
+            or
+            El número de línea es menor o igual que cero
+            or
+            El identificador de empresa es cadena vacía o está formado sólo por blancos
+            or
+            El identificador de tienda es cadena vacía o está formado sólo por blancos
+            or
+            El identificador de cliente es cadena vacía o está formado sólo por blancos
+            or
+            El identificador de surtidor es menor o igual que cero
+            or
+            La posición de la manguera es menor o igual que cero
+            or
+            El identificador de producto es cadena vacía o está formado sólo por blancos
+            or
+            La medida del odómetro es menor o igual que cero
+            or
+            El volumen suministrado es negativo
+            or
+            El número de secuencia del suministro es negativo
+            </exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateFuelSupplyDAOList(System.Collections.Generic.IList{HubblePOS.Core.Interface.CreateFuelSupplyDAO})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">
+            El identificador de documento es cadena vacía o está formado sólo por blancos
+            or
+            La lista de DAOs de entrada tiene identificadores provisionales repetidos entre sí
+            or
+            El diccionario ExtraData es nulo
+            or
+            El valor del límite es negativo
+            or
+            El número de línea es menor o igual que cero
+            or
+            El identificador de empresa es cadena vacía o está formado sólo por blancos
+            or
+            El identificador de tienda es cadena vacía o está formado sólo por blancos
+            or
+            El identificador de cliente es cadena vacía o está formado sólo por blancos
+            or
+            El identificador de surtidor es menor o igual que cero
+            or
+            La posición de la manguera es menor o igual que cero
+            or
+            El identificador de producto es cadena vacía o está formado sólo por blancos
+            or
+            La medida del odómetro es menor o igual que cero
+            or
+            El volumen suministrado es negativo
+            or
+            El número de secuencia del suministro es negativo
+            </exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateFuelSupplyDAO(HubblePOS.Core.Interface.CreateFuelSupplyDAO)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">
+            Los campos de número definitivo de documento y posible número de documento son nulos, cadena vacía o están formados solamente por espacios en blanco
+            or
+            Los campos de número definitivo de documento y posible número de documento tienen valor (los dos)
+            or
+            El diccionario ExtraData es nulo
+            or
+            El valor del límite es negativo
+            or
+            El número de línea es menor o igual que cero
+            or
+            El identificador de empresa es cadena vacía o está formado sólo por blancos
+            or
+            El identificador de tienda es cadena vacía o está formado sólo por blancos
+            or
+            El identificador de cliente es cadena vacía o está formado sólo por blancos
+            or
+            El identificador de surtidor es menor o igual que cero
+            or
+            La posición de la manguera es menor o igual que cero
+            or
+            El identificador de producto es cadena vacía o está formado sólo por blancos
+            or
+            La medida del odómetro es menor o igual que cero
+            or
+            El volumen suministrado es negativo
+            or
+            El número de secuencia del suministro es negativo
+            </exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertFuelSupplyDAOList(System.Collections.Generic.IList{HubblePOS.Core.Interface.InsertFuelSupplyDAO})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">
+            La lista de inserción no puede ser nula
+            or
+            El id del suministro no puede ser vacío, nulo o estar formado solamente por espacios en blanco
+            or
+            El id de la empresa no puede ser vacío, nulo o estar formado solamente por espacios en blanco
+            or
+            El id del cliente no puede ser vacío, nulo o estar formado solamente por espacios en blanco
+            or
+            El id del documento no puede ser vacío, nulo o estar formado solamente por espacios en blanco
+            or
+            El diccionario ExtraData no puede ser nulo
+            or
+            El fuelling point id tiene que ser mayor que cero
+            or
+            El valor del StartLimit no puede ser un número negativo
+            or
+            La línea que ocupa el suministro en el documento tiene que ser mayor que cero
+            or
+            La posición que ocupa la manguera en el surtidor tiene que ser mayor que cero
+            or
+            El valor del medidor de distancia del vehículo del cliente tiene que ser mayor que cero
+            or
+            El id de producto no puede ser nulo, vacío o estar formado solamente por espacios en blanco
+            or
+            El id de la tienda no puede ser nulo, vacío o estar formado solamente por espacios en blanco
+            or
+            El valor del volumen suministrado tiene que ser mayor que cero
+            or
+            El número de secuencia del suministro no puede ser negativo
+            </exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertFuelSupplyDAO(HubblePOS.Core.Interface.InsertFuelSupplyDAO)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException">
+            El id del suministro no puede ser vacío, nulo o estar formado solamente por espacios en blanco
+            or
+            El id de la empresa no puede ser vacío, nulo o estar formado solamente por espacios en blanco
+            or
+            El id del cliente no puede ser vacío, nulo o estar formado solamente por espacios en blanco
+            or
+            El id del documento no puede ser vacío, nulo o estar formado solamente por espacios en blanco
+            or
+            El diccionario ExtraData no puede ser nulo
+            or
+            El fuelling point id tiene que ser mayor que cero
+            or
+            El valor del límite no puede ser un número negativo
+            or
+            La línea que ocupa el suministro en el documento tiene que ser mayor que cero
+            or
+            La posición que ocupa la manguera en el surtidor tiene que ser mayor que cero
+            or
+            El valor del medidor de distancia del vehículo del cliente tiene que ser mayor que cero
+            or
+            El id de producto no puede ser nulo, vacío o estar formado solamente por espacios en blanco
+            or
+            El id de la tienda no puede ser nulo, vacío o estar formado solamente por espacios en blanco
+            or
+            El valor del volumen suministrado tiene que ser mayor que cero
+            or
+            El número de secuencia del suministro no puede ser negativo
+            </exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateMandatoryDocumentIdListToTryToInsert(System.Collections.Generic.IList{System.String})">
+            <param name="mandatoryDocumentIdList">Lista de documentos para tratar de insertar</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateDocumentIdListForGetInsertionPendingInsertDocumentDAOList(System.Collections.Generic.IList{System.String})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertDocumentDAOList(System.Collections.Generic.IList{HubblePOS.Core.Interface.InsertDocumentDAO})">
+            <summary>
+            Valida una lista de DAOs de inserción de documentos
+            </summary>
+            <param name="insertDAOList">DAO de inserción de documento</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertDocumentDAO(HubblePOS.Core.Interface.InsertDocumentDAO)">
+            <summary>
+            Valida el DAO de inserción de un documento
+            </summary>
+            <param name="insertionDAO">DAO de inserción de documento</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertDocumentLineDAO(HubblePOS.Core.Interface.InsertDocumentLineDAO)">
+            <summary>
+            Valida el DAO que representa una línea en la inserción de un documento
+            </summary>
+            <param name="insertLineDAO">DAO de línea en inserción de documento</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertDocumentLinePromotionDAO(HubblePOS.Core.Interface.InsertDocumentLinePromotionDAO)">
+            <summary>
+            Valida el DAO que representa una promoción aplicada a una línea en la inserción de un documento
+            </summary>
+            <param name="insertLinePromotionDAO">DAO de promoción en inserción de documento</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertDocumentPaymentDetailDAO(HubblePOS.Core.Interface.InsertDocumentPaymentDetailDAO)">
+            <summary>
+            Valida el DAO que representa un detalle de pago en la inserción de un documento
+            </summary>
+            <param name="insertPaymentDetailDAO">DAO de detalle de pago en la inserción de documento</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateDocumentDAOList(System.Collections.Generic.IList{HubblePOS.Core.Interface.CreateDocumentDAO})">
+            <summary>
+            Valida una lista de DAOs de creación de documentos
+            </summary>
+            <param name="createDAOList">DAO de creación de documento</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateDocumentDAO(HubblePOS.Core.Interface.CreateDocumentDAO)">
+            <summary>
+            Valida el DAO de creación de un documento
+            </summary>
+            <param name="createDAO">DAO de creación de documento</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateDocumentLineDAO(HubblePOS.Core.Interface.CreateDocumentLineDAO)">
+            <summary>
+            Valida el DAO que representa una línea en la creación de un documento
+            </summary>
+            <param name="createLineDAO">DAO de línea en creación de documento</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateDocumentLinePromotionDAO(HubblePOS.Core.Interface.CreateDocumentLinePromotionDAO)">
+            <summary>
+            Valida el DAO que representa una promoción aplicada a una línea en la creación de un documento
+            </summary>
+            <param name="createLinePromotionDAO">DAO de promoción en creación de documento</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateDocumentPaymentDetailDAO(HubblePOS.Core.Interface.CreateDocumentPaymentDetailDAO)">
+            <summary>
+            Valida el DAO que representa un detalle de pago en la creación de un documento
+            </summary>
+            <param name="createPaymentDetailDAO">DAO de detalle de pago en la creación de documento</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateCustomerDAO(HubblePOS.Core.Interface.CreateCustomerDAO)">
+            <summary>
+            Valida el DAO de creación de un cliente
+            </summary>
+            <param name="createDAO">DAO de creación de cliente</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateAddressDAO(HubblePOS.Core.Interface.CreateAddressDAO)">
+            <summary>
+            Valida el DAO que representa un domicilio que se va a dar de alta
+            </summary>
+            <param name="insertDAO">DAO de creación de domicilio</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateOpenCashboxDAO(HubblePOS.Core.Interface.OpenCashboxDAO)">
+            <summary>
+            Valida el DAO de ejecución de una apertura de caja
+            </summary>
+            <param name="cashboxOpeningInfo">DAO de ejecución de apertura de caja</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidatePrepareCashboxOpeningDAO(HubblePOS.Core.Interface.PrepareCashboxOpeningDAO)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateIsCashboxOpenedDAO(HubblePOS.Core.Interface.IsCashboxOpenedDAO)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCloseCashboxDAO(HubblePOS.Core.Interface.CloseCashboxDAO)">
+            <summary>
+            Valida el DAO de ejecución de un cierre de caja
+            </summary>
+            <param name="cashboxClosureInfo">DAO de ejecución de cierre de caja</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateAreThereAnyPendingToCloseItemsByPosDAO(HubblePOS.Core.Interface.AreThereAnyPendingToCloseItemsByPosDAO)">
+            <summary>
+            Valida el dao de ejecucion de consulta de obtencion de documentos pendientes
+            </summary>
+            <param name="areThereAnyPendingToCloseItemsByPosDAO"></param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateExecuteCloseCashboxDAO(HubblePOS.Core.Interface.ExecuteCloseCashboxDAO)">
+            <summary>
+            Valida el DAO de ejecucion de un cierre de caja
+            </summary>
+            <param name="executeCloseCashboxDAO">DAO de ejecucion de un cierre de caja</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCashRegisterDAO(HubblePOS.Core.Interface.CashRegisterDAO)">
+            <summary>
+            Valida el DAO de ejecución de un cierre de caja
+            </summary>
+            <param name="cashboxClosureInfo">DAO de ejecución de cierre de caja</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidatePrepareCashboxClosureDAO(HubblePOS.Core.Interface.PrepareCashboxClosureDAO)">
+            <summary>
+            Valida el DAO de ejecución de preparacion de cierre de caja
+            </summary>
+            <param name="cashboxClosureInfo">DAO de ejecución de preparacion de cierre de caja</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateOperatorWithCashboxClosureMode(System.String,System.Nullable{HubblePOS.Core.Interface.CashboxClosureModeType})">
+            <summary>
+            Valida la entrada de operador frente al modo de cierre de caja.
+            Si se indica cierre de caja por operador, necesariamente debe de indicarse operador. Si no, es opcional.
+            </summary>
+            <param name="operatorID">identificador de operador</param>
+            <param name="cashboxClosureMode">modo de cierre de caja</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateFailedDBSchemeAnalizedDependencyList(System.Collections.Generic.IList{HubblePOS.Core.Interface.DBSchemeAnalyzedDependency})">
+            <summary>
+            Valida que la lista de dependencias de esquema de BD analizadas fallidas es correcta. Eso implica que además de las validaciones
+            individuales a cada dependencia analizada, todas deben estar en estado incorrecto (NO OK) y ser únicas
+            </summary>
+            <param name="failedDBSchemeDependencyList">Dependencia de esquema de base de datos analizada</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateDBSchemeAnalyzedDependencyList(System.Collections.Generic.IList{HubblePOS.Core.Interface.DBSchemeAnalyzedDependency})">
+            <summary>
+            Valida la existencia y corrección de una lista de objetos de dependencia de esquema de base de datos analizadas
+            </summary>
+            <param name="dbSchemeAnalyzedDependency">Dependencia de esquema de base de datos analizada</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateDBSchemeAnalyzedDependency(HubblePOS.Core.Interface.DBSchemeAnalyzedDependency)">
+            <summary>
+            Valida la existencia y corrección de un objeto de dependencia de esquema de base de datos analizada
+            </summary>
+            <param name="dbSchemeAnalyzedDependency">Dependencia de esquema de base de datos analizada</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateDBReplicationConfigurationDataIlionDBReplicatedSQLServerCE(HubblePOS.Core.Interface.DBReplicaConfigurationSQLServerCE)">
+            <summary>
+            Valida la existencia y corrección de un DAO con los datos de configuración para el proceso de sincronización
+            de la réplica de configuración entre las BBDD de plataforma y local
+            </summary>
+            <param name="replecationConfigData">Datos de configuración de la réplica</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateSynchronizationProcessId(System.String)">
+            <summary>
+            Valida la existencia y formato de un identificador de proceso de sincronización
+            </summary>
+            <param name="synchronizationProcessId">Identificador de proceso de sincronización a validar</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertSeriesDAOList(System.Collections.Generic.IList{HubblePOS.Core.Interface.InsertSeriesDAO})">
+            <summary>
+            Valida una lista de DAOs de inserción de series
+            </summary>
+            <param name="insertSeriesDAOList">Lista de DAOs de inserción de series</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertSeriesDAO(HubblePOS.Core.Interface.InsertSeriesDAO)">
+            <summary>
+            Valida un DAO de inserción de series
+            </summary>
+            <param name="insertSeriesDAO">DAO de inserción de series</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertLegalFormDAOList(System.Collections.Generic.IList{HubblePOS.Core.Interface.InsertLegalFormDAO})">
+            <summary>
+            Valida una lista de DAOs de inserción de formas jurídicas
+            </summary>
+            <param name="insertLegalFormDAOList">Lista de DAOs de inserción de formas jurídicas</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertLegalFormDAO(HubblePOS.Core.Interface.InsertLegalFormDAO)">
+            <summary>
+            Valida un DAO de inserción de forma jurídica
+            </summary>
+            <param name="insertLegalFormDAO">DAO de inserción de forma jurídica</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateOperatorIdWithAlertPurposeType(HubblePOS.Core.Interface.AlertPurposeType,System.String)">
+            <summary>
+            Valida la coherencia entre un AlertPurposeType y un operatorId proporcionados.
+            Reglas:
+                Cuando AlertPurposeType es ShowOnInit, no se permite el uso de operatorId (Debe ser vacío)
+                En otro caso, el operatorId debe ser un identificador de operador válido.
+            </summary>
+            <param name="purpose"></param>
+            <param name="operatorId"></param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateAlertList(System.Collections.Generic.IList{HubblePOS.Core.Interface.Alert})">
+            <summary>
+            Valida una lista de DAOs de inserción de alertas
+            </summary>
+            <param name="alertList">Lista de DAOs de inserción de alertas</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateAlert(HubblePOS.Core.Interface.Alert)">
+            <summary>
+            Valida un DAO de inserción de alertas
+            </summary>
+            <param name="alert">DAO de inserción de alertas</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidatePrintingConfiguration(HubblePOS.Core.Interface.PrintingConfiguration)">
+            <summary>
+            Valida un printing configuration
+            </summary>
+            <param name="printingConfiguration"></param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidatePrintingTemplate(HubblePOS.Core.Interface.PrintingTemplate)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateFuelTestDAOList(System.Collections.Generic.IList{HubblePOS.Core.Interface.CreateFuelTestDAO})">
+             <summary>
+             Valida una lista de DAOs de creación de prueba de surtidor
+             </summary>
+             <param name="createDAOList">Lista de DAOs de creación de prueba de surtidor</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateFuelTestDAO(HubblePOS.Core.Interface.CreateFuelTestDAO)">
+            <summary>
+            Valida un DAO de creación de prueba de surtidor
+            </summary>
+            <param name="createDAO">DAO de creación de prueba de surtidor</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertFuelTestDAOList(System.Collections.Generic.IList{HubblePOS.Core.Interface.InsertFuelTestDAO})">
+             <summary>
+             Valida una lista de DAOs de inserción de prueba de suministro
+             </summary>
+             <param name="insertDAOList">Lista de DAOs de inserción de prueba de suministro</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertFuelTestDAO(HubblePOS.Core.Interface.InsertFuelTestDAO)">
+            <summary>
+            Valida un DAO de inserción de prueba de surtidor
+            </summary>
+            <param name="insertDAO">DAO de inserción de prueba de surtidor</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateGenerateSAFTHashDAO(HubblePOS.Core.Interface.GenerateSAFTHashDAO)">
+            <summary>
+            Valida el dao de generacion de saft hash
+            </summary>
+            <param name="generateSAFTInfo"></param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertLiteralsDAOList(System.Collections.Generic.IList{HubblePOS.Core.Interface.InsertLiteralsDAO})">
+            <summary>
+            Valida una lista de DAOs de inserción de literales
+            </summary>
+            <param name="insertLiterlsDAOList">Lista de DAOs de inserción de literales</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateInsertLiteralsDAO(HubblePOS.Core.Interface.InsertLiteralsDAO)">
+            <summary>
+            Valida un DAO de inserción de literal
+            </summary>
+            <param name="insertLiteralsDAO">DAO de inserción de literales</param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateForecourtManualPricesChangingDAOList(System.Collections.Generic.IList{HubblePOS.Core.Interface.CreateForecourtManualPricesChangingDAO})">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateCreateForecourtManualPricesChangingDAO(HubblePOS.Core.Interface.CreateForecourtManualPricesChangingDAO)">
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ValidationHelper.ValidateGetDepositInformationRequestDTO(HubblePOS.Core.Interface.GetDepositInformationRequestDTO)">
+            <summary>
+            Valida la entrada para get Deposit information
+            </summary>
+            <param name="request"></param>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+        </member>
+        <member name="P:HubblePOS.Core.Common.BaseDAC_IlionDBReplicated.DBSchemeElementDependencyList">
+            <summary>
+            Lista de elementos de esquema de base de datos de los que se depende
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.BaseDAC_IlionDBReplicated.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.BaseDAC_IlionDBReplicated.AssimilateParamList(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Aplica la lista de parámetros para configurar correctamente la instancia y que entre en un estado funcional
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.BaseDAC_IlionDBReplicated.EnsureProperlyInitialized">
+            <summary>
+            Valida que la instancia ha sido correctamente inicializada. Es decir, se le han pasado y aplicado todos los parámetros necesarios
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.LackOfConfigurationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.BaseDAC_IlionDBReplicated.AnalyzeDBSchemeDependencies">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException">Error genérico</exception>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Base_IlionDBReplicated.ConnectionStringForAccessByEF">
+            <summary>
+            Cadena de conexión a utilizar para el acceso a la base de datos mediante entity framework
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Base_IlionDBReplicated.ConnectionStringForAccessBySQLCommand">
+            <summary>
+            Cadena de conexión a utilizar para el acceso a la base de datos mediante comando SQL
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Base_IlionDBReplicated.ConnectionPool">
+            <summary>
+            Diccionario con los mapeos de Pools de conexiones disponibles.
+              Clave: nombre de conexión permanente,
+              Valor: tupla con referencia al pool y timeout de solicitud de conexión abierta
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Base_IlionDBReplicated.PermanentConnectionNameForAccessByEF">
+            <summary>
+            Nombre a utilizar para los accesos a la conexión permanente de entity framework
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Base_IlionDBReplicated.TimeoutInMilisecondsForGetOpenedConnectionRequest">
+            <summary>
+            Temporización máxima en solicitud de conexión al pool de conexiones
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Base_IlionDBReplicated.CoordinationSlotsDispenser">
+            <summary>
+            Diccionario con los dispensadores de slots de coordinación de acceso a recurso disponibles
+             Clave: Uso para el dispensador registrado
+             Valor: Tupla con la referencia a un coordinador de acceso, nombre de slot asociado y el timeout de la operación de obtención de slot
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.Common.Base_IlionDBReplicated._disposed">
+            <summary>
+            Indicates whether this instance is disposed.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.Base_IlionDBReplicated.#ctor(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Constructor sobrecargado
+            </summary>
+            <param name="paramList">Parámetros de configuración para la instancia</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.Base_IlionDBReplicated.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.Base_IlionDBReplicated.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.Base_IlionDBReplicated.AssimilateParamList(System.Collections.Generic.IList{HubblePOS.Factory.FactoryInstantiableParamBase})">
+            <summary>
+            Aplica la lista de parámetros para configurar correctamente la instancia y que entre en un estado funcional
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.Base_IlionDBReplicated.EnsureProperlyInitialized">
+            <summary>
+            Valida que la instancia ha sido correctamente inicializada. Es decir, se le han pasado y aplicado todos los parámetros necesarios
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.LackOfConfigurationException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.Base_IlionDBReplicated.GetContext(HubblePOS.Core.Interface.ResourceCoordinatorSlotPurposeType,System.String)">
+            <summary>
+            Solicita el acceso temporal al recurso coordinado
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DBConnectionPoolBase._connectionMapping">
+            <summary>
+            Mantiene los mapeos de conexiones definidas
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DBConnectionPoolBase._activeConnections">
+            <summary>
+            Mantiene las conexiones activas
+            key: connection name
+            value.Item1: Referencia a la conexión asociada
+            value.Item2: Lista de entes registrados a esta conexión
+            value.Item3: connectionString utilizado en la creación de la conexión (para comprobaciones de coherencia internas)
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.Common.DBConnectionPoolBase.ORPHAN_CONNECTION_PREFIX">
+            <summary>
+            Prefijo para el nombrado de conexiones huérfanas
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DBConnectionPoolBase.LastGetConnectionByNameRequest">
+            <summary>
+            Instante en que se produjo la última solicitud de conexión por nombre de conexión
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DBConnectionPoolBase.LastGetOpenedConnectionByNameRequest">
+            <summary>
+            Instante en que se produjo la última solicitud de conexión abierta por nombre de conexión
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DBConnectionPoolBase.LastCloseConnectionByNameRequest">
+            <summary>
+            Instante en que se produjo la última solicitud de cierre de conexión por nombre de conexión
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.DBConnectionPoolBase.LastCloseAllConectionsRequest">
+            <summary>
+            Instante en que se produjo la última solicitud de cierre de todas las conexiones
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBConnectionPoolBase.AddOrUpdateConnectionMapping(System.String,System.String)">
+             <summary>
+             Añade o actualiza un mapeo de conexión. Recibe dos strings: Identificador de conexión y ConnectionStringAsociado
+            
+             Notas:
+                 + Si se intenta actualizar una conexión existente, pero que NO está en uso (estado ditinto a connecting, open o fetching),
+                  pasando un connectionString distinto al original, se reconstruye contra el connectionString proporcionado.
+             </summary>
+             <param name="connectionName">nombre identificativo único para realizar la conexión</param>
+             <param name="connectionString">Cadena de conexión a Base de Datos</param>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.DeniedOperationException">Intenta modificarse el mapping de una conexión en uso (estado connecting, open o fetching)</exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBConnectionPoolBase.ClearConnectionMapping">
+             <summary>
+             Elimina todo el mapping actual. El pool no podrá utilizar conexiones, a no ser que se añada mapping nuevo.
+            
+             Notas:
+                  + Si se detecta que alguna de las conexiones mapeadas se encuentra abierta, se lanzará un DeniedOperationException detallando qué elementos sufrieron problemas.
+             </summary>
+             <exception cref="T:HubblePOS.Core.Interface.DeniedOperationException">Se deniega el cierre masivo porque se encontró, al menos, una conexión NO cerrada asociada a algún nombre de conexión registrado</exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBConnectionPoolBase.GetConnectionPoolStatus">
+            <summary>
+            Devuelve un objeto del tipo DBConnectionPoolStatus con el estado de las conexiones mapeadas en este pool
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBConnectionPoolBase.GetConnectionByName(System.String,System.String)">
+            <summary>
+            Obtiene una conexión dado un nombre conocido de conexión. La conexión devuelta puede estar en cualquier estado.
+            </summary>
+            <param name="connectionName">Nombre de la conexión</param>
+            <exception cref="T:HubblePOS.Core.Interface.DBConnectionNotMappedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBConnectionPoolBase.GetOpenedConnectionByName(System.String,System.Int32,System.String)">
+             <summary>
+             Obtiene una conexión abierta dado un identificador de conexión.
+            
+             Notas:
+             +Timeout 0 para respuesta instantánea
+                      Menor que 0 para espera infinita
+                      Mayor que cero, tiempo máximo de espera en milisegundos
+             +Se tendrá en cuenta que la conexión está abierta cuando su estado interno sea Open, Executing o Fetching
+             </summary>
+             <param name="connectionName">Nombre de conexión</param>
+             <param name="timeout">[OPCIONAL] Tiempo máximo de espera para obtener la conexión abierta. Valor predetrerminado: 0</param>
+             <exception cref="T:HubblePOS.Core.Interface.DBConnectionNotMappedException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.DeniedOperationException">Se lanza cuando se sobrepasa el timeout indicado</exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBConnectionPoolBase.CloseConnectionByName(System.String)">
+            <summary>
+            Cierra la conexión dado un nombre de conexión registrado.
+            </summary>
+            <param name="connectionName"></param>
+            <exception cref="T:HubblePOS.Core.Interface.DBConnectionNotMappedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBConnectionPoolBase.DoCloseConnectionByName(System.String)">
+            <summary>
+            Cierra la conexión dado un nombre de conexión registrado.
+            </summary>
+            <param name="connectionName"></param>
+            <exception cref="T:HubblePOS.Core.Interface.DBConnectionNotMappedException"></exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBConnectionPoolBase.CloseAllConnections">
+            <summary>
+            Cierra todas las conexiones
+            Notas:
+                + Se intentará cerrar todas las conexiones con resultado independiente entre sí. Si alguna falla, finalmente se lanzará un
+                 GenericErrorException enumerando qué conexiones produjeron problemas, pero se habrá intentado el cierre de todas las demás.
+            </summary>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBConnectionPoolBase.AddOrUpdateActiveConnection(System.String,System.Data.Common.DbConnection,System.String)">
+             <summary>
+             Añade o actualiza un elemento de la colección privada de conexiones activas
+            
+             Notas:
+                 + Si se intenta pisar una conexión que se encuentra en uso, se lanzará GenericErrorException
+             </summary>
+             <param name="connectionName"></param>
+             <param name="connection"></param>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBConnectionPoolBase.GetStringifiedCaller(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Obtiene por reflexión el llamante en forma de string
+            </summary>
+            <param name="expectedMethodName">Nombre de método esperado, para ayudar a identificar la clase llamante.</param>
+            <param name="stackLevels">Niveles de la pila de ejecución que debe subirse para obtener el llamante.
+                                      Predeterminado 1, que significa que obtendrá el nombre del método inmediatamente superior al invocador de GetStringifiedCaller</param>
+            <param name="isAsyncCaller">Indica si el llamante es un método asíncrono cuando no hay nombre de método esperado.</param>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBSynchronizationProgressCoordinator.UpdateSynchronizationProgress(System.String,System.Decimal)">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBSynchronizationProgressCoordinator.AddSynchronizatingTable(System.String,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBSynchronizationProgressCoordinator.DeleteSynchronizatingTable(System.String,System.String)">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.DBSynchronizationProgressCoordinator.CopyDBSyncProcessInformationList(System.Collections.Generic.IList{HubblePOS.Core.Interface.DBSyncProcessInformation})">
+            <summary>
+            Función que copia la lista, ya que si no se envia la referencia y puede sufrir cambios durante su ranscurso
+            </summary>
+            <param name="dBSyncProcessInformationList"></param>
+            <returns></returns>
+        </member>
+        <member name="F:HubblePOS.Core.Common.ResourceCoordinator._queuedEntitiesRegister">
+            <summary>
+            Diccionario de slots: Un slot está definido por un guid y un diccionatio de entes registrados en el mismo (nombre de ente, fecha-hora de primer encolado)
+            Clave: Identificador único de Slot de acceso
+            Valor: Lista de entes registrados con sus respectivas fechas de encolado
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.Common.ResourceCoordinator._slotMapper">
+            <summary>
+            Diccionario con las traducciones de los guids activos para cada nombre de slot
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.Common.ResourceCoordinator._slotsQueue">
+            <summary>
+            Cola con los identificadores únicos para los slots de acceso solicitados.
+            Un slot representa un turno grupal de ejecución y refiere a una lista de entes registrados. El primer elemento de la cola es el slot con el acceso permitido
+            </summary>
+        </member>
+        <member name="F:HubblePOS.Core.Common.ResourceCoordinator._manageQueueEvent">
+            <summary>
+            Objeto sincronizador para revisar el estado de la cola. Cada vez que se señale, los entes en espera comprobarán si su turno de acceso ha llegado.
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.ResourceCoordinator.CurrentSlotPurpose">
+            <summary>
+            Indica el identificador del grupo que tiene el acceso al recurso en este instante.
+            Devuelve null si no hay slot en uso.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ResourceCoordinator.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ResourceCoordinator.GetCoordinatorStatus">
+             <summary>
+             Devuelve el estado actual del coordinador:
+                 Una tupla con la fecha-hora del último cambio de slot
+                 y una lista con tuplas de nombre de entidad, slot al que pertenece, posición en la cola grupos de ejecución (0, en ejecución) y la fecha-hora de encolado]
+            
+             Reglas
+             -------
+               + Una entidad puede estar registrada para varios slots, pero no puede estar varias veces encolada en el mismo slot. El registro no debería permitirlo.
+               + Todos los slots en cola tienen, al menos una entidad. Cuando se de-registre la última entidad, el slot deberá desencolarse.
+             </summary>
+             <returns>Ejemplo: FechaCola, [{ente1, token1, 0, fechaEnte1}, {ente2, token1, 0, fechaEnte2}, {ente3, token2, 1, fechaEnte3}, {ente1, token1, 2, otraFechaEnte1}] </returns>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ResourceCoordinator.GetContext(HubblePOS.Core.Interface.ResourceCoordinatorSlotPurposeType,System.String,System.Int32)">
+             <summary>
+             Proporciona un contexto de acceso seguro al recurso, dado un uso esperado, un nombre de entidad y una temporización de espera máxima.
+             Para ello, se comprueba qué slot está en ejecución actualmente y se planifica su ejecución.
+             Se da respuesta inmediata, si es su turno (no hay slot en ejecución, o el slot en ejecución coincide).
+             Si no es su turno, se deja en espera hasta que cumpla el temporizador, o llegue su turno.
+            
+             Notas:
+               + Si el slot indicado coincide con el último slot de la cola, se incluirá en ese turno.
+               + Si el slot indicado NO coincide con el último slot de la cola, se apilará un nuevo slot conteniendo al ente indicado.
+             </summary>
+             <param name="purpose">Utilidad del contexto solicitado</param>
+             <param name="entityName">Nombre de la entidad referida</param>
+             <param name="timeout">[OPTIONAL] Tiempo máximo de espera a la solicitud del contexto de coordinación.
+                                              En milisegundos, 0 para respuesta inmediata y negativo para espera infinita.</param>
+             <returns>contexto de acceso a recurso</returns>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.DeniedOperationException"></exception>
+             <exception cref="T:System.TimeoutException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ResourceCoordinator.DropContext(HubblePOS.Core.Interface.ICoordinationContext)">
+             <summary>
+             Dado un uso, se busca en el diccionario interno de elementos registrados y se desregistra.
+            
+             Notas:
+               + Si un slot en cola no tiene elementos, permanece hasta que le llegue el turno. Si le llega el turno y no tiene entes asociados, se deshecha.
+               + Cuando se desencola un slot, se libera el siguiente nivel de ejecución de la cola y se desbloquean los entes asociados a la nueva cabeza de cola.
+             </summary>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ResourceCoordinator.EnqueueEntity(System.String,HubblePOS.Core.Interface.ResourceCoordinatorSlotPurposeType)">
+             <summary>
+             Añadimos el ente proporcionado a los registros, asociándolo con el slot de acceso proporcionado, y lo encolamos si aún no lo estuviera.
+            
+             NOTAS:
+               + Si se encola un ente y se vence su temporización antes de que llegue su turno, al volverlo a encolar mantiene el turno de la primera
+               llamada si no avanzó la cola como para haber intentado consumirlo antes.
+               + Si se intenta encolar el mismo uso para el mismo ente en la misma posición de la cola, el último en llegar se añadirá en un nuevo turno al final de la misma.
+             Por ejemplo:
+                       [ {token1, [ente11, ente13]}, {token2, [ente2]} ]
+                       -se anula la solicitud de ente2-
+                       [ {token1, [ente11, ente13]}, {token2, []} ]
+                       -llega ente4 con un token3
+                       [ {token1, [ente11,ente13]}, {token3, [ente4]} ]
+            
+             Caso A: ente2 reintenta antes de que llegue el turno de token2
+                       -reintenta ente2
+                       [ {token1, [ente11,ente13]}, {token3, ente4}, {token2, [ente2]} ]
+             Caso B: ente11 y ente13 liberan antes de que ente2 reintente
+                       -liberan ente11 y ente13. Avanza posición
+                       [ {token3, [ente4]} ]
+                       -reintenta ente2
+                       [ {token3, [ente4]}, {token2, [ente2]} ]
+            
+             </summary>
+             <param name="entityName"></param>
+             <param name="purpose"></param>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException">Registro duplicado</exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ResourceCoordinator.DequeueEntity(System.String,HubblePOS.Core.Interface.ResourceCoordinatorSlotPurposeType,System.Nullable{System.Guid})">
+             <summary>
+             Desencola el elemento indicado. Si el slot referido se queda sin elementos y es la cabeza de cola, se extrae y se lanza el evento de desbloqueo a los entes que se encuentren en espera.
+            
+             NOTAS:
+              + Si hay duplicidad, se da por hecho que el elemento liberado es el que se invocó por primera vez.
+             </summary>
+             <param name="entityName"></param>
+             <param name="purpose"></param>
+             <param name="slotGuid"></param>
+             <exception cref="T:HubblePOS.Core.Interface.ValidationException"></exception>
+             <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.ResourceCoordinator.ManageRegisterProcess(HubblePOS.Core.Interface.ResourceCoordinatorSlotPurposeType,System.Guid,System.String,System.Int32)">
+            <summary>
+            Gestiona la espera para el acceso al recurso (proceso de registro de un ente)
+            </summary>
+            <param name="purpose"></param>
+            <param name="currentSlotGuid"></param>
+            <param name="entityName"></param>
+            <param name="timeout">en milisegundos: 0 para respuesta inmediata. negativo para espera infinita</param>
+            <returns></returns>
+            <exception cref="T:HubblePOS.Core.Interface.DeniedOperationException"></exception>
+            <exception cref="T:System.TimeoutException">El timeout de solicitud proporcionado ha sido excedido</exception>
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="P:HubblePOS.Core.Common.CalculatePromotionsLegacyRequest.Ticket">
+            <summary>
+            Ticket for to calculate promotions
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.CalculatePromotionsLegacyRequest.CompanyId">
+            <summary>
+            Company Id
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.CalculatePromotionsLegacyRequest.Promotions">
+            <summary>
+            Promotion list
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.CalculatePromotionsLegacyRequest.Conditions">
+            <summary>
+            Condition list
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.CalculatePromotionsLegacyRequest.ProductsForReward">
+            <summary>
+            Dictionary of products for rewards. Key is product id and value the total amount
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.CalculatePromotionsLegacyResponse.Ticket">
+            <summary>
+            Ticket
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.CoordinationContext.Id">
+            <summary>
+            Context identifier
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.CoordinationContext.Purpose">
+            <summary>
+            Expected purpose for the requested coordination slot
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.CoordinationContext.EntityName">
+            <summary>
+            Referred EntityName
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.CoordinationContext.SlotsDispenser">
+            <summary>
+            Reference to Slots dispenser (Resource coordinator)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.CoordinationContext.IsDisposed">
+            <summary>
+            Indica si el objeto ha sido desechado 
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.CoordinationContext.#ctor(HubblePOS.Core.Interface.IResourceCoordinator,System.Guid,System.String,HubblePOS.Core.Interface.ResourceCoordinatorSlotPurposeType)">
+            <summary>
+            Object Constructor.
+            
+            Notes:
+            + Will validate input (slotsDispenser not null).
+            
+            </summary>
+            <param name="slotsDispenser">Reference to a IResourceCoordinator which will be requested at instantiation time</param>
+            <param name="purpose">Slot purpose</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.CoordinationContext.Dispose(System.Boolean)">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+            <param name="disposing">
+              <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.CoordinationContext.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Core.Common.FactoryInstantiableParamConnectionPool">
+            <summary>
+            Parámetro con la información necesaria para utilizar un pool de conexiones
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.FactoryInstantiableParamConnectionPool.ConnectionPool">
+            <summary>
+            Referencia al pool de conexiones
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.FactoryInstantiableParamConnectionPool.DefaultConnectionName">
+            <summary>
+            Nombre de conexión predeterminada a utilizar
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.FactoryInstantiableParamConnectionPool.TimeoutInMilisecondsForGetOpenedConnectionRequest">
+            <summary>
+            Temporización de espera máxima para un intento de obtención de conexión
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Core.Common.FactoryInstantiableParamConnectionStringLocalEF">
+            <summary>
+            Parámetro con toda la información necesaria para la conexión a base de datos local mediante entity framework
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Core.Common.FactoryInstantiableParamConnectionStringLocalSQLCommand">
+            <summary>
+            Parámetro con toda la información necesaria para la conexión a base de datos local mediante comandos SQL
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Core.Common.FactoryInstantiableParamDBFile">
+            <summary>
+            Parámetro con toda la información necesaria para acceder al archivo de base de datos
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.FactoryInstantiableParamDBFile.FullFileName">
+            <summary>
+            Ruta completa al fichero de base de datos.
+            Incluye path y extensión.
+            (ej: C:\Cetel\ilion.sdf o C:\Cetel\ilion.db)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.FactoryInstantiableParamProxy.ProxyUrl">
+            <summary>
+            Recupera o asigna la Url del proxy.
+            Cuando se le asigna una url, si ésta es válida, se crea la propiedad WebProxy de esta misma clase con la url especificada
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.FactoryInstantiableParamProxy.WebProxy">
+            <summary>
+            Recupera o asigna el webproxy que se utilizará para las comunicaciones.
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FactoryInstantiableParamProxy.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.Core.Common.FactoryInstantiableParamProxy"/>.
+             + Si la url pasada como parámetro es una url válida, se asignarán los valores correspondientes tanto a
+                la propiedad ProxyUrl como a la propiedad WebProxy.
+            </summary>
+            <param name="proxyUrl">La url del proxy que se desea usar.</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FactoryInstantiableParamProxy.#ctor(System.Net.WebProxy)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.Core.Common.FactoryInstantiableParamProxy"/>.
+            + Si el objeto pasado como parámetro no es nulo, se asignarán los valores correspondientes tanto a
+                la propiedad ProxyUrl como a la propiedad WebProxy.
+            </summary>
+            <param name="webProxy">El objeto WebProxy que se desea usar.</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.FactoryInstantiableParamProxy.#ctor(System.Func{System.Threading.Tasks.Task{System.String}})">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:HubblePOS.Core.Common.FactoryInstantiableParamProxy"/>.
+            + Si el objeto pasado como parámetro no es nulo, se asignarán los valores correspondientes tanto a
+                la propiedad ProxyUrl como a la propiedad WebProxy cuando se solite uno de ellos.
+            </summary>
+            <param name="getProxyUrl">El método al que llamar para recuperar la url del proxy.</param>
+        </member>
+        <member name="T:HubblePOS.Core.Common.FactoryInstantiableParamResourceCoordinator">
+            <summary>
+            Parámetro para utilizar un coordinador de acceso a recurso
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.FactoryInstantiableParamResourceCoordinator.ResourceCoordinator">
+            <summary>
+            Referencia al coordinador de recursos a utilizar
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.FactoryInstantiableParamResourceCoordinator.Purpose">
+            <summary>
+            Utilidad para los usos que serán solicitados al recurso referenciado
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.FactoryInstantiableParamResourceCoordinator.SlotName">
+            <summary>
+            Token que identificará el ámbito para las solicitudes de este ente
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.FactoryInstantiableParamResourceCoordinator.TimeoutForGetContextRequest">
+            <summary>
+            Tiempo máximo de espera para una solicitud de entrada a zona protegida
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.DBSQLServerCeReplicaConfiguration_DataReplica.Publication">
+            <summary>
+            nombre de la  publicacion. (replicarticulos)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.DBSQLServerCeReplicaConfiguration_SettingsReplica.Publication">
+            <summary>
+            nombre de la  publicacion. (configmerge / replicarticulos)
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.Serialization.JsonDeserializer`1.Create(System.Type,Newtonsoft.Json.Linq.JObject)">
+            <summary> 
+            Create an instance of objectType, based properties in the JSON object 
+            </summary> 
+            <param name="objectType">type of object expected</param> 
+            <param name="jObject">contents of JSON object that will be deserialized</param> 
+            <returns></returns>
+            <exception cref="!:GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.Serialization.JsonDeserializer`1.ReadJson(Newtonsoft.Json.JsonReader,System.Type,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <exception cref="!:GenericErrorException"></exception>
+        </member>
+        <member name="M:HubblePOS.Core.Common.Serialization.JsonDeserializer`1.WriteJson(Newtonsoft.Json.JsonWriter,System.Object,Newtonsoft.Json.JsonSerializer)">
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_Base.FormatVersion">
+            <summary>
+            Versión de formato
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemLegacy_Version1_Condition.PromotionCode">
+            <summary>
+            Promotion code
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemLegacy_Version1_Condition.Reference">
+            <summary>
+            Reference code
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemLegacy_Version1_Condition.Amount">
+            <summary>
+            Amount
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemLegacy_Version1_PromotionRewardBase.Discount">
+            <summary>
+            Discount
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemLegacy_Version1_PromotionRewardBase.QtyDiscount">
+            <summary>
+            Discount quantity
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemLegacy_Version1_PromotionRewardGift.RewardPrice">
+            <summary>
+            Reward price
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_JsonDeserializerBase.Create(System.Type,Newtonsoft.Json.Linq.JObject)">
+            <exception cref="T:HubblePOS.Core.Interface.GenericErrorException"></exception>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_ArticlePromotionDiscountConfiguration.ArticleId">
+            <summary>
+            Id de referencia del artículo
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_ArticlePromotionDiscountConfiguration.Discount">
+            <summary>
+            Descuento que aplica
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_ArticlesGroupPromotionDiscountConfiguration.IdArticleGroup">
+            <summary>
+            Id grupo de articulos
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_ArticlesGroupPromotionDiscountConfiguration.Discount">
+            <summary>
+            Descuento que aplica
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_ArticlesGroupTriggerConfiguration.IdGroup">
+            <summary>
+            Id grupo de artículos que provoca promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_ArticlesGroupTriggerConfiguration.MinAmount">
+            <summary>
+            Importe mínimo de la suma de éste grupo de artículos concreto para que provoque promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_ArticlesGroupTriggerConfiguration.MinQuantity">
+            <summary>
+            Cantidad mínima de éste grupo de artículos concreto para que provoque promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_ArticlesPromotionsCondition.ArticleId">
+            <summary>
+            Id del artículo
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_ArticlesPromotionsCondition.Amount">
+            <summary>
+            Importe mínimo
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_ArticleTriggerConfiguration.IdArticle">
+            <summary>
+            Id del artículo que provoca la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_ArticleTriggerConfiguration.MinAmount">
+            <summary>
+            Importe mínimo de la suma de éste artículo concreto para que provoque promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_ArticleTriggerConfiguration.MinQuantity">
+            <summary>
+            Cantidad mínima de éste artículo concreto para que provoque promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_DialyConfiguration.Monday">
+            <summary>
+            Indica si el lunes está activa la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_DialyConfiguration.Tuesday">
+            <summary>
+            Indica si el martes está activa la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_DialyConfiguration.Wednesday">
+            <summary>
+            Indica si el miércoles está activa la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_DialyConfiguration.Thursday">
+            <summary>
+            Indica si el jueves está activa la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_DialyConfiguration.Friday">
+            <summary>
+            Indica si el viernes está activa la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_DialyConfiguration.Saturday">
+            <summary>
+            Indica si el sábado está activa la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_DialyConfiguration.Sunday">
+            <summary>
+            Indica si el domingo está activa la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_DialyConfiguration.FromUTCTime">
+            <summary>
+            Hora y minuto de inicio de la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_DialyConfiguration.ToUTCTime">
+            <summary>
+            Hora y minuto de fin de la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_LocationInfo.StoreId">
+            <summary>
+            Id de la Store
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_LocationInfo.StoreFUCId">
+            <summary>
+            Id store FUC
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_LocationInfo.StoreIdType">
+            <summary>
+            Tipo de id de store
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_Promotion.Id">
+            <summary>
+            Id de la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_Promotion.Name">
+            <summary>
+            Nombre de la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_Promotion.Description">
+            <summary>
+            Descripción de la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_Promotion.Priority">
+            <summary>
+            Nivel de prioridad de la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_Promotion.IsCumulative">
+            <summary>
+            Indica si se puede acumular con otras promociones
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_Promotion.FromUTCDateTime">
+            <summary>
+            Fecha de inicio de la promoción
+            </summary>
+            
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_Promotion.ToUTCDateTime">
+            <summary>
+            Fecha de fin de la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_Promotion.TriggerList">
+            <summary>
+            Configuración para lanzamiento promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_Promotion.RewardList">
+            <summary>
+            Configuración del beneficio de la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionRewardConfigurationBase.Type">
+            <summary>
+            Tipo de configuración de beneficio
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionRewardConfigurationGlobalLevelDiscount.Discount">
+            <summary>
+            Descuento a nivel global
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionRewardConfigurationLineLevelDiscount.ArticleDiscountConfigurationList">
+            <summary>
+            Lista de artículos a los que se aplica
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionRewardConfigurationLineLevelDiscount.ArticlesGroupDiscountConfigurationList">
+            <summary>
+            Lista de grupos de artículos a los que aplica
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionRewardConfigurationLineLevelDiscount.MaxQuantity">
+            <summary>
+            Máxima cantidad de artículos a las que se le puede aplicar descuento
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionTriggerConfigurationBase.Type">
+            <summary>
+            Tipo de lanzador de promoción
+            </summary>
+        </member>
+        <member name="T:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionTriggerConfigurationGlobal">
+            <summary>
+            Configuración de triggers globales
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionTriggerConfigurationGlobal.MinAmount">
+            <summary>
+            Importe mínimo del ticket para que se aplique la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionTriggerConfigurationGlobal.MinQuantity">
+            <summary>
+            Cantidad mínima de artículos del ticket para que se aplique la promoción
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionTriggerConfigurationGlobal.ArticleList">
+            <summary>
+            Lista de artículos por los que salta la promoción
+            Tienen que cumplirse que aparezcan todos los articulos con sus montos y cantidades mínimas (AND)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionTriggerConfigurationGlobal.ArticlesGroupList">
+            <summary>
+            Lista de grupo de artículos por los que salta la promoción
+            Tienen que cumplirse que aparezcan todos los grupos de articulos con sus montos y cantidades mínimas (AND)
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionTriggerConfigurationGlobal.#ctor">
+            <summary>
+            Genera una instancia del tipo <see cref="T:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionTriggerConfigurationGlobal"/>
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionTriggerConfigurationLineList.ArticleList">
+            <summary>
+            Lista de artículos por los que salta la promoción
+            Tienen que cumplirse que aparezcan todos los articulos con sus montos y cantidades mínimas (AND)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionTriggerConfigurationLineList.ArticlesGroupList">
+            <summary>
+            Lista de grupo de artículos por los que salta la promoción
+            Tienen que cumplirse que aparezcan todos los grupos de articulos con sus montos y cantidades mínimas (AND)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionTriggerConfigurationLocation.LocationInfoList">
+            <summary>
+            Configuracion sobre la tienda
+            Tiene que cumplirse que al menos una de las tiendas coincida con la nuestra (OR)
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_PromotionTriggerConfigurationTemporal.DialyConfiguration">
+            <summary>
+            Lista de configuraciones diarias
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_RewardDiscountAmount.Amount">
+            <summary>
+            Monto que se descuenta
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_RewardDiscountBase.Type">
+            <summary>
+            Tipo de beneficio
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_RewardDiscountFixedPrice.FixedAmount">
+            <summary>
+            Precio final después de haber aplicado el descuento
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.Serialization.PromotionData_FormatterHubblePOS_SubsystemTheNameless_Version1_RewardDiscountPercentage.Percentage">
+            <summary>
+            Porcentaje de descuento
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.PromotionLegacyAmountDiscount._AddDiscount(System.Decimal,System.Decimal)">
+            <summary>
+            Calculates the discount applied to a line of articles
+            </summary>
+            <param name="pvp">PVP</param>
+            <param name="discount">Discount</param>
+            <returns>Discount applied to a line of articles</returns>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyBaseResponse.Status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>
+            The status.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyBaseResponse.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+            <value>
+            The message.
+            </value>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyConditions.PromotionCode">
+            <summary>
+            Promotion code
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyConditions.Reference">
+            <summary>
+            Reference code
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyConditions.Amount">
+            <summary>
+            Amount
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyDiscount.Discount">
+            <summary>
+            Discount
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyDiscount.QtyDiscount">
+            <summary>
+            Discount quantity
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.PromotionLegacyDiscount._AddDiscount(System.Decimal,System.Decimal)">
+            <summary>
+            Calculates the discount applied to a line of articles
+            </summary>
+            <param name="pvp">PVP</param>
+            <param name="discount">Discount</param>
+            <returns>Discount applied to a line of articles</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.PromotionLegacyDiscount._ApplyPromotion(System.Collections.Generic.List{HubblePOS.Core.Common.PromotionLegacyTicketLineDiscount},HubblePOS.Core.Common.PromotionLegacyTicket)">
+            <summary>
+            [IMPORTANTE] Si modificamos algo en la lógica de _ApplyPromotion deberemos revisar RewardPromotions y cambiarla tambien si es necesario
+            Apply promotions from ticket lines. Method adds discount lines to the end of ticket
+            </summary>
+            <param name="linesWithPromo">Lines With Promo</param>
+            <param name="ticketWithPromos">Ticket With Promos</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.PromotionLegacyDiscount.GetArticlesPromoSorted(System.Collections.Generic.List{HubblePOS.Core.Common.PromotionLegacyTicketLineDiscount})">
+            <summary>
+            Get list of articles sorted by unit value (PVP)
+            </summary>
+            <param name="linesWithPromo">Lines With Promo</param>
+            <returns>List of articles sorted by unit value</returns>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyGift.RewardPrice">
+            <summary>
+            Reward price
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.PromotionLegacyGift._AddDiscount(System.Decimal)">
+            <summary>
+            Calculates the discount applied to a line of articles
+            </summary>
+            <param name="pvp"></param>
+            <param name="discount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.PromotionLegacyPercentageDiscount._AddDiscount(System.Decimal,System.Decimal)">
+            <summary>
+            Calculates the discount applied to a line of articles
+            </summary>
+            <param name="pvp">PVP</param>
+            <param name="discount">Discount</param>
+            <returns>Discount applied to a line of articles</returns>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyReward.Discount">
+            <summary>
+            Discount
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyReward.QtyDiscount">
+            <summary>
+            Discount quantity
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.PromotionLegacyReward._AddDiscount(System.Decimal)">
+            <summary>
+            Calculates the discount applied to a line of articles
+            </summary>
+            <param name="pvp">PVP</param>
+            <param name="discount">Discount</param>
+            <returns>Discount applied to a line of articles</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.PromotionLegacyReward._ApplyPromotion(System.Collections.Generic.List{HubblePOS.Core.Common.PromotionLegacyTicketLineDiscount},HubblePOS.Core.Common.PromotionLegacyTicket)">
+            <summary>
+            [IMPORTANTE] Si modificamos algo en la lógica de _ApplyPromotion deberemos revisar DiscountPromotion y cambiarla tambien si es necesario
+            Apply promotions from ticket lines. Method adds discount lines to the end of ticket
+            </summary>
+            <param name="linesWithPromo">Lines With Promo</param>
+            <param name="ticketWithPromos">Ticket With Promos</param>
+        </member>
+        <member name="M:HubblePOS.Core.Common.PromotionLegacyReward.GetArticlesPromoSorted(System.Collections.Generic.List{HubblePOS.Core.Common.PromotionLegacyTicketLineDiscount})">
+            <summary>
+            Get list of articles sorted by unit value (PVP)
+            </summary>
+            <param name="linesWithPromo">Lines With Promo</param>
+            <returns>List of articles sorted by unit value</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.PromotionLegacyTicket.Clone">
+            <summary>
+            Generates new instance of Ticket with same values
+            </summary>
+            <returns>new ticket instance</returns>
+        </member>
+        <member name="M:HubblePOS.Core.Common.PromotionLegacyTicket.GetLinesWithDiscountApplied">
+            <summary>
+            Get lines with promos and dicounts applied over him
+            </summary>
+            <returns>New lines with promos or discounts applied</returns>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.LineIdInTicket">
+            <summary>
+            Line number in ticket
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.ProductReference">
+            <summary>
+            Reference code of product
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.Quantity">
+            <summary>
+            Quantity of units
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.MeasurementUnit">
+            <summary>
+            Measurement Units
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.Description">
+            <summary>
+            Sort description
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.PromotionCode">
+            <summary>
+            Promotion code if promotion line
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.IsDiscount">
+            <summary>
+            Indicates if line is discount
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.IsPromoLine">
+            <summary>
+            Indicates if line is promotion
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.PromotionRewardType">
+            <summary>
+            Tipo de promocion
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.RewardId">
+            <summary>
+            Id del producto que se segala
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.PercentageDiscountApplied">
+            <summary>
+            Porcentaje de descuento aplicado si se trata de PercentageDiscount
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.OriginalAmount">
+            <summary>
+            Precio original sin aplicar el descuento
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.LineNumberRelatedWithThisDiscount">
+            <summary>
+            Only for discounts. Related line number
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.NumberOfProductsAffected">
+            <summary>
+            Número de artículos afectados
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.AmountPerUnit">
+            <summary>
+            Amount per unit
+            </summary>
+        </member>
+        <member name="P:HubblePOS.Core.Common.PromotionLegacyTicketLine.TotalLineAmount">
+            <summary>
+            Total amount per line
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.PromotionLegacyTicketLine.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:HubblePOS.Core.Common.PromotionLegacyTicketLine.Clone">
+            <summary>
+            Clone ticket line instance
+            </summary>
+            <returns>new ticket line instance</returns>
+        </member>
+    </members>
+</doc>
